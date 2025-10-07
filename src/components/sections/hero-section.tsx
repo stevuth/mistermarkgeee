@@ -14,17 +14,37 @@ const HeroSection = () => {
     await loadSlim(engine);
   }, []);
 
+  const name = "MisterMarkGee".split("");
+
   const containerVariants = {
-    animate: {
+    hidden: { opacity: 0 },
+    visible: (i = 1) => ({
+      opacity: 1,
+      transition: { staggerChildren: 0.08, delayChildren: 0.5 * i },
+    }),
+  };
+
+  const letterVariants = {
+    hidden: {
+      opacity: 0,
+      y: 20,
+      filter: "blur(10px)",
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      filter: "blur(0px)",
       transition: {
-        staggerChildren: 0.1,
+        type: "spring",
+        damping: 12,
+        stiffness: 100,
       },
     },
   };
 
-  const textVariants = {
-    initial: { opacity: 0, y: 30 },
-    animate: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } },
+  const subtitleVariants = {
+      initial: { opacity: 0, y: 20 },
+      animate: { opacity: 1, y: 0, transition: { duration: 0.8, delay: 1.5, ease: "easeOut" } }
   };
 
   if (!isMounted) {
@@ -108,32 +128,31 @@ const HeroSection = () => {
       />
       <div className="absolute inset-0 z-10 bg-background/70" />
       
-      <motion.div
+      <div
         className="relative z-20 text-center px-4"
-        variants={containerVariants}
-        initial="initial"
-        animate="animate"
       >
         <motion.h1
-          className="font-headline text-4xl md:text-6xl lg:text-7xl font-bold text-white drop-shadow-lg"
-          variants={textVariants}
+          className="font-headline text-5xl md:text-7xl lg:text-8xl font-bold text-white drop-shadow-lg flex justify-center"
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
         >
-         Creating. Managing.
-          <br />
-          Inspiring. Storytelling.
+          {name.map((letter, index) => (
+            <motion.span key={index} variants={letterVariants}>
+              {letter}
+            </motion.span>
+          ))}
         </motion.h1>
 
         <motion.p
           className="mt-6 max-w-3xl mx-auto font-body text-base md:text-lg text-white/80"
-          variants={{
-            initial: { opacity: 0, y: 20 },
-            animate: { opacity: 1, y: 0, transition: { duration: 0.8, delay: 0.4, ease: "easeOut" } }
-          }}
+          variants={subtitleVariants}
+           initial="initial"
+           animate="animate"
         >
-          MisterMarkGee — Content Creator • Artist Manager • Videographer •
-          Podcaster • Writer.
+          Content Creator • Artist Manager • Videographer • Podcaster • Writer
         </motion.p>
-      </motion.div>
+      </div>
     </section>
   );
 };
