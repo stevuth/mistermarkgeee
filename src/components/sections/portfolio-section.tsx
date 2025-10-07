@@ -97,3 +97,5 @@ const PortfolioSection = () => {
         </section>
     );
 };
+
+export default PortfolioSection;
