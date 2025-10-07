@@ -1,20 +1,11 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
-import { ArrowDown } from "lucide-react";
 import { useEffect, useState } from "react";
 
 const HeroSection = () => {
   const [isMounted, setIsMounted] = useState(false);
   useEffect(() => setIsMounted(true), []);
-
-  const scrollToAbout = () => {
-    const aboutSection = document.getElementById("about");
-    if (aboutSection) {
-      aboutSection.scrollIntoView({ behavior: "smooth" });
-    }
-  };
 
   const containerVariants = {
     animate: {
@@ -27,15 +18,6 @@ const HeroSection = () => {
   const textVariants = {
     initial: { opacity: 0, y: 30 },
     animate: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } },
-  };
-  
-  const ctaVariants = {
-    initial: { opacity: 0, y: 20 },
-    animate: { 
-      opacity: 1, 
-      y: 0, 
-      transition: { duration: 0.8, delay: 0.6, ease: "easeOut" } 
-    },
   };
 
   if (!isMounted) {
@@ -75,21 +57,6 @@ const HeroSection = () => {
           MisterMarkGee — Content Creator • Artist Manager • Videographer •
           Podcaster • Writer.
         </motion.p>
-
-        <motion.div
-           variants={ctaVariants}
-           animate="animate"
-           className="mt-10"
-        >
-          <Button
-            size="lg"
-            className="group font-bold text-lg animated-gradient text-background hover:shadow-2xl hover:shadow-primary/50 transition-all duration-300"
-            onClick={scrollToAbout}
-          >
-            Enter My World
-            <ArrowDown className="ml-2 h-5 w-5" />
-          </Button>
-        </motion.div>
       </motion.div>
     </section>
   );
