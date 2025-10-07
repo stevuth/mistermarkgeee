@@ -4,15 +4,14 @@ import { motion } from "framer-motion";
 import { useEffect, useState, useCallback } from "react";
 import Particles from "react-tsparticles";
 import type { Container, Engine } from "tsparticles-engine";
-import { loadFull } from "tsparticles";
-import { useTheme } from "next-themes";
+import { loadSlim } from "tsparticles-slim";
 
 const HeroSection = () => {
   const [isMounted, setIsMounted] = useState(false);
   useEffect(() => setIsMounted(true), []);
 
   const particlesInit = useCallback(async (engine: Engine) => {
-    await loadFull(engine);
+    await loadSlim(engine);
   }, []);
 
   const containerVariants = {
