@@ -57,11 +57,11 @@ const TestimonialsSection = () => {
               align: "start",
               loop: true,
             }}
-            className="w-full max-w-4xl mx-auto"
+            className="w-full max-w-sm sm:max-w-4xl mx-auto"
           >
             <CarouselContent>
               {testimonials.map((testimonial, index) => (
-                <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
+                <CarouselItem key={index} className="sm:basis-1/2 lg:basis-1/3">
                   <div className="p-1 h-full">
                     <Card className="h-full flex flex-col justify-between bg-background/50 border-white/10 group">
                       <CardContent className="flex flex-col items-center text-center p-6">
@@ -93,8 +93,8 @@ const TestimonialsSection = () => {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious className="text-white hover:text-primary" />
-            <CarouselNext className="text-white hover:text-primary" />
+            <CarouselPrevious className="hidden sm:flex text-white hover:text-primary" />
+            <CarouselNext className="hidden sm:flex text-white hover:text-primary" />
           </Carousel>
         </motion.div>
       </div>
