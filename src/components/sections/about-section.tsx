@@ -49,7 +49,7 @@ const AboutSection = () => {
                             A Multi-Creative Force
                         </h2>
                         <p className="mt-6 text-lg text-white/80">
-                            For over 5 years, MisterMarkGee has been weaving narratives across multiple platforms. From managing the careers of rising artists to producing compelling video content and hosting thought-provoking podcasts, his work is driven by a passion for authentic storytelling. This is the space where all his creative worlds collide.
+                            A digital witness to the gospel message, Mark Macharia Gaturuku (aka MisterMarkGee) is a Kenyan-born, British content creator based in the Midlands. A devoted Christian, husband, and father of two sons, Mark works as a videographer, producer, writer, and artist manager. He uses media to uplift gospel and Christian hip hop culture, blending creativity and ministry through digital witnessing, storytelling, and leadership across platforms like The Life Music App, Holy Culture, and other gospel initiatives.
                         </p>
                         <div className="mt-12 grid grid-cols-2 gap-8">
                            <AnimatedCounter value={10} label="Happy Clients" />
