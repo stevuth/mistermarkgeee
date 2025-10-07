@@ -1,3 +1,64 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "portrait",
+      "description": "A portrait of MisterMarkGee",
+      "imageUrl": "https://images.unsplash.com/photo-1656338997878-279d71d48f6e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8cG9ydHJhaXQlMjBtYW58ZW58MHx8fHwxNzU5NzQ2NzYyfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "portrait man"
+    },
+    {
+      "id": "portfolio-video-1",
+      "description": "A cinematic video project",
+      "imageUrl": "https://picsum.photos/seed/portfolio1/800/600",
+      "imageHint": "cinematic"
+    },
+    {
+      "id": "portfolio-image-1",
+      "description": "A creative photography shot",
+      "imageUrl": "https://images.unsplash.com/photo-1513346940221-6f673d962e97?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxhYnN0cmFjdHxlbnwwfHx8fDE3NTk3NjkxOTJ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "abstract"
+    },
+    {
+      "id": "portfolio-writing-1",
+      "description": "A cover for a written piece",
+      "imageUrl": "https://images.unsplash.com/photo-1587135991058-8816b028691f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxub3RlYm9va3xlbnwwfHx8fDE3NTk3NzA1NjF8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "notebook"
+    },
+    {
+      "id": "podcast-cover-1",
+      "description": "Podcast cover art",
+      "imageUrl": "https://picsum.photos/seed/podcast1/600/600",
+      "imageHint": "microphone"
+    },
+    {
+      "id": "gallery-1",
+      "description": "Behind the scenes shot 1",
+      "imageUrl": "https://images.unsplash.com/photo-1495707902641-75cac588d2e9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxjYW1lcmF8ZW58MHx8fHwxNzU5NzQ1ODYwfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "camera"
+    },
+    {
+      "id": "gallery-2",
+      "description": "Behind the scenes shot 2",
+      "imageUrl": "https://picsum.photos/seed/gallery2/1200/800",
+      "imageHint": "production"
+    },
+    {
+      "id": "gallery-3",
+      "description": "Behind the scenes shot 3",
+      "imageUrl": "https://picsum.photos/seed/gallery3/1200/800",
+      "imageHint": "editing"
+    },
+    {
+      "id": "collab-logo-1",
+      "description": "Collaboration brand logo 1",
+      "imageUrl": "https://images.unsplash.com/photo-1612810806563-4cb8265db55f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxsb2dvfGVufDB8fHx8MTc1OTczMjA3MXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "logo"
+    },
+    {
+      "id": "collab-logo-2",
+      "description": "Collaboration brand logo 2",
+      "imageUrl": "https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxsb2dvfGVufDB8fHx8MTc1OTczMjA3MXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "logo"
+    }
+  ]
 }
