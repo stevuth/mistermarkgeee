@@ -83,11 +83,11 @@ const HeroSection = () => {
         >
           <Button
             size="lg"
-            className="group font-bold text-lg animated-gradient text-background hover:shadow-2xl hover:shadow-primary/50 transition-all duration-300 transform hover:scale-110"
+            className="group font-bold text-lg animated-gradient text-background hover:shadow-2xl hover:shadow-primary/50 transition-all duration-300"
             onClick={scrollToAbout}
           >
             Enter My World
-            <ArrowDown className="ml-2 h-5 w-5 group-hover:translate-y-1 transition-transform" />
+            <ArrowDown className="ml-2 h-5 w-5" />
           </Button>
         </motion.div>
       </motion.div>
