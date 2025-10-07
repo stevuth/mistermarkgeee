@@ -29,7 +29,23 @@ const HeroSection = () => {
     animate: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } },
   };
   
-  const headline = "Creating. Managing. Inspiring. Storytelling.".split(" ");
+  const ctaVariants = {
+    initial: { opacity: 0, y: 20 },
+    animate: { 
+      opacity: 1, 
+      y: 0, 
+      transition: { duration: 0.8, delay: 0.6, ease: "easeOut" } 
+    },
+    pulse: {
+      scale: [1, 1.05, 1],
+      transition: {
+        duration: 2,
+        ease: "easeInOut",
+        repeat: Infinity,
+        repeatDelay: 1
+      }
+    }
+  };
 
   if (!isMounted) {
     return null;
@@ -70,15 +86,13 @@ const HeroSection = () => {
         </motion.p>
 
         <motion.div
-           variants={{
-            initial: { opacity: 0, y: 20 },
-            animate: { opacity: 1, y: 0, transition: { duration: 0.8, delay: 0.6, ease: "easeOut" } }
-          }}
-          className="mt-10"
+           variants={ctaVariants}
+           animate={["animate", "pulse"]}
+           className="mt-10"
         >
           <Button
             size="lg"
-            className="group font-bold text-lg animated-gradient text-background hover:shadow-2xl hover:shadow-primary/50 transition-all duration-300 transform hover:scale-105"
+            className="group font-bold text-lg animated-gradient text-background hover:shadow-2xl hover:shadow-primary/50 transition-all duration-300 transform hover:!scale-110"
             onClick={scrollToAbout}
           >
             Enter My World
