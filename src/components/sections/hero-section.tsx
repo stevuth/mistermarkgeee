@@ -36,15 +36,6 @@ const HeroSection = () => {
       y: 0, 
       transition: { duration: 0.8, delay: 0.6, ease: "easeOut" } 
     },
-    pulse: {
-      scale: [1, 1.05, 1],
-      transition: {
-        duration: 2,
-        ease: "easeInOut",
-        repeat: Infinity,
-        repeatDelay: 1
-      }
-    }
   };
 
   if (!isMounted) {
@@ -87,12 +78,12 @@ const HeroSection = () => {
 
         <motion.div
            variants={ctaVariants}
-           animate={["animate", "pulse"]}
+           animate="animate"
            className="mt-10"
         >
           <Button
             size="lg"
-            className="group font-bold text-lg animated-gradient text-background hover:shadow-2xl hover:shadow-primary/50 transition-all duration-300 transform hover:!scale-110"
+            className="group font-bold text-lg animated-gradient text-background hover:shadow-2xl hover:shadow-primary/50 transition-all duration-300 transform hover:scale-110"
             onClick={scrollToAbout}
           >
             Enter My World
