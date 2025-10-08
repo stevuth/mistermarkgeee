@@ -14,19 +14,19 @@ const AboutSection = () => {
 
     const imageY = useTransform(scrollYProgress, [0, 1], ["-10%", "10%"]);
 
-    const bioText = "A digital witness to the gospel message, Mark Macharia Gaturuku (aka MisterMarkGee) is a Kenyan-born, British content creator based in the Midlands. A devoted Christian, husband, and father of two sons, Mark works as a videographer, producer, writer, and artist manager. He uses media to uplift gospel and Christian hip hop culture, blending creativity and ministry through digital witnessing, storytelling, and leadership across platforms like The Life Music App, Holy Culture, and other gospel initiatives.".split('. ');
+    const bioText = "A digital witness to the gospel message, Mark Macharia Gaturuku (aka MisterMarkGee) is a Kenyan-born, British content creator based in the Midlands. A devoted Christian, husband, and father of two sons, Mark works as a videographer, producer, writer, and artist manager. He uses media to uplift gospel and Christian hip hop culture, blending creativity and ministry through digital witnessing, storytelling, and leadership across platforms like The Life Music App, Holy Culture, and other gospel initiatives.".split(" ");
 
     const textContainerVariants = {
         hidden: { opacity: 0 },
         visible: {
             opacity: 1,
-            transition: { staggerChildren: 0.2, delayChildren: 0.3 },
+            transition: { staggerChildren: 0.02, delayChildren: 0.2 },
         },
     };
 
-    const sentenceVariants = {
-        hidden: { opacity: 0, y: 20 },
-        visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+    const wordVariants = {
+        hidden: { opacity: 0.1 },
+        visible: { opacity: 1, transition: { duration: 0.5 } },
     };
 
     return (
@@ -49,19 +49,19 @@ const AboutSection = () => {
                         >
                             A Multi-Creative Force
                         </motion.h2>
-                        <motion.div
-                            className="mt-6 text-lg text-foreground/80 space-y-4"
+                        <motion.p
+                            className="mt-6 text-lg text-foreground/80 leading-relaxed"
                             variants={textContainerVariants}
                             initial="hidden"
                             whileInView="visible"
                             viewport={{ once: true, amount: 0.2 }}
                         >
-                            {bioText.map((sentence, index) => (
-                                <motion.p key={index} variants={sentenceVariants}>
-                                    {sentence.trim()}{index < bioText.length -1 ? '.' : ''}
-                                </motion.p>
+                            {bioText.map((word, index) => (
+                                <motion.span key={index} variants={wordVariants} className="inline-block">
+                                    {word}{' '}
+                                </motion.span>
                             ))}
-                        </motion.div>
+                        </motion.p>
                     </motion.div>
                     <div className="relative h-[500px] lg:h-[600px] rounded-lg overflow-hidden">
                         <motion.div
