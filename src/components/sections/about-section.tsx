@@ -18,8 +18,6 @@ const AboutSection = () => {
         target: targetRef,
         offset: ["start end", "end start"],
     });
-
-    const imageY = useTransform(scrollYProgressContainer, [0, 1], ["-10%", "10%"]);
     
     const paragraphRef = useRef<HTMLParagraphElement>(null);
     const { scrollYProgress } = useScroll({
@@ -61,9 +59,8 @@ const AboutSection = () => {
                         </p>
                     </motion.div>
                     <div className="relative h-[500px] lg:h-[600px] rounded-lg overflow-hidden">
-                        <motion.div
+                        <div
                             className="absolute inset-0"
-                            style={{ y: imageY }}
                         >
                             <Image
                                 src="/profile picture.png"
@@ -80,7 +77,7 @@ const AboutSection = () => {
                                 viewport={{ once: true, amount: 0.5 }}
                                 style={{ originY: 'top' }}
                             />
-                        </motion.div>
+                        </div>
                     </div>
                 </div>
             </div>
