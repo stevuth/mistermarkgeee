@@ -9,21 +9,154 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { Badge } from "@/components/ui/badge";
-import { PlaceHolderImages } from "@/lib/placeholder-images";
 import Image from "next/image";
 import { motion } from "framer-motion";
 
-const testimonials: {
-  name: string;
-  role: string;
-  quote: string;
-  logo: {
-    id: string;
-    imageUrl: string;
-    description: string;
-    imageHint: string;
-  };
-}[] = [];
+const testimonials = [
+  {
+    name: "Partner 1",
+    role: "Collaborator",
+    quote: "Working with Mark has been an absolute pleasure. His creativity and professionalism are unmatched.",
+    logo: {
+      id: "partner-1",
+      imageUrl: "/partner 1.jpg",
+      description: "Partner 1 Logo",
+      imageHint: "logo",
+    },
+  },
+  {
+    name: "Partner 2",
+    role: "Collaborator",
+    quote: "A true visionary. Mark brought our project to life with incredible skill and dedication.",
+    logo: {
+      id: "partner-2",
+      imageUrl: "/partner 2.jpg",
+      description: "Partner 2 Logo",
+      imageHint: "logo",
+    },
+  },
+  {
+    name: "Partner 3",
+    role: "Collaborator",
+    quote: "The final result exceeded all our expectations. Highly recommended for any creative endeavor.",
+    logo: {
+      id: "partner-3",
+      imageUrl: "/partner 3.jpg",
+      description: "Partner 3 Logo",
+      imageHint: "logo",
+    },
+  },
+  {
+    name: "Partner 4",
+    role: "Collaborator",
+    quote: "Exceptional talent and a great collaborator. We look forward to working together again.",
+    logo: {
+      id: "partner-4",
+      imageUrl: "/partner 4.jpg",
+      description: "Partner 4 Logo",
+      imageHint: "logo",
+    },
+  },
+  {
+    name: "Partner 5",
+    role: "Collaborator",
+    quote: "Mark's attention to detail and creative insight are simply outstanding.",
+    logo: {
+      id: "partner-5",
+      imageUrl: "/partner 5.jpg",
+      description: "Partner 5 Logo",
+      imageHint: "logo",
+    },
+  },
+  {
+    name: "Partner 6",
+    role: "Collaborator",
+    quote: "A seamless process from start to finish. The quality of the work speaks for itself.",
+    logo: {
+      id: "partner-6",
+      imageUrl: "/partner 6.jpg",
+      description: "Partner 6 Logo",
+      imageHint: "logo",
+    },
+  },
+  {
+    name: "Partner 7",
+    role: "Collaborator",
+    quote: "Incredibly reliable and delivers top-tier results every time. A trusted partner.",
+    logo: {
+      id: "partner-7",
+      imageUrl: "/partner 7.jpg",
+      description: "Partner 7 Logo",
+      imageHint: "logo",
+    },
+  },
+    {
+    name: "Partner 8",
+    role: "Collaborator",
+    quote: "Incredibly reliable and delivers top-tier results every time. A trusted partner.",
+    logo: {
+      id: "partner-8",
+      imageUrl: "/partner 8.jpg",
+      description: "Partner 8 Logo",
+      imageHint: "logo",
+    },
+  },
+    {
+    name: "Partner 9",
+    role: "Collaborator",
+    quote: "Incredibly reliable and delivers top-tier results every time. A trusted partner.",
+    logo: {
+      id: "partner-9",
+      imageUrl: "/partner 9.jpg",
+      description: "Partner 9 Logo",
+      imageHint: "logo",
+    },
+  },
+    {
+    name: "Partner 10",
+    role: "Collaborator",
+    quote: "Incredibly reliable and delivers top-tier results every time. A trusted partner.",
+    logo: {
+      id: "partner-10",
+      imageUrl: "/partner 10.jpg",
+      description: "Partner 10 Logo",
+      imageHint: "logo",
+    },
+  },
+    {
+    name: "Partner 11",
+    role: "Collaborator",
+    quote: "Incredibly reliable and delivers top-tier results every time. A trusted partner.",
+    logo: {
+      id: "partner-11",
+      imageUrl: "/partner 11.jpg",
+      description: "Partner 11 Logo",
+      imageHint: "logo",
+    },
+  },
+    {
+    name: "Partner 12",
+    role: "Collaborator",
+    quote: "Incredibly reliable and delivers top-tier results every time. A trusted partner.",
+    logo: {
+      id: "partner-12",
+      imageUrl: "/partner 12.jpg",
+      description: "Partner 12 Logo",
+      imageHint: "logo",
+    },
+  },
+  {
+    name: "Partner 13",
+    role: "Collaborator",
+    quote: "A fantastic partner who consistently delivers high-quality, creative work.",
+    logo: {
+      id: "partner-13",
+      imageUrl: "/partner 13.jpg",
+      description: "Partner 13 Logo",
+      imageHint: "logo",
+    },
+  },
+];
 
 const TestimonialsSection = () => {
   if (testimonials.length === 0) {
@@ -63,22 +196,23 @@ const TestimonialsSection = () => {
               align: "start",
               loop: true,
             }}
-            className="w-full max-w-sm sm:max-w-4xl mx-auto"
+            className="w-full max-w-sm sm:max-w-4xl lg:max-w-6xl mx-auto"
           >
             <CarouselContent>
               {testimonials.map((testimonial, index) => (
                 <CarouselItem key={index} className="sm:basis-1/2 lg:basis-1/3">
                   <div className="p-1 h-full">
                     <Card className="h-full flex flex-col justify-between bg-card border-border group">
-                      <CardContent className="flex flex-col items-center text-center p-6">
+                      <CardContent className="flex flex-col items-center text-center p-6 flex-grow">
                         <p className="italic text-card-foreground/80">"{testimonial.quote}"</p>
                         <div className="mt-6">
                             <p className="font-bold text-card-foreground">{testimonial.name}</p>
                             <p className="text-sm text-card-foreground/60">{testimonial.role}</p>
                         </div>
                       </CardContent>
-                      <div className="p-6 border-t border-border flex justify-center bg-background/20">
+                      <div className="p-6 border-t border-border flex justify-center items-center bg-background/20 h-32">
                         <motion.div
+                           className="relative w-[120px] h-[60px]"
                            initial={{ filter: "grayscale(100%)", opacity: 0.7 }}
                            whileInView={{ filter: "grayscale(0%)", opacity: 1 }}
                            transition={{ duration: 0.5, delay: 0.2 }}
@@ -86,9 +220,8 @@ const TestimonialsSection = () => {
                         >
                             <Image
                                 src={testimonial.logo.imageUrl}
-                                alt={testimonial.name}
-                                width={120}
-                                height={60}
+                                alt={testimonial.logo.description}
+                                fill
                                 className="object-contain"
                                 data-ai-hint={testimonial.logo.imageHint}
                             />
