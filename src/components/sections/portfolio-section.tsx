@@ -25,10 +25,10 @@ const playlists: Playlist[] = [
     id: "pl1",
     title: "Faith Talks",
     videos: [
-      { id: "v1", title: "The Role of Faith in Modern Life", thumbnailUrl: "https://picsum.photos/seed/faith1/800/450", videoId: "64-4iw-We-U" },
-      { id: "v2", title: "Navigating Challenges with Belief", thumbnailUrl: "https://picsum.photos/seed/faith2/800/450", videoId: "fQNw9fC8HdY" },
-      { id: "v3", title: "Community and Spiritual Growth", thumbnailUrl: "https://picsum.photos/seed/faith3/800/450", videoId: "NUuxlYZ8kaA" },
-      { id: "v4", title: "An Interview with a Local Leader", thumbnailUrl: "https://picsum.photos/seed/faith4/800/450", videoId: "jqf7VWKEi9Y" },
+      { id: "v1", title: "The Role of Faith in Modern Life", thumbnailUrl: "https://img.youtube.com/vi/64-4iw-We-U/hqdefault.jpg", videoId: "64-4iw-We-U" },
+      { id: "v2", title: "Navigating Challenges with Belief", thumbnailUrl: "https://img.youtube.com/vi/fQNw9fC8HdY/hqdefault.jpg", videoId: "fQNw9fC8HdY" },
+      { id: "v3", title: "Community and Spiritual Growth", thumbnailUrl: "https://img.youtube.com/vi/NUuxlYZ8kaA/hqdefault.jpg", videoId: "NUuxlYZ8kaA" },
+      { id: "v4", title: "An Interview with a Local Leader", thumbnailUrl: "https://img.youtube.com/vi/jqf7VWKEi9Y/hqdefault.jpg", videoId: "jqf7VWKEi9Y" },
     ],
   },
   {
