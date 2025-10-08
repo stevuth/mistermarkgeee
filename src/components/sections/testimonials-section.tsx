@@ -11,6 +11,8 @@ import {
 import { Badge } from "@/components/ui/badge";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import Autoplay from "embla-carousel-autoplay";
+import React from "react";
 
 const testimonials = [
   {
@@ -159,6 +161,10 @@ const testimonials = [
 ];
 
 const TestimonialsSection = () => {
+  const plugin = React.useRef(
+    Autoplay({ delay: 2000, stopOnInteraction: true })
+  );
+
   if (testimonials.length === 0) {
     return (
       <section id="testimonials" className="py-24 sm:py-32 bg-background">
@@ -192,25 +198,21 @@ const TestimonialsSection = () => {
           viewport={{ once: true, amount: 0.2 }}
         >
           <Carousel
+            plugins={[plugin.current]}
             opts={{
               align: "start",
               loop: true,
             }}
             className="w-full max-w-sm sm:max-w-4xl lg:max-w-6xl mx-auto"
+            onMouseEnter={plugin.current.stop}
+            onMouseLeave={plugin.current.reset}
           >
             <CarouselContent>
               {testimonials.map((testimonial, index) => (
                 <CarouselItem key={index} className="sm:basis-1/2 lg:basis-1/3">
                   <div className="p-1 h-full">
-                    <Card className="h-full flex flex-col justify-between bg-card border-border group">
-                      <CardContent className="flex flex-col items-center text-center p-6 flex-grow">
-                        <p className="italic text-card-foreground/80">"{testimonial.quote}"</p>
-                        <div className="mt-6">
-                            <p className="font-bold text-card-foreground">{testimonial.name}</p>
-                            <p className="text-sm text-card-foreground/60">{testimonial.role}</p>
-                        </div>
-                      </CardContent>
-                      <div className="p-6 border-t border-border flex justify-center items-center bg-background/20 h-32">
+                    <Card className="h-full flex flex-col justify-center items-center bg-card border-border group">
+                      <div className="p-6 flex justify-center items-center bg-transparent h-32">
                         <motion.div
                            className="relative w-[120px] h-[60px]"
                            initial={{ filter: "grayscale(100%)", opacity: 0.7 }}
