@@ -107,7 +107,7 @@ const PortfolioSection = () => {
         >
           {playlists.map((playlist) => (
             <motion.div key={playlist.id} variants={itemVariants}>
-              <h3 className="font-headline text-3xl font-bold mb-8 text-accent">{playlist.title}</h3>
+              <h3 className="font-headline text-3xl font-bold mb-8 text-primary">{playlist.title}</h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
                 {playlist.videos.map((video) => (
                   <motion.div
@@ -132,7 +132,7 @@ const PortfolioSection = () => {
                     <div className="absolute inset-0 flex items-center justify-center">
                       <PlayCircle className="w-16 h-16 text-white/70 opacity-0 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300" />
                     </div>
-                    <div className="absolute inset-0 rounded-lg border-2 border-transparent group-hover:border-accent group-hover:shadow-[0_0_20px_rgba(255,213,79,0.5)] transition-all duration-300" />
+                    <div className="absolute inset-0 rounded-lg border-2 border-transparent group-hover:border-primary group-hover:shadow-[0_0_20px_hsl(var(--primary))] transition-all duration-300" />
                   </motion.div>
                 ))}
               </div>
@@ -141,7 +141,7 @@ const PortfolioSection = () => {
         </motion.div>
 
         <Dialog open={!!selectedVideo} onOpenChange={() => setSelectedVideo(null)}>
-          <DialogContent className="max-w-4xl w-full bg-black/80 border-accent/30 p-0 aspect-video">
+          <DialogContent className="max-w-4xl w-full bg-black/80 border-primary/30 p-0 aspect-video">
             {selectedVideo && (
               <>
                 <DialogTitle className="sr-only">{selectedVideo.title}</DialogTitle>
