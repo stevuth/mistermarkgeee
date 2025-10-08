@@ -14,6 +14,21 @@ const AboutSection = () => {
 
     const imageY = useTransform(scrollYProgress, [0, 1], ["-10%", "10%"]);
 
+    const bioText = "A digital witness to the gospel message, Mark Macharia Gaturuku (aka MisterMarkGee) is a Kenyan-born, British content creator based in the Midlands. A devoted Christian, husband, and father of two sons, Mark works as a videographer, producer, writer, and artist manager. He uses media to uplift gospel and Christian hip hop culture, blending creativity and ministry through digital witnessing, storytelling, and leadership across platforms like The Life Music App, Holy Culture, and other gospel initiatives.".split('. ');
+
+    const textContainerVariants = {
+        hidden: { opacity: 0 },
+        visible: {
+            opacity: 1,
+            transition: { staggerChildren: 0.2, delayChildren: 0.3 },
+        },
+    };
+
+    const sentenceVariants = {
+        hidden: { opacity: 0, y: 20 },
+        visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+    };
+
     return (
         <section id="about" ref={targetRef} className="py-24 sm:py-32 relative overflow-hidden bg-background">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -25,12 +40,28 @@ const AboutSection = () => {
                         viewport={{ once: true, amount: 0.3 }}
                     >
                         <Badge variant="outline" className="mb-4 border-primary text-primary">About Me</Badge>
-                        <h2 className="font-headline text-4xl md:text-5xl font-bold text-foreground">
+                        <motion.h2 
+                            className="font-headline text-4xl md:text-5xl font-bold text-foreground"
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.5 }}
+                            viewport={{ once: true }}
+                        >
                             A Multi-Creative Force
-                        </h2>
-                        <p className="mt-6 text-lg text-foreground/80">
-                            A digital witness to the gospel message, Mark Macharia Gaturuku (aka MisterMarkGee) is a Kenyan-born, British content creator based in the Midlands. A devoted Christian, husband, and father of two sons, Mark works as a videographer, producer, writer, and artist manager. He uses media to uplift gospel and Christian hip hop culture, blending creativity and ministry through digital witnessing, storytelling, and leadership across platforms like The Life Music App, Holy Culture, and other gospel initiatives.
-                        </p>
+                        </motion.h2>
+                        <motion.div
+                            className="mt-6 text-lg text-foreground/80 space-y-4"
+                            variants={textContainerVariants}
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: true, amount: 0.2 }}
+                        >
+                            {bioText.map((sentence, index) => (
+                                <motion.p key={index} variants={sentenceVariants}>
+                                    {sentence.trim()}{index < bioText.length -1 ? '.' : ''}
+                                </motion.p>
+                            ))}
+                        </motion.div>
                     </motion.div>
                     <div className="relative h-[500px] lg:h-[600px] rounded-lg overflow-hidden">
                         <motion.div
