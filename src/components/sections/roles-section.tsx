@@ -76,7 +76,7 @@ const RolesSection = () => {
         </div>
 
         <motion.div 
-          className="mt-16 grid grid-cols-1 lg:grid-cols-4 gap-8"
+          className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -85,32 +85,57 @@ const RolesSection = () => {
           {roles.map((role) => (
             <motion.div
               key={role.title}
-              className="relative rounded-lg overflow-hidden h-[450px] p-8 flex flex-col justify-end group cursor-pointer shadow-2xl lg:h-[600px] bg-white/10 lg:bg-transparent backdrop-blur-md lg:backdrop-blur-none"
+              className="relative rounded-lg overflow-hidden h-[500px] p-8 flex flex-col justify-end group cursor-pointer shadow-2xl"
               variants={panelVariants}
             >
               <Image
                 src={role.imageUrl}
                 alt={role.title}
                 fill
-                sizes="(max-width: 1023px) 100vw, 25vw"
-                className="object-cover absolute inset-0 -z-20"
+                sizes="(max-width: 767px) 100vw, (max-width: 1023px) 50vw, 25vw"
+                className="object-cover absolute inset-0 -z-20 transition-transform duration-500 ease-in-out group-hover:scale-105"
                 data-ai-hint={role.imageHint}
               />
-              <div className="absolute inset-0 -z-10 bg-gradient-to-t from-background via-[hsl(var(--background)/0.8)] to-accent/50 opacity-80 group-hover:opacity-60 transition-opacity duration-300" />
+              <div className="absolute inset-0 -z-10 bg-gradient-to-t from-background via-[hsl(var(--background)/0.8)] to-transparent opacity-90 transition-opacity duration-300" />
               
-              <div className="relative z-10 text-white">
+              <motion.div 
+                className="relative z-10 text-white"
+                initial={{ y: 40, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1, transition: { duration: 0.5, delay: 0.2 } }}
+                viewport={{ once: true }}
+              >
                  <h3 className="font-headline text-3xl font-bold tracking-wide">
                     {role.title}
                 </h3>
-                <p className="mt-4 text-white/90 text-sm leading-relaxed">{role.description}</p>
-                <Button 
-                  variant="outline" 
-                  size="sm"
-                  className="mt-6 bg-transparent text-white border-white/50 hover:bg-white hover:text-background font-bold shadow-[0_0_15px_rgba(255,255,255,0.2)] hover:shadow-[0_0_25px_rgba(255,255,255,0.5)] transition-all duration-300"
+                <motion.p 
+                  className="mt-4 text-white/90 text-sm leading-relaxed"
+                  initial={{ height: 0, opacity: 0 }}
+                  animate={{ 
+                    height: 'auto',
+                    opacity: 1,
+                    transition: { duration: 0.4, ease: [0.16, 1, 0.3, 1] } 
+                  }}
                 >
-                  View My Work <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
-              </div>
+                  {role.description}
+                </motion.p>
+                
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{
+                    opacity: 1,
+                    y: 0,
+                    transition: { delay: 0.2, duration: 0.4 }
+                  }}
+                >
+                  <Button 
+                    variant="outline" 
+                    size="sm"
+                    className="mt-6 bg-transparent text-white border-white/50 hover:bg-white hover:text-background font-bold shadow-[0_0_15px_rgba(255,255,255,0.2)] hover:shadow-[0_0_25px_rgba(255,255,255,0.5)] transition-all duration-300"
+                  >
+                    View My Work <ArrowRight className="ml-2 h-4 w-4" />
+                  </Button>
+                </motion.div>
+              </motion.div>
             </motion.div>
           ))}
         </motion.div>

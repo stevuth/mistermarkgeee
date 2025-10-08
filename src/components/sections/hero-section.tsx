@@ -10,16 +10,10 @@ import { useEffect, useState } from "react";
 const BlinkingCursor = () => {
   return (
     <motion.span
-      variants={{
-        hidden: { opacity: 0 },
-        visible: { opacity: 1 },
-      }}
+      initial={{ opacity: 0 }}
       animate={{ opacity: [0, 1, 0] }}
-      transition={{ duration: 1, repeat: Infinity }}
-      className="inline-block h-6 w-1 bg-white ml-1"
-      style={{
-        height: '1em',
-      }}
+      transition={{ duration: 1.2, repeat: Infinity }}
+      className="inline-block h-[1em] w-1 bg-white ml-2 translate-y-1"
     />
   );
 };
@@ -33,8 +27,8 @@ const HeroSection = () => {
 
   const totalIntroDuration = intro.length * 0.15 + 0.5;
   const totalNameDuration = name.length * 0.15 + totalIntroDuration;
-  const totalSubtitle1Duration = subtitleLine1.length * 0.1 + totalNameDuration;
-  const totalSubtitle2Duration = subtitleLine2.length * 0.1 + totalSubtitle1Duration;
+  const totalSubtitle1Duration = subtitleLine1.length * 0.08 + totalNameDuration;
+  const totalSubtitle2Duration = subtitleLine2.length * 0.08 + totalSubtitle1Duration;
 
   const [showCursor, setShowCursor] = useState({
     intro: false,
@@ -90,7 +84,7 @@ const HeroSection = () => {
         className="relative z-20 text-center px-4 flex flex-col items-center"
       >
         <motion.div
-          className="font-body text-lg md:text-2xl text-white/90 mb-4 flex justify-center flex-wrap"
+          className="font-body text-lg md:text-2xl text-white/90 mb-4 flex justify-center items-baseline"
           variants={containerVariants(0.5, 0.15)}
           initial="hidden"
           animate="visible"
@@ -104,7 +98,7 @@ const HeroSection = () => {
         </motion.div>
         
         <motion.h1
-          className="font-headline text-4xl md:text-7xl lg:text-8xl font-bold text-white drop-shadow-lg flex justify-center flex-wrap"
+          className="font-headline text-4xl md:text-7xl lg:text-8xl font-bold text-white drop-shadow-lg flex justify-center items-baseline"
           variants={containerVariants(totalIntroDuration, 0.15)}
           initial="hidden"
           animate="visible"
@@ -119,8 +113,8 @@ const HeroSection = () => {
 
         <div className="mt-6 max-w-3xl mx-auto font-body text-base md:text-xl tracking-wide text-white/90">
             <motion.p
-              className="flex flex-wrap justify-center"
-              variants={containerVariants(totalNameDuration, 0.1)}
+              className="flex flex-wrap justify-center items-baseline"
+              variants={containerVariants(totalNameDuration, 0.08)}
               initial="hidden"
               animate="visible"
             >
@@ -132,8 +126,8 @@ const HeroSection = () => {
                {showCursor.subtitle1 && <BlinkingCursor />}
             </motion.p>
             <motion.p
-              className="flex flex-wrap justify-center"
-              variants={containerVariants(totalSubtitle1Duration, 0.1)}
+              className="flex flex-wrap justify-center items-baseline"
+              variants={containerVariants(totalSubtitle1Duration, 0.08)}
               initial="hidden"
               animate="visible"
             >
@@ -142,7 +136,7 @@ const HeroSection = () => {
                   {letter === " " ? "\u00A0" : letter}
                 </motion.span>
               ))}
-              {showCursor.subtitle2 && <BlinkingCursor />}
+              {(showCursor.subtitle2 || showCursor.final) && <BlinkingCursor />}
             </motion.p>
         </div>
         

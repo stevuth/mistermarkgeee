@@ -34,10 +34,13 @@ const Header = () => {
         hasScrolled ? "bg-background/80 backdrop-blur-lg border-b" : "bg-transparent"
       )}>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-end h-20">
-            <nav className="hidden md:flex items-center space-x-8">
+          <div className="flex items-center justify-between h-20">
+            <Link href="#home" className="font-headline text-xl font-bold text-foreground">
+              MotionVerse
+            </Link>
+            <nav className="hidden md:flex items-center space-x-10">
               {navLinks.map(link => (
-                <Link key={link.name} href={link.href} className="text-sm font-medium text-foreground/80 hover:text-foreground transition-colors hover:scale-105">
+                <Link key={link.name} href={link.href} className="text-base font-medium text-foreground/80 hover:text-foreground transition-colors hover:scale-105">
                   {link.name}
                 </Link>
               ))}
