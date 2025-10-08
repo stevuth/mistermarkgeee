@@ -1,45 +1,33 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Video, UserCheck, Tv, Mic, PenSquare, Sparkles } from "lucide-react";
+import { Video, UserCheck, PenSquare, Film } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 
 const roles = [
   {
     icon: Video,
-    title: "Videography",
+    title: "Videographer",
     description: "Cinematic storytelling through visuals.",
     color: "primary",
   },
   {
-    icon: UserCheck,
-    title: "Artist Management",
-    description: "Guiding creative journeys.",
-    color: "accent",
-  },
-  {
-    icon: Tv,
-    title: "Content Creation",
-    description: "Building brand narratives.",
-    color: "coral",
-  },
-  {
-    icon: Mic,
-    title: "Podcasting",
-    description: "Amplifying authentic voices.",
+    icon: Film,
+    title: "Producer",
+    description: "Bringing creative visions to life.",
     color: "accent",
   },
   {
     icon: PenSquare,
-    title: "Writing",
+    title: "Writer",
     description: "Creative reflections and storytelling.",
     color: "primary",
   },
   {
-    icon: Sparkles,
-    title: "And More...",
-    description: "Always exploring new creative frontiers.",
-    color: "coral",
+    icon: UserCheck,
+    title: "Artist Manager",
+    description: "Guiding creative journeys.",
+    color: "accent",
   },
 ];
 
@@ -58,7 +46,7 @@ const cardVariants = {
 
 const colorClasses: { [key: string]: string } = {
   primary: "text-primary group-hover:bg-primary/20",
-  accent: "text-accent-foreground group-hover:bg-accent/20",
+  accent: "text-accent group-hover:bg-accent/20",
   coral: "text-coral group-hover:bg-coral/20",
 };
 
@@ -76,7 +64,7 @@ const RolesSection = () => {
             </p>
         </div>
 
-        <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {roles.map((role, i) => (
             <motion.div
               key={role.title}
