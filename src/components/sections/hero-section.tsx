@@ -74,7 +74,7 @@ const HeroSection = () => {
         className="relative z-20 text-center px-4 flex flex-col items-center"
       >
         <motion.h1
-          className="font-headline text-5xl md:text-7xl lg:text-8xl font-bold text-white drop-shadow-lg flex justify-center"
+          className="font-headline text-4xl md:text-7xl lg:text-8xl font-bold text-white drop-shadow-lg flex justify-center flex-wrap"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
@@ -87,7 +87,7 @@ const HeroSection = () => {
         </motion.h1>
 
         <motion.p
-          className="mt-6 max-w-3xl mx-auto font-body text-lg md:text-xl tracking-wide text-white/90 flex flex-wrap justify-center"
+          className="mt-6 max-w-3xl mx-auto font-body text-base md:text-xl tracking-wide text-white/90 flex flex-wrap justify-center"
           variants={subtitleContainerVariants}
            initial="hidden"
            animate="visible"
@@ -107,9 +107,8 @@ const HeroSection = () => {
             <Button
                 size="lg"
                 onClick={() => document.getElementById('works')?.scrollIntoView({ behavior: 'smooth' })}
-                className="animated-gradient text-primary-foreground font-bold"
             >
-                View My Work
+                <AnimatedGradientText>View My Work</AnimatedGradientText>
             </Button>
         </motion.div>
       </div>
