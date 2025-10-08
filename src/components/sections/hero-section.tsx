@@ -8,7 +8,8 @@ import AnimatedGradientText from "../ui/animated-gradient-text";
 
 const HeroSection = () => {
   const name = "MisterMarkGee".split("");
-  const subtitle = "Videographer • Producer • Writer • Artist Manager".split("");
+  const subtitleLine1 = "Videographer • Producer • Writer •".split("");
+  const subtitleLine2 = "Artist Manager".split("");
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -25,6 +26,15 @@ const HeroSection = () => {
       transition: { staggerChildren: 0.025, delayChildren: 1.5 * i },
     }),
   };
+  
+  const subtitleContainerVariants2 = {
+    hidden: { opacity: 0 },
+    visible: (i = 1) => ({
+      opacity: 1,
+      transition: { staggerChildren: 0.025, delayChildren: (1.5 * i) + (subtitleLine1.length * 0.025) },
+    }),
+  };
+
 
   const letterVariants = {
     hidden: {
@@ -86,18 +96,32 @@ const HeroSection = () => {
           ))}
         </motion.h1>
 
-        <motion.p
-          className="mt-6 max-w-3xl mx-auto font-body text-base md:text-xl tracking-wide text-white/90 flex flex-wrap justify-center"
-          variants={subtitleContainerVariants}
-           initial="hidden"
-           animate="visible"
-        >
-          {subtitle.map((letter, index) => (
-            <motion.span key={index} variants={subtitleLetterVariants}>
-              {letter === " " ? "\u00A0" : letter}
-            </motion.span>
-          ))}
-        </motion.p>
+        <div className="mt-6 max-w-3xl mx-auto font-body text-base md:text-xl tracking-wide text-white/90">
+            <motion.p
+              className="flex flex-wrap justify-center"
+              variants={subtitleContainerVariants}
+              initial="hidden"
+              animate="visible"
+            >
+              {subtitleLine1.map((letter, index) => (
+                <motion.span key={index} variants={subtitleLetterVariants}>
+                  {letter === " " ? "\u00A0" : letter}
+                </motion.span>
+              ))}
+            </motion.p>
+            <motion.p
+              className="flex flex-wrap justify-center"
+              variants={subtitleContainerVariants2}
+              initial="hidden"
+              animate="visible"
+            >
+              {subtitleLine2.map((letter, index) => (
+                <motion.span key={index} variants={subtitleLetterVariants}>
+                  {letter === " " ? "\u00A0" : letter}
+                </motion.span>
+              ))}
+            </motion.p>
+        </div>
         
         <motion.div
             className="mt-12"
