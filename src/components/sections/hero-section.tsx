@@ -87,7 +87,7 @@ const HeroSection = () => {
         </motion.h1>
 
         <motion.p
-          className="mt-6 max-w-3xl mx-auto font-body text-base md:text-lg text-white/80 flex flex-wrap justify-center"
+          className="mt-6 max-w-3xl mx-auto font-body text-lg md:text-xl tracking-wide text-white/90 flex flex-wrap justify-center"
           variants={subtitleContainerVariants}
            initial="hidden"
            animate="visible"
