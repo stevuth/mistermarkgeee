@@ -36,6 +36,7 @@ const HeroSection = () => {
   };
 
   const particleOptions = useMemo(() => ({
+    fullScreen: { enable: false },
     fpsLimit: 60,
     interactivity: {
       events: {
