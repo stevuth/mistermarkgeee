@@ -28,7 +28,7 @@ const roles = [
     title: "Writer",
     description: "I craft compelling narratives, from short-form content to in-depth articles, that engage and inspire readers.",
     tagline: "Weaving words that connect.",
-    imageUrl: "https://picsum.photos/seed/writer/800/1200",
+    imageUrl: "/writer.jpg",
     imageHint: "writing book",
   },
   {
