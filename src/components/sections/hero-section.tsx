@@ -54,10 +54,10 @@ const HeroSection = () => {
     },
     particles: {
       color: {
-        value: "#ffffff",
+        value: "#87CEEB",
       },
       links: {
-        color: "#ffffff",
+        color: "#87CEEB",
         distance: 150,
         enable: true,
         opacity: 0.2,
@@ -70,7 +70,7 @@ const HeroSection = () => {
           default: "out" as const,
         },
         random: false,
-        speed: 1,
+        speed: 2,
         straight: false,
       },
       number: {
@@ -84,7 +84,7 @@ const HeroSection = () => {
         value: 0.2,
       },
       shape: {
-        type: "triangle",
+        type: "circle",
       },
       size: {
         value: { min: 1, max: 3 },
@@ -147,7 +147,7 @@ const HeroSection = () => {
           id="tsparticles"
           particlesLoaded={particlesLoaded}
           options={particleOptions}
-          className="absolute inset-0 z-0"
+          className="absolute inset-0 z-0 h-full w-full"
         />
       )}
       
