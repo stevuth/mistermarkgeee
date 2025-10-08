@@ -1,10 +1,12 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
 import { Button } from "../ui/button";
 import AnimatedGradientText from "../ui/animated-gradient-text";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo, useCallback } from "react";
+import Particles, { initParticlesEngine } from "@tsparticles/react";
+import type { Container, Engine } from "@tsparticles/engine";
+import { loadSlim } from "tsparticles-slim";
 
 const BlinkingCursor = () => {
   return (
@@ -19,6 +21,84 @@ const BlinkingCursor = () => {
 
 
 const HeroSection = () => {
+  const [init, setInit] = useState(false);
+
+  useEffect(() => {
+    initParticlesEngine(async (engine) => {
+      await loadSlim(engine);
+    }).then(() => {
+      setInit(true);
+    });
+  }, []);
+
+  const particlesLoaded = async (container: Container | undefined) => {
+    console.log(container);
+  };
+
+  const particleOptions = useMemo(() => ({
+    background: {
+      color: {
+        value: "hsl(var(--background))",
+      },
+    },
+    fpsLimit: 60,
+    interactivity: {
+      events: {
+        onHover: {
+          enable: true,
+          mode: "repulse",
+        },
+        resize: true,
+      },
+      modes: {
+        repulse: {
+          distance: 100,
+          duration: 0.4,
+        },
+      },
+    },
+    particles: {
+      color: {
+        value: "#ffffff",
+      },
+      links: {
+        color: "#ffffff",
+        distance: 150,
+        enable: true,
+        opacity: 0.2,
+        width: 1,
+      },
+      move: {
+        direction: "none" as const,
+        enable: true,
+        outModes: {
+          default: "out" as const,
+        },
+        random: false,
+        speed: 1,
+        straight: false,
+      },
+      number: {
+        density: {
+          enable: true,
+          area: 800,
+        },
+        value: 80,
+      },
+      opacity: {
+        value: 0.2,
+      },
+      shape: {
+        type: "circle",
+      },
+      size: {
+        value: { min: 1, max: 3 },
+      },
+    },
+    detectRetina: true,
+  }), []);
+
+
   const intro = "Hello, I'm".split("");
   const name = "MisterMarkGee".split("");
   const subtitleLine1 = "a videographer • producer • writer •".split("");
@@ -67,17 +147,14 @@ const HeroSection = () => {
       id="home"
       className="relative flex items-center justify-center h-screen overflow-hidden"
     >
-      <div className="absolute inset-0 z-0">
-        <Image
-          src="/hero image.jpg"
-          alt="Abstract background image with light trails"
-          fill
-          className="object-cover"
-          data-ai-hint="light trails abstract"
-          priority
+       {init && (
+        <Particles
+          id="tsparticles"
+          particlesLoaded={particlesLoaded}
+          options={particleOptions}
+          className="absolute inset-0 z-0"
         />
-        <div className="absolute inset-0 bg-black/60" />
-      </div>
+      )}
       
       <div
         className="relative z-20 text-center px-4 flex flex-col items-center"
