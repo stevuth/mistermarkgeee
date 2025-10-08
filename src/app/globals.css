@@ -5,19 +5,19 @@
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 222 47% 11%;
+    --foreground: 0 0% 10%;
     --card: 0 0% 100%;
-    --card-foreground: 222 47% 11%;
+    --card-foreground: 0 0% 10%;
     --popover: 0 0% 100%;
-    --popover-foreground: 222 47% 11%;
+    --popover-foreground: 0 0% 10%;
     --primary: 200 90% 64%;
     --primary-foreground: 210 40% 98%;
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222 47% 11%;
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215 20% 65%;
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222 47% 11%;
+    --secondary: 192 83% 93%;
+    --secondary-foreground: 0 0% 10%;
+    --muted: 192 83% 93%;
+    --muted-foreground: 0 0% 40%;
+    --accent: 45 100% 51%;
+    --accent-foreground: 0 0% 10%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
     --border: 214 32% 91%;
@@ -30,11 +30,11 @@
     --chart-5: 340 75% 55%;
     --radius: 0.5rem;
     --sidebar-background: 0 0% 100%;
-    --sidebar-foreground: 222 47% 11%;
+    --sidebar-foreground: 0 0% 10%;
     --sidebar-primary: 200 90% 64%;
     --sidebar-primary-foreground: 210 40% 98%;
-    --sidebar-accent: 210 40% 96.1%;
-    --sidebar-accent-foreground: 222 47% 11%;
+    --sidebar-accent: 192 83% 93%;
+    --sidebar-accent-foreground: 0 0% 10%;
     --sidebar-border: 214 32% 91%;
     --sidebar-ring: 200 90% 64%;
   }
@@ -48,8 +48,8 @@
     --popover-foreground: 0 0% 100%;
     --primary: 200 90% 64%;
     --primary-foreground: 210 100% 12%;
-    --secondary: 210 100% 20%;
-    --secondary-foreground: 0 0% 100%;
+    --secondary: 192 83% 93%;
+    --secondary-foreground: 0 0% 10%;
     --muted: 210 100% 20%;
     --muted-foreground: 0 0% 63.9%;
     --accent: 45 100% 51%;
@@ -84,7 +84,7 @@
     scroll-behavior: smooth;
   }
   .animated-gradient {
-    background: linear-gradient(120deg, #4FC3F7, #FFC107, #FF6B6B);
+    background: linear-gradient(120deg, #4FC3F7, #FFC107, #FF8A65);
     background-size: 200% 200%;
     animation: gradient-animation 10s ease infinite;
   }
