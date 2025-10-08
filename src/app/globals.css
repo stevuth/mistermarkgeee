@@ -4,13 +4,13 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%; /* White */
-    --foreground: 240 10% 10%; /* Dark Charcoal */
-    --card: 0 0% 100%;
-    --card-foreground: 240 10% 10%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 240 10% 10%;
-    --primary: 200 98% 41%; /* Deep Sky Blue */
+    --background: 207 90% 54%; /* Azure */
+    --foreground: 0 0% 100%; /* White */
+    --card: 207 90% 54%;
+    --card-foreground: 0 0% 100%;
+    --popover: 207 90% 54%;
+    --popover-foreground: 0 0% 100%;
+    --primary: 202 98% 41%; /* Deep Sky Blue */
     --primary-foreground: 0 0% 100%;
     --secondary: 198 93% 93%; /* Very Light Semi Blue */
     --secondary-foreground: 240 10% 10%;
@@ -22,7 +22,7 @@
     --destructive-foreground: 0 0% 98%;
     --border: 240 6% 90%;
     --input: 240 6% 90%;
-    --ring: 200 98% 41%;
+    --ring: 202 98% 41%;
     --chart-1: 220 70% 50%;
     --chart-2: 160 60% 45%;
     --chart-3: 30 80% 55%;
@@ -46,7 +46,7 @@
     --card-foreground: 0 0% 98%;
     --popover: 240 10% 10%;
     --popover-foreground: 0 0% 98%;
-    --primary: 200 98% 41%;
+    --primary: 202 98% 41%;
     --primary-foreground: 0 0% 100%;
     --secondary: 198 93% 13%;
     --secondary-foreground: 0 0% 98%;
@@ -58,7 +58,7 @@
     --destructive-foreground: 0 0% 98%;
     --border: 198 93% 13%;
     --input: 198 93% 13%;
-    --ring: 200 98% 41%;
+    --ring: 202 98% 41%;
     --chart-1: 220 70% 50%;
     --chart-2: 160 60% 45%;
     --chart-3: 30 80% 55%;
