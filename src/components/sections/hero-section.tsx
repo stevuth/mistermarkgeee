@@ -5,12 +5,21 @@ import Image from "next/image";
 
 const HeroSection = () => {
   const name = "MisterMarkGee".split("");
+  const subtitle = "Videographer • Producer • Writer • Artist Manager".split("");
 
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: (i = 1) => ({
       opacity: 1,
       transition: { staggerChildren: 0.08, delayChildren: 0.5 * i },
+    }),
+  };
+  
+  const subtitleContainerVariants = {
+    hidden: { opacity: 0 },
+    visible: (i = 1) => ({
+      opacity: 1,
+      transition: { staggerChildren: 0.025, delayChildren: 1.5 * i },
     }),
   };
 
@@ -32,9 +41,13 @@ const HeroSection = () => {
     },
   };
 
-  const subtitleVariants = {
-      initial: { opacity: 0, y: 20 },
-      animate: { opacity: 1, y: 0, transition: { duration: 0.8, delay: 1.5, ease: "easeOut" } }
+  const subtitleLetterVariants = {
+    hidden: {
+      opacity: 0,
+    },
+    visible: {
+      opacity: 1,
+    },
   };
 
   return (
@@ -71,12 +84,16 @@ const HeroSection = () => {
         </motion.h1>
 
         <motion.p
-          className="mt-6 max-w-3xl mx-auto font-body text-base md:text-lg text-white/80"
-          variants={subtitleVariants}
-           initial="initial"
-           animate="animate"
+          className="mt-6 max-w-3xl mx-auto font-body text-base md:text-lg text-white/80 flex flex-wrap justify-center"
+          variants={subtitleContainerVariants}
+           initial="hidden"
+           animate="visible"
         >
-          Videographer • Producer • Writer • Artist Manager
+          {subtitle.map((letter, index) => (
+            <motion.span key={index} variants={subtitleLetterVariants}>
+              {letter === " " ? "\u00A0" : letter}
+            </motion.span>
+          ))}
         </motion.p>
       </div>
     </section>
