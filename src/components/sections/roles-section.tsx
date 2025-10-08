@@ -36,7 +36,7 @@ const roles = [
     title: "Artist Manager",
     tagline: "Guiding creative journeys.",
     description: "I partner with artists to develop their brand, strategize their career path, and create opportunities for growth.",
-    imageUrl: "https://picsum.photos/seed/manager/800/1200",
+    imageUrl: "/Artist Manager.jpg",
     imageHint: "artist portrait",
   },
 ];
