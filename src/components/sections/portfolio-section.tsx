@@ -44,10 +44,9 @@ const playlists: Playlist[] = [
     id: "pl3",
     title: "The Life Music Podcast",
     videos: [
-        { id: "v9", title: "Episode 101: The Creative Process", thumbnailUrl: "https://picsum.photos/seed/podcast1/800/450", videoId: "dQw4w9WgXcQ" },
-        { id: "v10", title: "Episode 102: Music and Ministry", thumbnailUrl: "https://picsum.photos/seed/podcast2/800/450", videoId: "dQw4w9WgXcQ" },
-        { id: "v11", title: "Episode 103: The Business of Art", thumbnailUrl: "https://picsum.photos/seed/podcast3/800/450", videoId: "dQw4w9WgXcQ" },
-        { id: "v12", title: "Episode 104: Listener Q&A", thumbnailUrl: "https://picsum.photos/seed/podcast4/800/450", videoId: "dQw4w9WgXcQ" },
+        { id: "v9", title: "Grace upon grace", thumbnailUrl: "https://img.youtube.com/vi/3ulTF-Fgc64/hqdefault.jpg", videoId: "3ulTF-Fgc64" },
+        { id: "v10", title: "Still hopeful", thumbnailUrl: "https://img.youtube.com/vi/69Wv3XACVbk/hqdefault.jpg", videoId: "69Wv3XACVbk" },
+        { id: "v11", title: "In his presence", thumbnailUrl: "https://img.youtube.com/vi/CAXGcHETX6M/hqdefault.jpg", videoId: "CAXGcHETX6M" },
     ]
   }
 ];
