@@ -6,7 +6,7 @@ import AnimatedGradientText from "../ui/animated-gradient-text";
 import { useEffect, useState, useMemo, useCallback } from "react";
 import Particles, { initParticlesEngine } from "@tsparticles/react";
 import type { Container, Engine } from "@tsparticles/engine";
-import { loadSlim } from "tsparticles-slim";
+import { loadSlim } from "@tsparticles/slim";
 
 const BlinkingCursor = () => {
   return (
