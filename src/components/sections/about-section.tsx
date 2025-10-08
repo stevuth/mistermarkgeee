@@ -9,7 +9,7 @@ const bioText = "A digital witness to the gospel message, Mark Macharia Gaturuku
 
 const Word = ({ children, progress, range }: { children: React.ReactNode, progress: any, range: [number, number] }) => {
     const opacity = useTransform(progress, range, [0.2, 1]);
-    return <motion.span style={{ opacity }} className="relative">{children}</motion.span>
+    return <motion.span style={{ opacity }} className="relative text-white">{children}</motion.span>
 }
 
 const AboutSection = () => {
@@ -51,7 +51,7 @@ const AboutSection = () => {
                         </motion.h2>
                         <p
                             ref={paragraphRef}
-                            className="mt-6 text-lg text-foreground/90 leading-relaxed"
+                            className="mt-6 text-lg text-foreground/80 leading-relaxed"
                         >
                             {words.map((word, i) => {
                                 const start = i / words.length;
@@ -74,7 +74,7 @@ const AboutSection = () => {
                             />
                             <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-70" />
                             <motion.div 
-                                className="absolute inset-0 bg-white"
+                                className="absolute inset-0 bg-background"
                                 initial={{ scaleY: 1 }}
                                 whileInView={{ scaleY: 0, transition: { duration: 0.8, ease: [0.85, 0, 0.15, 1], delay: 0.2 } }}
                                 viewport={{ once: true, amount: 0.5 }}

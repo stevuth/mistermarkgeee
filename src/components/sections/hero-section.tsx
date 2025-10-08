@@ -3,7 +3,6 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { Button } from "../ui/button";
-import { ArrowDown } from "lucide-react";
 import AnimatedGradientText from "../ui/animated-gradient-text";
 import { useEffect, useState } from "react";
 
@@ -77,7 +76,7 @@ const HeroSection = () => {
           data-ai-hint="light trails abstract"
           priority
         />
-        <div className="absolute inset-0 bg-black/40" />
+        <div className="absolute inset-0 bg-black/60" />
       </div>
       
       <div
@@ -98,7 +97,7 @@ const HeroSection = () => {
         </motion.div>
         
         <motion.h1
-          className="font-headline text-4xl md:text-7xl lg:text-8xl font-bold text-white drop-shadow-lg flex justify-center items-baseline"
+          className="font-headline text-5xl md:text-7xl lg:text-8xl font-bold text-white drop-shadow-lg flex justify-center items-baseline"
           variants={containerVariants(totalIntroDuration, 0.15)}
           initial="hidden"
           animate="visible"
@@ -148,6 +147,7 @@ const HeroSection = () => {
             <Button
                 size="lg"
                 onClick={() => document.getElementById('works')?.scrollIntoView({ behavior: 'smooth' })}
+                className="bg-transparent"
             >
                 <AnimatedGradientText>View My Work</AnimatedGradientText>
             </Button>

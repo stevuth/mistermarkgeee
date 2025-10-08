@@ -31,7 +31,7 @@ const NewsletterSection = () => {
   }
 
   return (
-    <section id="newsletter" className="py-24 sm:py-32 bg-background/50">
+    <section id="newsletter" className="py-24 sm:py-32 bg-secondary/30">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           className="max-w-2xl mx-auto text-center"
@@ -75,7 +75,7 @@ const NewsletterSection = () => {
                   </FormItem>
                 )}
               />
-              <Button type="submit" size="lg" className="h-12 animated-gradient text-primary-foreground font-bold">
+              <Button type="submit" size="lg" className="h-12 animated-gradient text-white font-bold">
                 Subscribe
               </Button>
             </form>

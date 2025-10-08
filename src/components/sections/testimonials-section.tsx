@@ -3,125 +3,21 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { Badge } from "@/components/ui/badge";
-import { cn } from "@/lib/utils";
 
 const testimonials = [
-  {
-    name: "Partner 1",
-    logo: {
-      id: "partner-1",
-      imageUrl: "/partner 1.jpg",
-      description: "Partner 1 Logo",
-    },
-  },
-  {
-    name: "Partner 2",
-    logo: {
-      id: "partner-2",
-      imageUrl: "/partner 2.jpg",
-      description: "Partner 2 Logo",
-    },
-  },
-  {
-    name: "Partner 3",
-    logo: {
-      id: "partner-3",
-      imageUrl: "/partner 3.jpg",
-      description: "Partner 3 Logo",
-    },
-  },
-  {
-    name: "Partner 4",
-    logo: {
-      id: "partner-4",
-      imageUrl: "/partner 4.jpg",
-      description: "Partner 4 Logo",
-    },
-  },
-  {
-    name: "Partner 5",
-    logo: {
-      id: "partner-5",
-      imageUrl: "/partner 5.jpg",
-      description: "Partner 5 Logo",
-    },
-  },
-  {
-    name: "Partner 6",
-    logo: {
-      id: "partner-6",
-      imageUrl: "/partner 6.jpg",
-      description: "Partner 6 Logo",
-    },
-  },
-  {
-    name: "Partner 7",
-    logo: {
-      id: "partner-7",
-      imageUrl: "/partner 7.jpg",
-      description: "Partner 7 Logo",
-    },
-  },
-  {
-    name: "Partner 8",
-    role: "Collaborator",
-    quote: "Incredibly reliable and delivers top-tier results every time. A trusted partner.",
-    logo: {
-      id: "partner-8",
-      imageUrl: "/partner 8.jpg",
-      description: "Partner 8 Logo",
-    },
-  },
-  {
-    name: "Partner 9",
-    role: "Collaborator",
-    quote: "Incredibly reliable and delivers top-tier results every time. A trusted partner.",
-    logo: {
-      id: "partner-9",
-      imageUrl: "/partner 9.jpg",
-      description: "Partner 9 Logo",
-    },
-  },
-  {
-    name: "Partner 10",
-    role: "Collaborator",
-    quote: "Incredibly reliable and delivers top-tier results every time. A trusted partner.",
-    logo: {
-      id: "partner-10",
-      imageUrl: "/partner 10.jpg",
-      description: "Partner 10 Logo",
-    },
-  },
-  {
-    name: "Partner 11",
-    role: "Collaborator",
-    quote: "Incredibly reliable and delivers top-tier results every time. A trusted partner.",
-    logo: {
-      id: "partner-11",
-      imageUrl: "/partner 11.jpg",
-      description: "Partner 11 Logo",
-    },
-  },
-  {
-    name: "Partner 12",
-    role: "Collaborator",
-    quote: "Incredibly reliable and delivers top-tier results every time. A trusted partner.",
-    logo: {
-      id: "partner-12",
-      imageUrl: "/partner 12.jpg",
-      description: "Partner 12 Logo",
-    },
-  },
-  {
-    name: "Partner 13",
-    role: "Collaborator",
-    quote: "A fantastic partner who consistently delivers high-quality, creative work.",
-    logo: {
-      id: "partner-13",
-      imageUrl: "/partner 13.jpg",
-      description: "Partner 13 Logo",
-    },
-  },
+  { name: "Partner 1", logo: { id: "partner-1", imageUrl: "/partner 1.jpg", description: "Partner 1 Logo" }},
+  { name: "Partner 2", logo: { id: "partner-2", imageUrl: "/partner 2.jpg", description: "Partner 2 Logo" }},
+  { name: "Partner 3", logo: { id: "partner-3", imageUrl: "/partner 3.jpg", description: "Partner 3 Logo" }},
+  { name: "Partner 4", logo: { id: "partner-4", imageUrl: "/partner 4.jpg", description: "Partner 4 Logo" }},
+  { name: "Partner 5", logo: { id: "partner-5", imageUrl: "/partner 5.jpg", description: "Partner 5 Logo" }},
+  { name: "Partner 6", logo: { id: "partner-6", imageUrl: "/partner 6.jpg", description: "Partner 6 Logo" }},
+  { name: "Partner 7", logo: { id: "partner-7", imageUrl: "/partner 7.jpg", description: "Partner 7 Logo" }},
+  { name: "Partner 8", logo: { id: "partner-8", imageUrl: "/partner 8.jpg", description: "Partner 8 Logo" }},
+  { name: "Partner 9", logo: { id: "partner-9", imageUrl: "/partner 9.jpg", description: "Partner 9 Logo" }},
+  { name: "Partner 10", logo: { id: "partner-10", imageUrl: "/partner 10.jpg", description: "Partner 10 Logo" }},
+  { name: "Partner 11", logo: { id: "partner-11", imageUrl: "/partner 11.jpg", description: "Partner 11 Logo" }},
+  { name: "Partner 12", logo: { id: "partner-12", imageUrl: "/partner 12.jpg", description: "Partner 12 Logo" }},
+  { name: "Partner 13", logo: { id: "partner-13", imageUrl: "/partner 13.jpg", description: "Partner 13 Logo" }},
 ];
 
 const InfiniteScroller = ({

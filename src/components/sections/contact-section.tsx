@@ -44,7 +44,7 @@ const ContactSection = () => {
 
   return (
     <section id="contact" className="py-24 sm:py-32 relative overflow-hidden bg-background">
-      <div className="absolute inset-0 z-0 animated-gradient opacity-10" />
+      <div className="absolute inset-0 z-0 animated-gradient opacity-5" />
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center">
           <motion.h2
@@ -86,7 +86,7 @@ const ContactSection = () => {
                   <FormItem>
                     <FormLabel className="text-foreground/80">Name</FormLabel>
                     <FormControl>
-                      <Input placeholder="Your Name" {...field} className="bg-background/50" />
+                      <Input placeholder="Your Name" {...field} className="bg-secondary/50" />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -99,7 +99,7 @@ const ContactSection = () => {
                   <FormItem>
                     <FormLabel className="text-foreground/80">Email</FormLabel>
                     <FormControl>
-                      <Input placeholder="your.email@example.com" {...field} className="bg-background/50" />
+                      <Input placeholder="your.email@example.com" {...field} className="bg-secondary/50" />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -112,14 +112,14 @@ const ContactSection = () => {
                   <FormItem>
                     <FormLabel className="text-foreground/80">Message</FormLabel>
                     <FormControl>
-                      <Textarea placeholder="Tell me about your project..." {...field} className="bg-background/50 min-h-[120px]" />
+                      <Textarea placeholder="Tell me about your project..." {...field} className="bg-secondary/50 min-h-[120px]" />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
                 )}
               />
               <div className="text-center">
-                <Button type="submit" size="lg" className="w-full md:w-auto animated-gradient text-primary-foreground font-bold">
+                <Button type="submit" size="lg" className="w-full md:w-auto animated-gradient text-white font-bold">
                   Send Message
                 </Button>
               </div>
