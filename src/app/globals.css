@@ -6,10 +6,10 @@
   :root {
     --background: 207 90% 54%; /* Azure */
     --foreground: 0 0% 100%; /* White */
-    --card: 207 90% 54%;
-    --card-foreground: 0 0% 100%;
-    --popover: 207 90% 54%;
-    --popover-foreground: 0 0% 100%;
+    --card: 207 88% 94%; /* Very Light Blue */
+    --card-foreground: 240 10% 10%; /* Dark Charcoal */
+    --popover: 207 88% 94%; /* Very Light Blue */
+    --popover-foreground: 240 10% 10%; /* Dark Charcoal */
     --primary: 0 0% 100%; /* White */
     --primary-foreground: 207 90% 54%; /* Azure */
     --secondary: 198 93% 93%; /* Very Light Semi Blue */
