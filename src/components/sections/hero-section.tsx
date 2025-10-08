@@ -8,10 +8,19 @@ import AnimatedGradientText from "../ui/animated-gradient-text";
 
 const HeroSection = () => {
   const name = "MisterMarkGee".split("");
-  const subtitleLine1 = "Videographer • Producer • Writer •".split("");
+  const intro = "Hello, I'm".split("");
+  const subtitleLine1 = "a Videographer • Producer • Writer •".split("");
   const subtitleLine2 = "Artist Manager".split("");
 
-  const containerVariants = {
+  const introContainerVariants = {
+    hidden: { opacity: 0 },
+    visible: (i = 1) => ({
+      opacity: 1,
+      transition: { staggerChildren: 0.08, delayChildren: 0.2 * i },
+    }),
+  };
+
+  const nameContainerVariants = {
     hidden: { opacity: 0 },
     visible: (i = 1) => ({
       opacity: 1,
@@ -35,7 +44,6 @@ const HeroSection = () => {
     }),
   };
 
-
   const letterVariants = {
     hidden: {
       opacity: 0,
@@ -51,6 +59,15 @@ const HeroSection = () => {
         damping: 12,
         stiffness: 100,
       },
+    },
+  };
+  
+  const introLetterVariants = {
+    hidden: {
+      opacity: 0,
+    },
+    visible: {
+      opacity: 1,
     },
   };
 
@@ -83,9 +100,21 @@ const HeroSection = () => {
       <div
         className="relative z-20 text-center px-4 flex flex-col items-center"
       >
+        <motion.div
+          className="font-body text-lg md:text-2xl text-white/90 mb-4 flex justify-center flex-wrap"
+          variants={introContainerVariants}
+          initial="hidden"
+          animate="visible"
+        >
+          {intro.map((letter, index) => (
+            <motion.span key={index} variants={introLetterVariants}>
+              {letter === " " ? "\u00A0" : letter}
+            </motion.span>
+          ))}
+        </motion.div>
         <motion.h1
           className="font-headline text-4xl md:text-7xl lg:text-8xl font-bold text-white drop-shadow-lg flex justify-center flex-wrap"
-          variants={containerVariants}
+          variants={nameContainerVariants}
           initial="hidden"
           animate="visible"
         >
