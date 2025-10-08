@@ -45,7 +45,7 @@ const AboutSection = () => {
                             transition={{ duration: 0.5 }}
                             viewport={{ once: true }}
                         >
-                            A Multi-Creative Force
+                            Creative Fusion
                         </motion.h2>
                         <p
                             ref={paragraphRef}
@@ -70,13 +70,6 @@ const AboutSection = () => {
                                 className="object-cover"
                             />
                             <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-70" />
-                            <motion.div 
-                                className="absolute inset-0 bg-background"
-                                initial={{ scaleY: 1 }}
-                                whileInView={{ scaleY: 0, transition: { duration: 0.8, ease: [0.85, 0, 0.15, 1], delay: 0.2 } }}
-                                viewport={{ once: true, amount: 0.5 }}
-                                style={{ originY: 'top' }}
-                            />
                         </div>
                     </div>
                 </div>
