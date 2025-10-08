@@ -127,7 +127,7 @@ const PortfolioSection = () => {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent transition-opacity duration-300" />
                     <div className="absolute inset-0 p-4 flex flex-col justify-end">
-                      <h4 className="font-bold text-sm text-white leading-tight drop-shadow-md">{video.title}</h4>
+                      {/* Title removed from here */}
                     </div>
                     <div className="absolute inset-0 flex items-center justify-center">
                       <PlayCircle className="w-16 h-16 text-white/70 opacity-0 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300" />
