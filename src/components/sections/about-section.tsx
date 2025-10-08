@@ -51,7 +51,7 @@ const AboutSection = () => {
                         </motion.h2>
                         <p
                             ref={paragraphRef}
-                            className="mt-6 text-lg text-foreground/90 leading-relaxed flex flex-wrap"
+                            className="mt-6 text-lg text-foreground/90 leading-relaxed"
                         >
                             {words.map((word, i) => {
                                 const start = i / words.length;
