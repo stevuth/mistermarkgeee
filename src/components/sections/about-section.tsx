@@ -15,7 +15,7 @@ const AboutSection = () => {
     const imageY = useTransform(scrollYProgress, [0, 1], ["-10%", "10%"]);
 
     return (
-        <section id="about" ref={targetRef} className="py-24 sm:py-32 relative overflow-hidden bg-background">
+        <section id="about" ref={targetRef} className="py-24 sm:py-32 relative overflow-hidden bg-secondary">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                     <motion.div
@@ -25,10 +25,10 @@ const AboutSection = () => {
                         viewport={{ once: true, amount: 0.3 }}
                     >
                         <Badge variant="outline" className="mb-4 border-primary text-primary">About Me</Badge>
-                        <h2 className="font-headline text-4xl md:text-5xl font-bold text-white">
+                        <h2 className="font-headline text-4xl md:text-5xl font-bold text-secondary-foreground">
                             A Multi-Creative Force
                         </h2>
-                        <p className="mt-6 text-lg text-white/80">
+                        <p className="mt-6 text-lg text-secondary-foreground/80">
                             A digital witness to the gospel message, Mark Macharia Gaturuku (aka MisterMarkGee) is a Kenyan-born, British content creator based in the Midlands. A devoted Christian, husband, and father of two sons, Mark works as a videographer, producer, writer, and artist manager. He uses media to uplift gospel and Christian hip hop culture, blending creativity and ministry through digital witnessing, storytelling, and leadership across platforms like The Life Music App, Holy Culture, and other gospel initiatives.
                         </p>
                     </motion.div>
@@ -44,7 +44,7 @@ const AboutSection = () => {
                                 sizes="(max-width: 1024px) 100vw, 50vw"
                                 className="object-cover"
                             />
-                            <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-70" />
+                            <div className="absolute inset-0 bg-gradient-to-t from-secondary via-transparent to-transparent opacity-70" />
                             <motion.div 
                                 className="absolute inset-0 bg-white"
                                 initial={{ scaleY: 1 }}

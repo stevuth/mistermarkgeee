@@ -43,12 +43,12 @@ const ContactSection = () => {
   const sentence = "Let’s Create Magic Together.".split("");
 
   return (
-    <section id="contact" className="py-24 sm:py-32 relative overflow-hidden">
-      <div className="absolute inset-0 z-0 animated-gradient opacity-20" />
+    <section id="contact" className="py-24 sm:py-32 relative overflow-hidden bg-background">
+      <div className="absolute inset-0 z-0 animated-gradient opacity-10" />
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center">
           <motion.h2
-            className="font-headline text-4xl md:text-6xl font-bold text-white"
+            className="font-headline text-4xl md:text-6xl font-bold text-foreground"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
@@ -61,7 +61,7 @@ const ContactSection = () => {
             ))}
           </motion.h2>
           <motion.p 
-            className="mt-4 max-w-xl mx-auto text-lg text-white/70"
+            className="mt-4 max-w-xl mx-auto text-lg text-foreground/70"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1, transition: { delay: 0.8, duration: 1 } }}
             viewport={{ once: true }}
@@ -84,7 +84,7 @@ const ContactSection = () => {
                 name="name"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-white/80">Name</FormLabel>
+                    <FormLabel className="text-foreground/80">Name</FormLabel>
                     <FormControl>
                       <Input placeholder="Your Name" {...field} className="bg-background/50" />
                     </FormControl>
@@ -97,7 +97,7 @@ const ContactSection = () => {
                 name="email"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-white/80">Email</FormLabel>
+                    <FormLabel className="text-foreground/80">Email</FormLabel>
                     <FormControl>
                       <Input placeholder="your.email@example.com" {...field} className="bg-background/50" />
                     </FormControl>
@@ -110,7 +110,7 @@ const ContactSection = () => {
                 name="message"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-white/80">Message</FormLabel>
+                    <FormLabel className="text-foreground/80">Message</FormLabel>
                     <FormControl>
                       <Textarea placeholder="Tell me about your project..." {...field} className="bg-background/50 min-h-[120px]" />
                     </FormControl>
@@ -119,7 +119,7 @@ const ContactSection = () => {
                 )}
               />
               <div className="text-center">
-                <Button type="submit" size="lg" className="w-full md:w-auto animated-gradient text-background font-bold">
+                <Button type="submit" size="lg" className="w-full md:w-auto animated-gradient text-primary-foreground font-bold">
                   Send Message
                 </Button>
               </div>
@@ -140,7 +140,7 @@ const ContactSection = () => {
                 target="_blank" 
                 rel="noopener noreferrer"
                 whileHover={{ y: -5, scale: 1.1 }}
-                className="text-white/60 hover:text-white"
+                className="text-foreground/60 hover:text-foreground"
             >
               <social.icon className="w-8 h-8"/>
             </motion.a>

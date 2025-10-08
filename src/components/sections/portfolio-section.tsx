@@ -30,11 +30,11 @@ const PortfolioSection = () => {
         <section id="works" className="py-24 sm:py-32 bg-background">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="text-center">
-                    <Badge variant="outline" className="mb-4 border-coral text-coral">My Works</Badge>
-                    <h2 className="font-headline text-4xl md:text-5xl font-bold text-white">
+                    <Badge variant="outline" className="mb-4 border-primary text-primary">My Works</Badge>
+                    <h2 className="font-headline text-4xl md:text-5xl font-bold text-foreground">
                         Featured Projects
                     </h2>
-                    <p className="mt-4 max-w-2xl mx-auto text-lg text-white/80">
+                    <p className="mt-4 max-w-2xl mx-auto text-lg text-foreground/80">
                         A glimpse into the stories I've helped bring to life.
                     </p>
                 </div>
@@ -61,7 +61,7 @@ const PortfolioSection = () => {
                             <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
                             <div className="absolute inset-0 p-6 flex flex-col justify-end">
                                 <div className="transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
-                                    <Badge variant="secondary" className="mb-2 bg-white/10 text-white">{item.category}</Badge>
+                                    <Badge variant="secondary" className="mb-2 bg-black/20 text-white">{item.category}</Badge>
                                     <h3 className="font-headline text-2xl font-bold text-white">{item.title}</h3>
                                 </div>
                             </div>
@@ -71,7 +71,7 @@ const PortfolioSection = () => {
                 </div>
                 
                 <Dialog open={!!selectedItem} onOpenChange={() => setSelectedItem(null)}>
-                    <DialogContent className="max-w-3xl bg-secondary border-border p-0">
+                    <DialogContent className="max-w-3xl bg-card border-border p-0">
                         {selectedItem && (
                             <>
                                 <div className="relative h-96">

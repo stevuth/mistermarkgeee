@@ -24,11 +24,11 @@ const GallerySection = () => {
   const x = useTransform(scrollYProgress, [0, 1], ["0%", `-${100 - 100 / galleryImages.length}%`]);
 
   return (
-    <section id="gallery" ref={targetRef} className="relative h-[300vh] bg-secondary">
+    <section id="gallery" ref={targetRef} className="relative h-[300vh] bg-background">
       <div className="sticky top-0 h-screen flex items-center overflow-hidden">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center z-20 pointer-events-none">
-            <Badge variant="outline" className="mb-4 border-white text-white">Behind The Scenes</Badge>
-            <h2 className="font-headline text-4xl md:text-5xl font-bold text-white">
+            <Badge variant="outline" className="mb-4 border-foreground text-foreground">Behind The Scenes</Badge>
+            <h2 className="font-headline text-4xl md:text-5xl font-bold text-foreground">
                 The Creative Process
             </h2>
         </div>

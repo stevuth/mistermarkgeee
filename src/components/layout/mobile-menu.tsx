@@ -41,7 +41,7 @@ const MobileMenu = ({ closeMenu }: MobileMenuProps) => {
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
-          <Link href="#home" className="font-headline text-2xl font-bold text-white" onClick={closeMenu}>
+          <Link href="#home" className="font-headline text-2xl font-bold text-foreground" onClick={closeMenu}>
             MisterMarkGee
           </Link>
           <Button
@@ -49,7 +49,7 @@ const MobileMenu = ({ closeMenu }: MobileMenuProps) => {
             size="icon"
             onClick={closeMenu}
             aria-label="Close menu"
-            className="text-white hover:text-primary hover:bg-primary/10"
+            className="text-foreground hover:text-primary hover:bg-primary/10"
           >
             <motion.div whileHover={{ rotate: 90 }}>
               <X className="h-6 w-6" />
@@ -75,7 +75,7 @@ const MobileMenu = ({ closeMenu }: MobileMenuProps) => {
             <motion.li key={item.name} variants={itemVariants}>
               <Link
                 href={item.href}
-                className="font-headline text-3xl font-medium text-white/80 hover:text-white transition-colors"
+                className="font-headline text-3xl font-medium text-foreground/80 hover:text-foreground transition-colors"
                 onClick={closeMenu}
               >
                 {item.name}

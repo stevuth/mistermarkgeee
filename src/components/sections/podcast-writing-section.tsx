@@ -32,7 +32,7 @@ const PodcastWritingSection = () => {
             transition={{ duration: 0.8, ease: "easeOut" }}
             viewport={{ once: true, amount: 0.3 }}
           >
-            <Badge variant="outline" className="mb-4 border-accent text-accent">Podcast</Badge>
+            <Badge variant="outline" className="mb-4 border-accent-foreground text-accent-foreground">Podcast</Badge>
             <div className="relative w-64 h-64 rounded-lg overflow-hidden shadow-2xl">
               <Image 
                 src={podcast.image.imageUrl} 
@@ -43,8 +43,8 @@ const PodcastWritingSection = () => {
               />
             </div>
             <h3 className="font-headline text-3xl font-bold mt-6">{podcast.title}</h3>
-            <p className="text-white/70 mt-2 max-w-sm">{podcast.description}</p>
-            <Button variant="outline" className="mt-6 border-accent text-accent hover:bg-accent hover:text-accent-foreground">
+            <p className="text-secondary-foreground/70 mt-2 max-w-sm">{podcast.description}</p>
+            <Button variant="outline" className="mt-6 border-primary text-primary hover:bg-primary hover:text-primary-foreground">
               <Headphones className="mr-2 h-4 w-4" />
               Listen Now
             </Button>
@@ -72,7 +72,7 @@ const PodcastWritingSection = () => {
               </div>
             </div>
             <h3 className="font-headline text-3xl font-bold mt-6">{writing.title}</h3>
-            <p className="text-white/70 mt-2 max-w-sm">{writing.description}</p>
+            <p className="text-secondary-foreground/70 mt-2 max-w-sm">{writing.description}</p>
             <Button variant="outline" className="mt-6 border-primary text-primary hover:bg-primary hover:text-primary-foreground">
               <BookOpen className="mr-2 h-4 w-4" />
               Read Articles

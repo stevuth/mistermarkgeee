@@ -51,7 +51,7 @@ const HeroSection = () => {
           data-ai-hint="light trails abstract"
           priority
         />
-        <div className="absolute inset-0 bg-background/80" />
+        <div className="absolute inset-0 bg-background/50" />
       </div>
       
       <div
