@@ -4,7 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { Badge } from "@/components/ui/badge";
-import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { PlayCircle } from "lucide-react";
 
 type VideoItem = {
@@ -145,14 +145,17 @@ const PortfolioSection = () => {
         <Dialog open={!!selectedVideo} onOpenChange={() => setSelectedVideo(null)}>
           <DialogContent className="max-w-4xl w-full bg-black/80 border-accent/30 p-0 aspect-video">
             {selectedVideo && (
-              <iframe
-                src={`https://www.youtube.com/embed/${selectedVideo.videoId}?autoplay=1`}
-                title={selectedVideo.title}
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-                className="w-full h-full rounded-lg"
-              ></iframe>
+              <>
+                <DialogTitle className="sr-only">{selectedVideo.title}</DialogTitle>
+                <iframe
+                  src={`https://www.youtube.com/embed/${selectedVideo.videoId}?autoplay=1`}
+                  title={selectedVideo.title}
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  className="w-full h-full rounded-lg"
+                ></iframe>
+              </>
             )}
           </DialogContent>
         </Dialog>
