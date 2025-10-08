@@ -1,19 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useEffect, useState, useCallback } from "react";
-import Particles from "react-tsparticles";
-import type { Container, Engine } from "tsparticles-engine";
-import { loadSlim } from "tsparticles-slim";
+import Image from "next/image";
 
 const HeroSection = () => {
-  const [isMounted, setIsMounted] = useState(false);
-  useEffect(() => setIsMounted(true), []);
-
-  const particlesInit = useCallback(async (engine: Engine) => {
-    await loadSlim(engine);
-  }, []);
-
   const name = "MisterMarkGee".split("");
 
   const containerVariants = {
@@ -47,86 +37,22 @@ const HeroSection = () => {
       animate: { opacity: 1, y: 0, transition: { duration: 0.8, delay: 1.5, ease: "easeOut" } }
   };
 
-  if (!isMounted) {
-    return null;
-  }
-
   return (
     <section
       id="home"
       className="relative flex items-center justify-center h-screen overflow-hidden"
     >
-      <Particles
-        id="tsparticles"
-        init={particlesInit}
-        options={{
-          background: {
-            color: {
-              value: "hsl(210 100% 12%)",
-            },
-          },
-          fpsLimit: 60,
-          interactivity: {
-            events: {
-              onHover: {
-                enable: true,
-                mode: "repulse",
-              },
-              resize: true,
-            },
-            modes: {
-              repulse: {
-                distance: 100,
-                duration: 0.4,
-              },
-            },
-          },
-          particles: {
-            color: {
-              value: "hsl(200 90% 64%)",
-            },
-            links: {
-              color: "hsl(200 90% 64%)",
-              distance: 150,
-              enable: true,
-              opacity: 0.2,
-              width: 1,
-            },
-            collisions: {
-              enable: true,
-            },
-            move: {
-              direction: "none",
-              enable: true,
-              outModes: {
-                default: "bounce",
-              },
-              random: false,
-              speed: 1,
-              straight: false,
-            },
-            number: {
-              density: {
-                enable: true,
-                area: 800,
-              },
-              value: 80,
-            },
-            opacity: {
-              value: 0.2,
-            },
-            shape: {
-              type: "circle",
-            },
-            size: {
-              value: { min: 1, max: 5 },
-            },
-          },
-          detectRetina: true,
-        }}
-        className="absolute inset-0 z-0"
-      />
-      <div className="absolute inset-0 z-10 bg-background/70" />
+      <div className="absolute inset-0 z-0">
+        <Image
+          src="https://picsum.photos/seed/lights/1920/1080"
+          alt="Abstract background image with light trails"
+          fill
+          className="object-cover"
+          data-ai-hint="light trails abstract"
+          priority
+        />
+        <div className="absolute inset-0 bg-background/80" />
+      </div>
       
       <div
         className="relative z-20 text-center px-4"
