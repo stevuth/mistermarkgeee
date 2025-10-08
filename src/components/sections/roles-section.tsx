@@ -12,7 +12,7 @@ const roles = [
     title: "Videographer",
     tagline: "Capturing stories through motion.",
     description: "From concept to final cut, I produce cinematic videos that resonate with audiences and deliver powerful messages.",
-    imageUrl: "https://picsum.photos/seed/videographer/800/1200",
+    imageUrl: "/videographer.jpg",
     imageHint: "videography cinematic",
   },
   {
