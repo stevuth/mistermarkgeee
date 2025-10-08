@@ -72,7 +72,7 @@ const RolesSection = () => {
                 What I Do
             </h2>
             <p className="mt-4 max-w-2xl mx-auto text-lg text-white/80">
-                A jack of all trades, master of many. Here's a look at my creative disciplines.
+                I wear many hats, each representing a different side of my creativity.
             </p>
         </div>
 
