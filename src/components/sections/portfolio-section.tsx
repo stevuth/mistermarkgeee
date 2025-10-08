@@ -42,7 +42,7 @@ const playlists: Playlist[] = [
   },
   {
     id: "pl3",
-    title: "The Life Music Podcast",
+    title: "The Prosperous Soul",
     videos: [
         { id: "v9", title: "Grace upon grace", thumbnailUrl: "https://img.youtube.com/vi/3ulTF-Fgc64/hqdefault.jpg", videoId: "3ulTF-Fgc64" },
         { id: "v10", title: "Still hopeful", thumbnailUrl: "https://img.youtube.com/vi/69Wv3XACVbk/hqdefault.jpg", videoId: "69Wv3XACVbk" },
