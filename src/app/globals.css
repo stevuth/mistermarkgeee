@@ -10,13 +10,13 @@
     --card-foreground: 0 0% 10%;
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 10%;
-    --primary: 200 90% 64%;
+    --primary: 200 90% 64%; /* Deep Sky Blue */
     --primary-foreground: 210 40% 98%;
-    --secondary: 192 83% 93%;
+    --secondary: 194 54% 95%; /* Very Light Semi Blue #E0F7FA */
     --secondary-foreground: 0 0% 10%;
-    --muted: 192 83% 93%;
+    --muted: 194 54% 95%;
     --muted-foreground: 0 0% 40%;
-    --accent: 45 100% 51%;
+    --accent: 45 100% 51%; /* Sun Yellow #FFC107 */
     --accent-foreground: 0 0% 10%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
@@ -84,7 +84,7 @@
     scroll-behavior: smooth;
   }
   .animated-gradient {
-    background: linear-gradient(120deg, #4FC3F7, #FFC107, #FF8A65);
+    background: linear-gradient(120deg, hsl(var(--primary)), hsl(var(--accent)), #FF8A65);
     background-size: 200% 200%;
     animation: gradient-animation 10s ease infinite;
   }
