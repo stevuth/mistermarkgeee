@@ -87,50 +87,29 @@ const RolesSection = () => {
               key={role.title}
               className="relative rounded-lg overflow-hidden h-[450px] p-8 flex flex-col justify-end group cursor-pointer shadow-2xl lg:h-[600px] bg-white/10 lg:bg-transparent backdrop-blur-md lg:backdrop-blur-none"
               variants={panelVariants}
-              whileHover={{ scale: 1.05 }}
-              transition={{ type: "spring", stiffness: 300, damping: 20 }}
             >
               <Image
                 src={role.imageUrl}
                 alt={role.title}
                 fill
                 sizes="(max-width: 1023px) 100vw, 25vw"
-                className="object-cover absolute inset-0 -z-20 hidden lg:block"
+                className="object-cover absolute inset-0 -z-20"
                 data-ai-hint={role.imageHint}
               />
               <div className="absolute inset-0 -z-10 bg-gradient-to-t from-background via-[hsl(var(--background)/0.8)] to-accent/50 opacity-80 group-hover:opacity-60 transition-opacity duration-300" />
               
               <div className="relative z-10 text-white">
-                  <motion.div 
-                    initial={{ opacity: 1, y: 0 }} 
-                    animate={{ opacity: 0 }}
-                    className="group-hover:hidden"
-                  >
-                    <role.icon className="h-10 w-10 mb-4" />
-                    <h3 className="font-headline text-3xl font-bold tracking-wide">
-                        {role.title}
-                    </h3>
-                    <p className="mt-2 text-white/70">{role.tagline}</p>
-                  </motion.div>
-
-                  <motion.div 
-                    className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 "
-                    initial={{ y: 20 }}
-                    animate={{ y: 0 }}
-                    transition={{ duration: 0.3, delay: 0.1 }}
-                  >
-                     <h3 className="font-headline text-3xl font-bold tracking-wide">
-                        {role.title}
-                    </h3>
-                    <p className="mt-4 text-white/90 text-sm leading-relaxed">{role.description}</p>
-                    <Button 
-                      variant="outline" 
-                      size="sm"
-                      className="mt-6 bg-transparent text-white border-white/50 hover:bg-white hover:text-background font-bold shadow-[0_0_15px_rgba(255,255,255,0.2)] hover:shadow-[0_0_25px_rgba(255,255,255,0.5)] transition-all duration-300"
-                    >
-                      View My Work <ArrowRight className="ml-2 h-4 w-4" />
-                    </Button>
-                  </motion.div>
+                 <h3 className="font-headline text-3xl font-bold tracking-wide">
+                    {role.title}
+                </h3>
+                <p className="mt-4 text-white/90 text-sm leading-relaxed">{role.description}</p>
+                <Button 
+                  variant="outline" 
+                  size="sm"
+                  className="mt-6 bg-transparent text-white border-white/50 hover:bg-white hover:text-background font-bold shadow-[0_0_15px_rgba(255,255,255,0.2)] hover:shadow-[0_0_25px_rgba(255,255,255,0.5)] transition-all duration-300"
+                >
+                  View My Work <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
               </div>
             </motion.div>
           ))}
