@@ -31,10 +31,10 @@ const HeroSection = () => {
   const subtitleLine1 = "a Videographer • Producer • Writer •".split("");
   const subtitleLine2 = "Artist Manager".split("");
 
-  const totalIntroDuration = intro.length * 0.08 + 0.5;
-  const totalNameDuration = name.length * 0.08 + totalIntroDuration;
-  const totalSubtitle1Duration = subtitleLine1.length * 0.05 + totalNameDuration;
-  const totalSubtitle2Duration = subtitleLine2.length * 0.05 + totalSubtitle1Duration;
+  const totalIntroDuration = intro.length * 0.12 + 0.5;
+  const totalNameDuration = name.length * 0.12 + totalIntroDuration;
+  const totalSubtitle1Duration = subtitleLine1.length * 0.08 + totalNameDuration;
+  const totalSubtitle2Duration = subtitleLine2.length * 0.08 + totalSubtitle1Duration;
 
   const [showCursor, setShowCursor] = useState({
     intro: false,
@@ -54,7 +54,7 @@ const HeroSection = () => {
     timers.push(setTimeout(() => setShowCursor(s => ({ ...s, subtitle2: false, final: true })), totalSubtitle2Duration * 1000));
 
     return () => timers.forEach(clearTimeout);
-  }, []);
+  }, [totalIntroDuration, totalNameDuration, totalSubtitle1Duration, totalSubtitle2Duration]);
 
   const containerVariants = (delay: number, stagger: number) => ({
     hidden: { opacity: 0 },
@@ -91,7 +91,7 @@ const HeroSection = () => {
       >
         <motion.div
           className="font-body text-lg md:text-2xl text-white/90 mb-4 flex justify-center flex-wrap"
-          variants={containerVariants(0.5, 0.08)}
+          variants={containerVariants(0.5, 0.12)}
           initial="hidden"
           animate="visible"
         >
@@ -105,7 +105,7 @@ const HeroSection = () => {
         
         <motion.h1
           className="font-headline text-4xl md:text-7xl lg:text-8xl font-bold text-white drop-shadow-lg flex justify-center flex-wrap"
-          variants={containerVariants(totalIntroDuration, 0.08)}
+          variants={containerVariants(totalIntroDuration, 0.12)}
           initial="hidden"
           animate="visible"
         >
@@ -120,7 +120,7 @@ const HeroSection = () => {
         <div className="mt-6 max-w-3xl mx-auto font-body text-base md:text-xl tracking-wide text-white/90">
             <motion.p
               className="flex flex-wrap justify-center"
-              variants={containerVariants(totalNameDuration, 0.05)}
+              variants={containerVariants(totalNameDuration, 0.08)}
               initial="hidden"
               animate="visible"
             >
@@ -133,7 +133,7 @@ const HeroSection = () => {
             </motion.p>
             <motion.p
               className="flex flex-wrap justify-center"
-              variants={containerVariants(totalSubtitle1Duration, 0.05)}
+              variants={containerVariants(totalSubtitle1Duration, 0.08)}
               initial="hidden"
               animate="visible"
             >
