@@ -1,93 +1,140 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Video, UserCheck, PenSquare, Film } from "lucide-react";
+import { Video, UserCheck, PenSquare, Music, ArrowRight } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "../ui/button";
+import Image from "next/image";
 
 const roles = [
   {
     icon: Video,
     title: "Videographer",
-    description: "Cinematic storytelling through visuals.",
-    color: "primary",
+    tagline: "Capturing stories through motion.",
+    description: "From concept to final cut, I produce cinematic videos that resonate with audiences and deliver powerful messages.",
+    imageUrl: "https://picsum.photos/seed/videographer/800/1200",
+    imageHint: "videography cinematic",
   },
   {
-    icon: Film,
+    icon: Music,
     title: "Producer",
-    description: "Bringing creative visions to life.",
-    color: "accent",
+    tagline: "Bringing creative visions to life.",
+    description: "I manage projects from start to finish, ensuring a smooth process and a high-quality final product that exceeds expectations.",
+    imageUrl: "https://picsum.photos/seed/producer/800/1200",
+    imageHint: "music production",
   },
   {
     icon: PenSquare,
     title: "Writer",
-    description: "Creative reflections and storytelling.",
-    color: "primary",
+    description: "I craft compelling narratives, from short-form content to in-depth articles, that engage and inspire readers.",
+    tagline: "Weaving words that connect.",
+    imageUrl: "https://picsum.photos/seed/writer/800/1200",
+    imageHint: "writing book",
   },
   {
     icon: UserCheck,
     title: "Artist Manager",
-    description: "Guiding creative journeys.",
-    color: "accent",
+    tagline: "Guiding creative journeys.",
+    description: "I partner with artists to develop their brand, strategize their career path, and create opportunities for growth.",
+    imageUrl: "https://picsum.photos/seed/manager/800/1200",
+    imageHint: "artist portrait",
   },
 ];
 
-const cardVariants = {
-    initial: { opacity: 0, y: 50 },
-    animate: (i: number) => ({
-        opacity: 1,
-        y: 0,
-        transition: {
-            delay: i * 0.1,
-            duration: 0.5,
-            ease: "easeOut",
-        },
-    }),
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2,
+      delayChildren: 0.3,
+    },
+  },
 };
 
-const colorClasses: { [key: string]: string } = {
-  primary: "text-primary group-hover:bg-primary/20",
-  accent: "text-accent group-hover:bg-accent/20",
-  coral: "text-coral group-hover:bg-coral/20",
+const panelVariants = {
+  hidden: { opacity: 0, y: 50 },
+  visible: { 
+    opacity: 1, 
+    y: 0,
+    transition: { duration: 0.5, ease: "easeOut" }
+  },
 };
 
 const RolesSection = () => {
   return (
-    <section id="roles" className="py-24 sm:py-32 bg-background">
+    <section id="roles" className="py-24 sm:py-32 bg-background text-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center">
-            <Badge variant="outline" className="mb-4 border-primary text-primary">My Expertise</Badge>
-            <h2 className="font-headline text-4xl md:text-5xl font-bold text-foreground">
+            <Badge variant="outline" className="mb-4 border-white/50 text-white">My Expertise</Badge>
+            <h2 className="font-headline text-4xl md:text-5xl font-bold">
                 What I Do
             </h2>
-            <p className="mt-4 max-w-2xl mx-auto text-lg text-foreground/80">
-                I wear many hats, each representing a different side of my creativity.
+            <p className="mt-4 max-w-2xl mx-auto text-lg text-white/80">
+                I wear many hats, each representing a different side of my creative fusion.
             </p>
         </div>
 
-        <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {roles.map((role, i) => (
+        <motion.div 
+          className="mt-16 grid grid-cols-1 lg:grid-cols-4 gap-8"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+        >
+          {roles.map((role) => (
             <motion.div
               key={role.title}
-              className="relative p-8 rounded-lg border border-border bg-card overflow-hidden group transition-all duration-300"
-              custom={i}
-              variants={cardVariants}
-              initial="initial"
-              whileInView="animate"
-              viewport={{ once: true, amount: 0.2 }}
-              whileHover={{ y: -10, scale: 1.02, transition: { type: "spring", stiffness: 300 } }}
+              className="relative rounded-lg overflow-hidden h-[450px] p-8 flex flex-col justify-end group cursor-pointer shadow-2xl lg:h-[600px] bg-white/10 lg:bg-transparent backdrop-blur-md lg:backdrop-blur-none"
+              variants={panelVariants}
+              whileHover={{ scale: 1.05 }}
+              transition={{ type: "spring", stiffness: 300, damping: 20 }}
             >
-              <div className={`absolute top-0 left-0 w-full h-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 ${colorClasses[role.color]}`} />
+              <Image
+                src={role.imageUrl}
+                alt={role.title}
+                fill
+                sizes="(max-width: 1023px) 100vw, 25vw"
+                className="object-cover absolute inset-0 -z-20 hidden lg:block"
+                data-ai-hint={role.imageHint}
+              />
+              <div className="absolute inset-0 -z-10 bg-gradient-to-t from-background via-[hsl(var(--background)/0.8)] to-accent/50 opacity-80 group-hover:opacity-60 transition-opacity duration-300" />
               
-              <div className="relative z-10">
-                  <role.icon className={`h-10 w-10 mb-4 transition-colors ${colorClasses[role.color].replace('group-hover:bg-','text-')}`} />
-                  <h3 className="font-headline text-2xl font-bold text-card-foreground">
-                      {role.title}
-                  </h3>
-                  <p className="mt-2 text-card-foreground/70">{role.description}</p>
+              <div className="relative z-10 text-white">
+                  <motion.div 
+                    initial={{ opacity: 1, y: 0 }} 
+                    animate={{ opacity: 0 }}
+                    className="group-hover:hidden"
+                  >
+                    <role.icon className="h-10 w-10 mb-4" />
+                    <h3 className="font-headline text-3xl font-bold tracking-wide">
+                        {role.title}
+                    </h3>
+                    <p className="mt-2 text-white/70">{role.tagline}</p>
+                  </motion.div>
+
+                  <motion.div 
+                    className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 "
+                    initial={{ y: 20 }}
+                    animate={{ y: 0 }}
+                    transition={{ duration: 0.3, delay: 0.1 }}
+                  >
+                     <h3 className="font-headline text-3xl font-bold tracking-wide">
+                        {role.title}
+                    </h3>
+                    <p className="mt-4 text-white/90 text-sm leading-relaxed">{role.description}</p>
+                    <Button 
+                      variant="outline" 
+                      size="sm"
+                      className="mt-6 bg-transparent text-white border-white/50 hover:bg-white hover:text-background font-bold shadow-[0_0_15px_rgba(255,255,255,0.2)] hover:shadow-[0_0_25px_rgba(255,255,255,0.5)] transition-all duration-300"
+                    >
+                      View My Work <ArrowRight className="ml-2 h-4 w-4" />
+                    </Button>
+                  </motion.div>
               </div>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
