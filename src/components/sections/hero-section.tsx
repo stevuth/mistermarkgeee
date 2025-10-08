@@ -5,79 +5,68 @@ import Image from "next/image";
 import { Button } from "../ui/button";
 import { ArrowDown } from "lucide-react";
 import AnimatedGradientText from "../ui/animated-gradient-text";
+import { useEffect, useState } from "react";
+
+const BlinkingCursor = () => {
+  return (
+    <motion.div
+      variants={{
+        hidden: { opacity: 0 },
+        visible: { opacity: 1 },
+      }}
+      animate={{ opacity: [0, 1, 0] }}
+      transition={{ duration: 1, repeat: Infinity }}
+      className="inline-block h-6 w-1 bg-white ml-1"
+      style={{
+        height: '1em',
+      }}
+    />
+  );
+};
+
 
 const HeroSection = () => {
-  const name = "MisterMarkGee".split("");
   const intro = "Hello, I'm".split("");
+  const name = "MisterMarkGee".split("");
   const subtitleLine1 = "a Videographer • Producer • Writer •".split("");
   const subtitleLine2 = "Artist Manager".split("");
 
-  const introContainerVariants = {
-    hidden: { opacity: 0 },
-    visible: (i = 1) => ({
-      opacity: 1,
-      transition: { staggerChildren: 0.08, delayChildren: 0.2 * i },
-    }),
-  };
+  const totalIntroDuration = intro.length * 0.08 + 0.5;
+  const totalNameDuration = name.length * 0.08 + totalIntroDuration;
+  const totalSubtitle1Duration = subtitleLine1.length * 0.05 + totalNameDuration;
+  const totalSubtitle2Duration = subtitleLine2.length * 0.05 + totalSubtitle1Duration;
 
-  const nameContainerVariants = {
+  const [showCursor, setShowCursor] = useState({
+    intro: false,
+    name: false,
+    subtitle1: false,
+    subtitle2: false,
+    final: false,
+  });
+
+  useEffect(() => {
+    const timers: NodeJS.Timeout[] = [];
+    
+    timers.push(setTimeout(() => setShowCursor(s => ({ ...s, intro: true })), 0));
+    timers.push(setTimeout(() => setShowCursor(s => ({ ...s, intro: false, name: true })), totalIntroDuration * 1000));
+    timers.push(setTimeout(() => setShowCursor(s => ({ ...s, name: false, subtitle1: true })), totalNameDuration * 1000));
+    timers.push(setTimeout(() => setShowCursor(s => ({ ...s, subtitle1: false, subtitle2: true })), totalSubtitle1Duration * 1000));
+    timers.push(setTimeout(() => setShowCursor(s => ({ ...s, subtitle2: false, final: true })), totalSubtitle2Duration * 1000));
+
+    return () => timers.forEach(clearTimeout);
+  }, []);
+
+  const containerVariants = (delay: number, stagger: number) => ({
     hidden: { opacity: 0 },
-    visible: (i = 1) => ({
+    visible: {
       opacity: 1,
-      transition: { staggerChildren: 0.08, delayChildren: 0.5 * i },
-    }),
-  };
-  
-  const subtitleContainerVariants = {
-    hidden: { opacity: 0 },
-    visible: (i = 1) => ({
-      opacity: 1,
-      transition: { staggerChildren: 0.025, delayChildren: 1.5 * i },
-    }),
-  };
-  
-  const subtitleContainerVariants2 = {
-    hidden: { opacity: 0 },
-    visible: (i = 1) => ({
-      opacity: 1,
-      transition: { staggerChildren: 0.025, delayChildren: (1.5 * i) + (subtitleLine1.length * 0.025) },
-    }),
-  };
+      transition: { staggerChildren: stagger, delayChildren: delay },
+    },
+  });
 
   const letterVariants = {
-    hidden: {
-      opacity: 0,
-      y: 20,
-      filter: "blur(10px)",
-    },
-    visible: {
-      opacity: 1,
-      y: 0,
-      filter: "blur(0px)",
-      transition: {
-        type: "spring",
-        damping: 12,
-        stiffness: 100,
-      },
-    },
-  };
-  
-  const introLetterVariants = {
-    hidden: {
-      opacity: 0,
-    },
-    visible: {
-      opacity: 1,
-    },
-  };
-
-  const subtitleLetterVariants = {
-    hidden: {
-      opacity: 0,
-    },
-    visible: {
-      opacity: 1,
-    },
+    hidden: { opacity: 0, y: 10, filter: "blur(5px)" },
+    visible: { opacity: 1, y: 0, filter: "blur(0px)" },
   };
 
   return (
@@ -102,19 +91,21 @@ const HeroSection = () => {
       >
         <motion.div
           className="font-body text-lg md:text-2xl text-white/90 mb-4 flex justify-center flex-wrap"
-          variants={introContainerVariants}
+          variants={containerVariants(0.5, 0.08)}
           initial="hidden"
           animate="visible"
         >
           {intro.map((letter, index) => (
-            <motion.span key={index} variants={introLetterVariants}>
+            <motion.span key={index} variants={letterVariants}>
               {letter === " " ? "\u00A0" : letter}
             </motion.span>
           ))}
+           {showCursor.intro && <BlinkingCursor />}
         </motion.div>
+        
         <motion.h1
           className="font-headline text-4xl md:text-7xl lg:text-8xl font-bold text-white drop-shadow-lg flex justify-center flex-wrap"
-          variants={nameContainerVariants}
+          variants={containerVariants(totalIntroDuration, 0.08)}
           initial="hidden"
           animate="visible"
         >
@@ -123,39 +114,42 @@ const HeroSection = () => {
               {letter}
             </motion.span>
           ))}
+          {showCursor.name && <BlinkingCursor />}
         </motion.h1>
 
         <div className="mt-6 max-w-3xl mx-auto font-body text-base md:text-xl tracking-wide text-white/90">
             <motion.p
               className="flex flex-wrap justify-center"
-              variants={subtitleContainerVariants}
+              variants={containerVariants(totalNameDuration, 0.05)}
               initial="hidden"
               animate="visible"
             >
               {subtitleLine1.map((letter, index) => (
-                <motion.span key={index} variants={subtitleLetterVariants}>
+                <motion.span key={index} variants={letterVariants}>
                   {letter === " " ? "\u00A0" : letter}
                 </motion.span>
               ))}
+               {showCursor.subtitle1 && <BlinkingCursor />}
             </motion.p>
             <motion.p
               className="flex flex-wrap justify-center"
-              variants={subtitleContainerVariants2}
+              variants={containerVariants(totalSubtitle1Duration, 0.05)}
               initial="hidden"
               animate="visible"
             >
               {subtitleLine2.map((letter, index) => (
-                <motion.span key={index} variants={subtitleLetterVariants}>
+                <motion.span key={index} variants={letterVariants}>
                   {letter === " " ? "\u00A0" : letter}
                 </motion.span>
               ))}
+              {showCursor.subtitle2 && <BlinkingCursor />}
             </motion.p>
         </div>
         
         <motion.div
             className="mt-12"
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0, transition: { delay: 2.5, duration: 0.8 } }}
+            animate={{ opacity: 1, y: 0, transition: { delay: totalSubtitle2Duration + 0.5, duration: 0.8 } }}
         >
             <Button
                 size="lg"
@@ -169,7 +163,7 @@ const HeroSection = () => {
       <motion.div
         className="absolute bottom-10 left-1/2 -translate-x-1/2"
         initial={{ opacity: 0 }}
-        animate={{ opacity: 1, transition: { delay: 3, duration: 1 } }}
+        animate={{ opacity: 1, transition: { delay: totalSubtitle2Duration + 1, duration: 1 } }}
       >
         <motion.div
           animate={{ y: [0, 10, 0] }}
