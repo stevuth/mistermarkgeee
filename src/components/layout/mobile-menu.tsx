@@ -40,10 +40,7 @@ const MobileMenu = ({ closeMenu }: MobileMenuProps) => {
       className="fixed inset-0 z-50 bg-background/95 backdrop-blur-xl flex flex-col"
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
-          <Link href="#home" className="font-headline text-2xl font-bold text-foreground" onClick={closeMenu}>
-            MisterMarkGee
-          </Link>
+        <div className="flex items-center justify-end h-20">
           <Button
             variant="ghost"
             size="icon"
