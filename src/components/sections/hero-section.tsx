@@ -2,6 +2,9 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { Button } from "../ui/button";
+import { ArrowDown } from "lucide-react";
+import AnimatedGradientText from "../ui/animated-gradient-text";
 
 const HeroSection = () => {
   const name = "MisterMarkGee".split("");
@@ -68,7 +71,7 @@ const HeroSection = () => {
       </div>
       
       <div
-        className="relative z-20 text-center px-4"
+        className="relative z-20 text-center px-4 flex flex-col items-center"
       >
         <motion.h1
           className="font-headline text-5xl md:text-7xl lg:text-8xl font-bold text-white drop-shadow-lg flex justify-center"
@@ -95,7 +98,34 @@ const HeroSection = () => {
             </motion.span>
           ))}
         </motion.p>
+        
+        <motion.div
+            className="mt-12"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0, transition: { delay: 2.5, duration: 0.8 } }}
+        >
+            <Button
+                size="lg"
+                onClick={() => document.getElementById('works')?.scrollIntoView({ behavior: 'smooth' })}
+                className="animated-gradient text-primary-foreground font-bold"
+            >
+                View My Work
+            </Button>
+        </motion.div>
       </div>
+      
+      <motion.div
+        className="absolute bottom-10 left-1/2 -translate-x-1/2"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1, transition: { delay: 3, duration: 1 } }}
+      >
+        <motion.div
+          animate={{ y: [0, 10, 0] }}
+          transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+        >
+          <ArrowDown className="w-6 h-6 text-white/70" />
+        </motion.div>
+      </motion.div>
     </section>
   );
 };
