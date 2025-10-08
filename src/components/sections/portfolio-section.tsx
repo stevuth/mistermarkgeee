@@ -3,99 +3,162 @@
 import { useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { Badge } from "@/components/ui/badge";
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { PlayCircle } from "lucide-react";
 
-type PortfolioItem = {
+type VideoItem = {
   id: string;
   title: string;
-  category: "Video" | "Photo" | "Writing";
-  image: (typeof PlaceHolderImages)[0];
+  thumbnailUrl: string;
+  videoId: string; // YouTube video ID
 };
 
-const portfolioItems: PortfolioItem[] = [
-  { id: "1", title: "Project Alpha", category: "Video", image: PlaceHolderImages.find(i => i.id === 'portfolio-video-1')! },
-  { id: "2", title: "Creative Series", category: "Photo", image: PlaceHolderImages.find(i => i.id === 'portfolio-image-1')! },
-  { id: "3", title: "Deep Dive Article", category: "Writing", image: PlaceHolderImages.find(i => i.id === 'portfolio-writing-1')! },
-  { id: "4", title: "Music Video", category: "Video", image: { id: "p4", imageUrl: "https://picsum.photos/seed/portfolio4/800/1200", description: "vid", imageHint: "music video"} },
-  { id: "5", title: "Brand Photography", category: "Photo", image: { id: "p5", imageUrl: "https://picsum.photos/seed/portfolio5/800/600", description: "photo", imageHint: "brand"} },
-  { id: "6", title: "Short Story", category: "Writing", image: { id: "p6", imageUrl: "https://picsum.photos/seed/portfolio6/600/800", description: "writing", imageHint: "book" } },
+type Playlist = {
+  id: string;
+  title: string;
+  videos: VideoItem[];
+};
+
+const playlists: Playlist[] = [
+  {
+    id: "pl1",
+    title: "Faith Talks",
+    videos: [
+      { id: "v1", title: "The Role of Faith in Modern Life", thumbnailUrl: "https://picsum.photos/seed/faith1/800/450", videoId: "dQw4w9WgXcQ" },
+      { id: "v2", title: "Navigating Challenges with Belief", thumbnailUrl: "https://picsum.photos/seed/faith2/800/450", videoId: "dQw4w9WgXcQ" },
+      { id: "v3", title: "Community and Spiritual Growth", thumbnailUrl: "https://picsum.photos/seed/faith3/800/450", videoId: "dQw4w9WgXcQ" },
+      { id: "v4", title: "An Interview with a Local Leader", thumbnailUrl: "https://picsum.photos/seed/faith4/800/450", videoId: "dQw4w9WgXcQ" },
+    ],
+  },
+  {
+    id: "pl2",
+    title: "Christian Hip-Hop Stories",
+    videos: [
+      { id: "v5", title: "The Rise of CHH: A Documentary", thumbnailUrl: "https://picsum.photos/seed/chh1/800/450", videoId: "dQw4w9WgXcQ" },
+      { id: "v6", title: "Behind the Mic: Artist Spotlight", thumbnailUrl: "https://picsum.photos/seed/chh2/800/450", videoId: "dQw4w9WgXcQ" },
+      { id: "v7", title: "Lyrical Theology: Breaking Down Bars", thumbnailUrl: "https://picsum.photos/seed/chh3/800/450", videoId: "dQw4w9WgXcQ" },
+      { id: "v8", title: "The Culture of the Movement", thumbnailUrl: "https://picsum.photos/seed/chh4/800/450", videoId: "dQw4w9WgXcQ" },
+    ],
+  },
+  {
+    id: "pl3",
+    title: "The Life Music Podcast",
+    videos: [
+        { id: "v9", title: "Episode 101: The Creative Process", thumbnailUrl: "https://picsum.photos/seed/podcast1/800/450", videoId: "dQw4w9WgXcQ" },
+        { id: "v10", title: "Episode 102: Music and Ministry", thumbnailUrl: "https://picsum.photos/seed/podcast2/800/450", videoId: "dQw4w9WgXcQ" },
+        { id: "v11", title: "Episode 103: The Business of Art", thumbnailUrl: "https://picsum.photos/seed/podcast3/800/450", videoId: "dQw4w9WgXcQ" },
+        { id: "v12", title: "Episode 104: Listener Q&A", thumbnailUrl: "https://picsum.photos/seed/podcast4/800/450", videoId: "dQw4w9WgXcQ" },
+    ]
+  }
 ];
 
-const PortfolioSection = () => {
-    const [selectedItem, setSelectedItem] = useState<PortfolioItem | null>(null);
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.3,
+    },
+  },
+};
 
-    return (
-        <section id="works" className="py-24 sm:py-32 bg-background">
-            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="text-center">
-                    <Badge variant="outline" className="mb-4 border-primary text-primary">My Works</Badge>
-                    <h2 className="font-headline text-4xl md:text-5xl font-bold text-foreground">
-                        Featured Projects
-                    </h2>
-                    <p className="mt-4 max-w-2xl mx-auto text-lg text-foreground/80">
-                        A glimpse into the stories I've helped bring to life.
-                    </p>
-                </div>
-                
-                <div className="mt-16 columns-1 md:columns-2 lg:columns-3 gap-8 space-y-8">
-                    {portfolioItems.map((item) => (
-                        <motion.div
-                            key={item.id}
-                            className="break-inside-avoid relative rounded-lg overflow-hidden group cursor-pointer shadow-lg"
-                            initial={{ opacity: 0, y: 50, filter: "blur(10px)" }}
-                            whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                            transition={{ duration: 0.5, ease: "easeOut" }}
-                            viewport={{ once: true, amount: 0.2 }}
-                            onClick={() => setSelectedItem(item)}
-                        >
-                            <Image
-                                src={item.image.imageUrl}
-                                alt={item.title}
-                                width={800}
-                                height={item.category === "Photo" ? 1000 : 600}
-                                className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-110"
-                                data-ai-hint={item.image.imageHint}
-                            />
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
-                            <div className="absolute inset-0 p-6 flex flex-col justify-end">
-                                <div className="transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
-                                    <Badge variant="secondary" className="mb-2 bg-black/20 text-white">{item.category}</Badge>
-                                    <h3 className="font-headline text-2xl font-bold text-white">{item.title}</h3>
-                                </div>
-                            </div>
-                             <div className="absolute inset-0 border-2 border-transparent group-hover:border-primary transition-all duration-300 rounded-lg"/>
-                        </motion.div>
-                    ))}
-                </div>
-                
-                <Dialog open={!!selectedItem} onOpenChange={() => setSelectedItem(null)}>
-                    <DialogContent className="max-w-3xl bg-card border-border p-0">
-                        {selectedItem && (
-                            <>
-                                <div className="relative h-96">
-                                    <Image
-                                        src={selectedItem.image.imageUrl}
-                                        alt={selectedItem.title}
-                                        fill
-                                        className="object-cover"
-                                        data-ai-hint={selectedItem.image.imageHint}
-                                    />
-                                </div>
-                                <DialogHeader className="p-6">
-                                    <DialogTitle className="font-headline text-3xl">{selectedItem.title}</DialogTitle>
-                                    <DialogDescription className="text-base pt-2">
-                                        This is a detailed description of {selectedItem.title}. It involved extensive creative direction and resulted in a compelling piece of content for the {selectedItem.category} category.
-                                    </DialogDescription>
-                                </DialogHeader>
-                            </>
-                        )}
-                    </DialogContent>
-                </Dialog>
-            </div>
-        </section>
-    );
+const itemVariants = {
+  hidden: { opacity: 0, y: 50 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5, ease: "easeOut" },
+  },
+};
+
+const PortfolioSection = () => {
+  const [selectedVideo, setSelectedVideo] = useState<VideoItem | null>(null);
+
+  return (
+    <section id="works" className="py-24 sm:py-32 bg-background text-foreground">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center">
+          <Badge variant="outline" className="mb-4 border-primary text-primary">My Works</Badge>
+          <motion.h2
+            className="font-headline text-4xl md:text-5xl font-bold"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
+            Featured Playlists
+          </motion.h2>
+          <motion.p 
+            className="mt-4 max-w-2xl mx-auto text-lg text-foreground/80"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
+            A curated showcase of stories, conversations, and creative journeys.
+          </motion.p>
+        </div>
+
+        <motion.div
+          className="mt-16 space-y-20"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.1 }}
+        >
+          {playlists.map((playlist) => (
+            <motion.div key={playlist.id} variants={itemVariants}>
+              <h3 className="font-headline text-3xl font-bold mb-8 text-accent">{playlist.title}</h3>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                {playlist.videos.map((video) => (
+                  <motion.div
+                    key={video.id}
+                    className="relative rounded-lg overflow-hidden group cursor-pointer shadow-lg"
+                    onClick={() => setSelectedVideo(video)}
+                    whileHover={{ scale: 1.05 }}
+                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                  >
+                    <Image
+                      src={video.thumbnailUrl}
+                      alt={video.title}
+                      width={800}
+                      height={450}
+                      className="w-full h-auto object-cover transition-all duration-300 group-hover:brightness-110"
+                      data-ai-hint="video thumbnail"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent transition-opacity duration-300" />
+                    <div className="absolute inset-0 p-4 flex flex-col justify-end">
+                      <h4 className="font-bold text-sm text-white leading-tight drop-shadow-md">{video.title}</h4>
+                    </div>
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <PlayCircle className="w-16 h-16 text-white/70 opacity-0 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300" />
+                    </div>
+                    <div className="absolute inset-0 rounded-lg border-2 border-transparent group-hover:border-accent group-hover:shadow-[0_0_20px_rgba(255,213,79,0.5)] transition-all duration-300" />
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
+
+        <Dialog open={!!selectedVideo} onOpenChange={() => setSelectedVideo(null)}>
+          <DialogContent className="max-w-4xl w-full bg-black/80 border-accent/30 p-0 aspect-video">
+            {selectedVideo && (
+              <iframe
+                src={`https://www.youtube.com/embed/${selectedVideo.videoId}?autoplay=1`}
+                title={selectedVideo.title}
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                className="w-full h-full rounded-lg"
+              ></iframe>
+            )}
+          </DialogContent>
+        </Dialog>
+      </div>
+    </section>
+  );
 };
 
 export default PortfolioSection;
