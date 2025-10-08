@@ -13,28 +13,34 @@ import { PlaceHolderImages } from "@/lib/placeholder-images";
 import Image from "next/image";
 import { motion } from "framer-motion";
 
-const testimonials = [
-  {
-    name: "Artist A",
-    role: "Musician",
-    quote: "Working with MisterMarkGee transformed my career. His vision and dedication are unmatched.",
-    logo: PlaceHolderImages.find(i => i.id === 'collab-logo-1')!,
-  },
-  {
-    name: "Brand B",
-    role: "Creative Director",
-    quote: "The content created was beyond our expectations. Incredibly professional and creative from start to finish.",
-    logo: PlaceHolderImages.find(i => i.id === 'collab-logo-2')!,
-  },
-  {
-    name: "Podcast Guest C",
-    role: "Entrepreneur",
-    quote: "Felt so comfortable on the podcast. The conversation flowed naturally and the final product was top-notch.",
-    logo: { id: "l3", imageUrl: "https://picsum.photos/seed/logo3/200/100", description: "logo", imageHint: "logo" },
-  },
-];
+const testimonials: {
+  name: string;
+  role: string;
+  quote: string;
+  logo: {
+    id: string;
+    imageUrl: string;
+    description: string;
+    imageHint: string;
+  };
+}[] = [];
 
 const TestimonialsSection = () => {
+  if (testimonials.length === 0) {
+    return (
+      <section id="testimonials" className="py-24 sm:py-32 bg-background">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center">
+            <Badge variant="outline" className="mb-4 border-primary text-primary">Collaborations</Badge>
+            <h2 className="font-headline text-4xl md:text-5xl font-bold text-foreground">
+              Words From Partners
+            </h2>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
   return (
     <section id="testimonials" className="py-24 sm:py-32 bg-background">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
