@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { AnimatePresence } from "framer-motion";
-import { Menu } from "lucide-react";
+import { Menu, Palette } from "lucide-react";
 import MobileMenu from "./mobile-menu";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -35,8 +35,8 @@ const Header = () => {
       )}>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-20">
-            <Link href="#home" className="font-headline text-2xl font-bold text-foreground">
-              MotionVerse
+            <Link href="#home" className="text-foreground">
+              <Palette className="h-8 w-8" />
             </Link>
             <nav className="hidden md:flex items-center space-x-10">
               {navLinks.map(link => (
