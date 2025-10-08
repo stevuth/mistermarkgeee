@@ -20,7 +20,7 @@ const roles = [
     title: "Producer",
     tagline: "Bringing creative visions to life.",
     description: "I manage projects from start to finish, ensuring a smooth process and a high-quality final product that exceeds expectations.",
-    imageUrl: "https://picsum.photos/seed/producer/800/1200",
+    imageUrl: "/producer.jpg",
     imageHint: "music production",
   },
   {
