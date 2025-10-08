@@ -35,10 +35,9 @@ const playlists: Playlist[] = [
     id: "pl2",
     title: "Christian Hip-Hop Stories",
     videos: [
-      { id: "v5", title: "The Rise of CHH: A Documentary", thumbnailUrl: "https://picsum.photos/seed/chh1/800/450", videoId: "dQw4w9WgXcQ" },
-      { id: "v6", title: "Behind the Mic: Artist Spotlight", thumbnailUrl: "https://picsum.photos/seed/chh2/800/450", videoId: "dQw4w9WgXcQ" },
-      { id: "v7", title: "Lyrical Theology: Breaking Down Bars", thumbnailUrl: "https://picsum.photos/seed/chh3/800/450", videoId: "dQw4w9WgXcQ" },
-      { id: "v8", title: "The Culture of the Movement", thumbnailUrl: "https://picsum.photos/seed/chh4/800/450", videoId: "dQw4w9WgXcQ" },
+      { id: "v5", title: "The Rise of CHH: A Documentary", thumbnailUrl: "https://img.youtube.com/vi/T-hE2zAp5b4/hqdefault.jpg", videoId: "T-hE2zAp5b4" },
+      { id: "v6", title: "Behind the Mic: Artist Spotlight", thumbnailUrl: "https://img.youtube.com/vi/JsljCn-dKgs/hqdefault.jpg", videoId: "JsljCn-dKgs" },
+      { id: "v7", title: "Lyrical Theology: Breaking Down Bars", thumbnailUrl: "https://img.youtube.com/vi/70iGjh4d8kA/hqdefault.jpg", videoId: "70iGjh4d8kA" },
     ],
   },
   {
