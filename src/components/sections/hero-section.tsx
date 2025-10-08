@@ -44,7 +44,7 @@ const HeroSection = () => {
     >
       <div className="absolute inset-0 z-0">
         <Image
-          src="https://picsum.photos/seed/lights/1920/1080"
+          src="/hero image.jpg"
           alt="Abstract background image with light trails"
           fill
           className="object-cover"
