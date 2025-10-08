@@ -5,23 +5,6 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { Badge } from "@/components/ui/badge";
 
-const AnimatedCounter = ({ value, label }: { value: number; label: string }) => {
-    return (
-        <motion.div 
-            className="text-center"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            viewport={{ once: true, amount: 0.8 }}
-        >
-            <p className="font-headline text-4xl md:text-5xl font-bold">
-              <span className="text-primary">{value}</span>+
-            </p>
-            <p className="text-sm text-white/70 mt-1">{label}</p>
-        </motion.div>
-    );
-};
-
 const AboutSection = () => {
     const targetRef = useRef<HTMLDivElement>(null);
     const { scrollYProgress } = useScroll({
@@ -48,10 +31,6 @@ const AboutSection = () => {
                         <p className="mt-6 text-lg text-white/80">
                             A digital witness to the gospel message, Mark Macharia Gaturuku (aka MisterMarkGee) is a Kenyan-born, British content creator based in the Midlands. A devoted Christian, husband, and father of two sons, Mark works as a videographer, producer, writer, and artist manager. He uses media to uplift gospel and Christian hip hop culture, blending creativity and ministry through digital witnessing, storytelling, and leadership across platforms like The Life Music App, Holy Culture, and other gospel initiatives.
                         </p>
-                        <div className="mt-12 grid grid-cols-2 gap-8">
-                           <AnimatedCounter value={10} label="Happy Clients" />
-                           <AnimatedCounter value={5} label="Years Experience" />
-                        </div>
                     </motion.div>
                     <div className="relative h-[500px] lg:h-[600px] rounded-lg overflow-hidden">
                         <motion.div
