@@ -36,11 +36,6 @@ const HeroSection = () => {
   };
 
   const particleOptions = useMemo(() => ({
-    background: {
-      color: {
-        value: "hsl(var(--background))",
-      },
-    },
     fpsLimit: 60,
     interactivity: {
       events: {
@@ -89,7 +84,7 @@ const HeroSection = () => {
         value: 0.2,
       },
       shape: {
-        type: "circle",
+        type: "triangle",
       },
       size: {
         value: { min: 1, max: 3 },
@@ -145,7 +140,7 @@ const HeroSection = () => {
   return (
     <section
       id="home"
-      className="relative flex items-center justify-center h-screen overflow-hidden"
+      className="relative flex items-center justify-center h-screen overflow-hidden bg-background"
     >
        {init && (
         <Particles
