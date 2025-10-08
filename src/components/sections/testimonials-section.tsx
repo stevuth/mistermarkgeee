@@ -1,12 +1,9 @@
 "use client";
 
-import { Card, CardContent } from "@/components/ui/card";
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
 } from "@/components/ui/carousel";
 import { Badge } from "@/components/ui/badge";
 import Image from "next/image";
@@ -92,7 +89,7 @@ const testimonials = [
       imageHint: "logo",
     },
   },
-    {
+  {
     name: "Partner 8",
     role: "Collaborator",
     quote: "Incredibly reliable and delivers top-tier results every time. A trusted partner.",
@@ -103,7 +100,7 @@ const testimonials = [
       imageHint: "logo",
     },
   },
-    {
+  {
     name: "Partner 9",
     role: "Collaborator",
     quote: "Incredibly reliable and delivers top-tier results every time. A trusted partner.",
@@ -114,7 +111,7 @@ const testimonials = [
       imageHint: "logo",
     },
   },
-    {
+  {
     name: "Partner 10",
     role: "Collaborator",
     quote: "Incredibly reliable and delivers top-tier results every time. A trusted partner.",
@@ -125,7 +122,7 @@ const testimonials = [
       imageHint: "logo",
     },
   },
-    {
+  {
     name: "Partner 11",
     role: "Collaborator",
     quote: "Incredibly reliable and delivers top-tier results every time. A trusted partner.",
@@ -136,7 +133,7 @@ const testimonials = [
       imageHint: "logo",
     },
   },
-    {
+  {
     name: "Partner 12",
     role: "Collaborator",
     quote: "Incredibly reliable and delivers top-tier results every time. A trusted partner.",
@@ -162,7 +159,7 @@ const testimonials = [
 
 const TestimonialsSection = () => {
   const plugin = React.useRef(
-    Autoplay({ delay: 2000, stopOnInteraction: true })
+    Autoplay({ delay: 1000, stopOnInteraction: false, stopOnMouseEnter: false })
   );
 
   if (testimonials.length === 0) {
@@ -180,8 +177,12 @@ const TestimonialsSection = () => {
     );
   }
 
+  const midPoint = Math.ceil(testimonials.length / 2);
+  const firstRow = testimonials.slice(0, midPoint);
+  const secondRow = testimonials.slice(midPoint);
+
   return (
-    <section id="testimonials" className="py-24 sm:py-32 bg-background">
+    <section id="testimonials" className="py-24 sm:py-32 bg-background overflow-hidden">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center">
           <Badge variant="outline" className="mb-4 border-primary text-primary">Collaborations</Badge>
@@ -191,7 +192,7 @@ const TestimonialsSection = () => {
         </div>
 
         <motion.div
-          className="mt-16"
+          className="mt-16 space-y-8"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
@@ -203,39 +204,53 @@ const TestimonialsSection = () => {
               align: "start",
               loop: true,
             }}
-            className="w-full max-w-sm sm:max-w-4xl lg:max-w-6xl mx-auto"
-            onMouseEnter={plugin.current.stop}
-            onMouseLeave={plugin.current.reset}
+            className="w-full"
           >
-            <CarouselContent>
-              {testimonials.map((testimonial, index) => (
-                <CarouselItem key={index} className="sm:basis-1/2 lg:basis-1/3">
-                  <div className="p-1 h-full">
-                    <Card className="h-full flex flex-col justify-center items-center bg-card border-border group">
-                      <div className="p-6 flex justify-center items-center bg-transparent h-32">
-                        <motion.div
-                           className="relative w-[120px] h-[60px]"
-                           initial={{ filter: "grayscale(100%)", opacity: 0.7 }}
-                           whileInView={{ filter: "grayscale(0%)", opacity: 1 }}
-                           transition={{ duration: 0.5, delay: 0.2 }}
-                           viewport={{ once: true }}
-                        >
-                            <Image
-                                src={testimonial.logo.imageUrl}
-                                alt={testimonial.logo.description}
-                                fill
-                                className="object-contain"
-                                data-ai-hint={testimonial.logo.imageHint}
-                            />
-                        </motion.div>
-                      </div>
-                    </Card>
+            <CarouselContent className="-ml-1">
+              {firstRow.map((testimonial, index) => (
+                <CarouselItem key={`top-${index}`} className="basis-1/4 md:basis-1/5 lg:basis-1/7 pl-1">
+                  <div className="p-1 h-full flex justify-center items-center">
+                    <div className="relative w-[120px] h-[60px]">
+                      <Image
+                        src={testimonial.logo.imageUrl}
+                        alt={testimonial.logo.description}
+                        fill
+                        className="object-contain"
+                        data-ai-hint={testimonial.logo.imageHint}
+                      />
+                    </div>
                   </div>
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious className="hidden sm:flex text-foreground hover:text-primary" />
-            <CarouselNext className="hidden sm:flex text-foreground hover:text-primary" />
+          </Carousel>
+          
+          <Carousel
+            plugins={[plugin.current]}
+            opts={{
+              align: "start",
+              loop: true,
+              direction: 'rtl'
+            }}
+            className="w-full"
+          >
+            <CarouselContent className="-ml-1">
+              {secondRow.map((testimonial, index) => (
+                <CarouselItem key={`bottom-${index}`} className="basis-1/4 md:basis-1/5 lg:basis-1/7 pl-1">
+                  <div className="p-1 h-full flex justify-center items-center">
+                    <div className="relative w-[120px] h-[60px]">
+                      <Image
+                        src={testimonial.logo.imageUrl}
+                        alt={testimonial.logo.description}
+                        fill
+                        className="object-contain"
+                        data-ai-hint={testimonial.logo.imageHint}
+                      />
+                    </div>
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
           </Carousel>
         </motion.div>
       </div>
