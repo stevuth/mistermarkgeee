@@ -2,8 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Button } from "../ui/button";
-import AnimatedGradientText from "../ui/animated-gradient-text";
-import { useEffect, useState, useMemo, useCallback } from "react";
+import { useEffect, useState, useMemo } from "react";
 import Particles, { initParticlesEngine } from "@tsparticles/react";
 import type { Container, Engine } from "@tsparticles/engine";
 import { loadSlim } from "@tsparticles/slim";
@@ -24,7 +23,7 @@ const HeroSection = () => {
   const [init, setInit] = useState(false);
 
   useEffect(() => {
-    initParticlesEngine(async (engine) => {
+    initParticlesEngine(async (engine: Engine) => {
       await loadSlim(engine);
     }).then(() => {
       setInit(true);
@@ -220,9 +219,9 @@ const HeroSection = () => {
             <Button
                 size="lg"
                 onClick={() => document.getElementById('works')?.scrollIntoView({ behavior: 'smooth' })}
-                className="bg-transparent"
+                className="animated-gradient text-white font-bold"
             >
-                <AnimatedGradientText>View My Work</AnimatedGradientText>
+                View My Work
             </Button>
         </motion.div>
       </div>
