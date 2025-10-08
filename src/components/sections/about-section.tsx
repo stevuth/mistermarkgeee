@@ -3,7 +3,6 @@
 import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { Badge } from "@/components/ui/badge";
 
 const AnimatedCounter = ({ value, label }: { value: number; label: string }) => {
@@ -30,8 +29,6 @@ const AboutSection = () => {
         offset: ["start end", "end start"],
     });
 
-    const portrait = PlaceHolderImages.find(img => img.id === 'portrait');
-    
     const imageY = useTransform(scrollYProgress, [0, 1], ["-10%", "10%"]);
 
     return (
@@ -57,29 +54,26 @@ const AboutSection = () => {
                         </div>
                     </motion.div>
                     <div className="relative h-[500px] lg:h-[600px] rounded-lg overflow-hidden">
-                        {portrait && (
-                            <motion.div
-                                className="absolute inset-0"
-                                style={{ y: imageY }}
-                            >
-                                <Image
-                                    src={portrait.imageUrl}
-                                    alt={portrait.description}
-                                    fill
-                                    sizes="(max-width: 1024px) 100vw, 50vw"
-                                    className="object-cover"
-                                    data-ai-hint={portrait.imageHint}
-                                />
-                                <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-70" />
-                                <motion.div 
-                                    className="absolute inset-0 bg-white"
-                                    initial={{ scaleY: 1 }}
-                                    whileInView={{ scaleY: 0, transition: { duration: 0.8, ease: [0.85, 0, 0.15, 1], delay: 0.2 } }}
-                                    viewport={{ once: true, amount: 0.5 }}
-                                    style={{ originY: 'top' }}
-                                />
-                            </motion.div>
-                        )}
+                        <motion.div
+                            className="absolute inset-0"
+                            style={{ y: imageY }}
+                        >
+                            <Image
+                                src="/profile picture.png"
+                                alt="A portrait of MisterMarkGee"
+                                fill
+                                sizes="(max-width: 1024px) 100vw, 50vw"
+                                className="object-cover"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-70" />
+                            <motion.div 
+                                className="absolute inset-0 bg-white"
+                                initial={{ scaleY: 1 }}
+                                whileInView={{ scaleY: 0, transition: { duration: 0.8, ease: [0.85, 0, 0.15, 1], delay: 0.2 } }}
+                                viewport={{ once: true, amount: 0.5 }}
+                                style={{ originY: 'top' }}
+                            />
+                        </motion.div>
                     </div>
                 </div>
             </div>
