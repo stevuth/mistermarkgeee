@@ -21,7 +21,7 @@ const writing = {
 
 const PodcastWritingSection = () => {
   return (
-    <section id="podcast-writing" className="py-24 sm:py-32 bg-secondary">
+    <section id="podcast-writing" className="py-24 sm:py-32 bg-background">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           {/* Podcast Section */}
@@ -32,7 +32,7 @@ const PodcastWritingSection = () => {
             transition={{ duration: 0.8, ease: "easeOut" }}
             viewport={{ once: true, amount: 0.3 }}
           >
-            <Badge variant="outline" className="mb-4 border-accent-foreground text-accent-foreground">Podcast</Badge>
+            <Badge variant="outline" className="mb-4 border-accent text-accent">Podcast</Badge>
             <div className="relative w-64 h-64 rounded-lg overflow-hidden shadow-2xl">
               <Image 
                 src={podcast.image.imageUrl} 
@@ -42,8 +42,8 @@ const PodcastWritingSection = () => {
                 data-ai-hint={podcast.image.imageHint}
               />
             </div>
-            <h3 className="font-headline text-3xl font-bold mt-6">{podcast.title}</h3>
-            <p className="text-secondary-foreground/70 mt-2 max-w-sm">{podcast.description}</p>
+            <h3 className="font-headline text-3xl font-bold mt-6 text-foreground">{podcast.title}</h3>
+            <p className="text-foreground/70 mt-2 max-w-sm">{podcast.description}</p>
             <Button variant="outline" className="mt-6 border-primary text-primary hover:bg-primary hover:text-primary-foreground">
               <Headphones className="mr-2 h-4 w-4" />
               Listen Now
@@ -71,8 +71,8 @@ const PodcastWritingSection = () => {
                 <p className="text-white p-4 italic">"The first draft is just you telling yourself the story."</p>
               </div>
             </div>
-            <h3 className="font-headline text-3xl font-bold mt-6">{writing.title}</h3>
-            <p className="text-secondary-foreground/70 mt-2 max-w-sm">{writing.description}</p>
+            <h3 className="font-headline text-3xl font-bold mt-6 text-foreground">{writing.title}</h3>
+            <p className="text-foreground/70 mt-2 max-w-sm">{writing.description}</p>
             <Button variant="outline" className="mt-6 border-primary text-primary hover:bg-primary hover:text-primary-foreground">
               <BookOpen className="mr-2 h-4 w-4" />
               Read Articles

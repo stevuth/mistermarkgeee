@@ -52,14 +52,14 @@ const colorClasses: { [key: string]: string } = {
 
 const RolesSection = () => {
   return (
-    <section id="roles" className="py-24 sm:py-32 bg-secondary">
+    <section id="roles" className="py-24 sm:py-32 bg-background">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center">
             <Badge variant="outline" className="mb-4 border-primary text-primary">My Expertise</Badge>
-            <h2 className="font-headline text-4xl md:text-5xl font-bold text-secondary-foreground">
+            <h2 className="font-headline text-4xl md:text-5xl font-bold text-foreground">
                 What I Do
             </h2>
-            <p className="mt-4 max-w-2xl mx-auto text-lg text-secondary-foreground/80">
+            <p className="mt-4 max-w-2xl mx-auto text-lg text-foreground/80">
                 I wear many hats, each representing a different side of my creativity.
             </p>
         </div>
@@ -68,7 +68,7 @@ const RolesSection = () => {
           {roles.map((role, i) => (
             <motion.div
               key={role.title}
-              className="relative p-8 rounded-lg border border-border bg-background overflow-hidden group transition-all duration-300"
+              className="relative p-8 rounded-lg border border-border bg-card overflow-hidden group transition-all duration-300"
               custom={i}
               variants={cardVariants}
               initial="initial"
@@ -80,10 +80,10 @@ const RolesSection = () => {
               
               <div className="relative z-10">
                   <role.icon className={`h-10 w-10 mb-4 transition-colors ${colorClasses[role.color].replace('group-hover:bg-','text-')}`} />
-                  <h3 className="font-headline text-2xl font-bold text-foreground">
+                  <h3 className="font-headline text-2xl font-bold text-card-foreground">
                       {role.title}
                   </h3>
-                  <p className="mt-2 text-foreground/70">{role.description}</p>
+                  <p className="mt-2 text-card-foreground/70">{role.description}</p>
               </div>
             </motion.div>
           ))}
