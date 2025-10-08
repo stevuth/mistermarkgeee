@@ -169,7 +169,7 @@ const TestimonialsSection = () => {
           <div className="text-center">
             <Badge variant="outline" className="mb-4 border-primary text-primary">Collaborations</Badge>
             <h2 className="font-headline text-4xl md:text-5xl font-bold text-foreground">
-              Words From Partners
+              Brands I've worked with
             </h2>
           </div>
         </div>
@@ -187,7 +187,7 @@ const TestimonialsSection = () => {
         <div className="text-center">
           <Badge variant="outline" className="mb-4 border-primary text-primary">Collaborations</Badge>
           <h2 className="font-headline text-4xl md:text-5xl font-bold text-foreground">
-            Words From Partners
+            Brands I've worked with
           </h2>
         </div>
 
