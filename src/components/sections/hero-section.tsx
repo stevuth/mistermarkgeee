@@ -9,7 +9,7 @@ import { useEffect, useState } from "react";
 
 const BlinkingCursor = () => {
   return (
-    <motion.div
+    <motion.span
       variants={{
         hidden: { opacity: 0 },
         visible: { opacity: 1 },
@@ -28,13 +28,13 @@ const BlinkingCursor = () => {
 const HeroSection = () => {
   const intro = "Hello, I'm".split("");
   const name = "MisterMarkGee".split("");
-  const subtitleLine1 = "a Videographer • Producer • Writer •".split("");
-  const subtitleLine2 = "Artist Manager".split("");
+  const subtitleLine1 = "a videographer • producer • writer •".split("");
+  const subtitleLine2 = "and artist manager".split("");
 
-  const totalIntroDuration = intro.length * 0.12 + 0.5;
-  const totalNameDuration = name.length * 0.12 + totalIntroDuration;
-  const totalSubtitle1Duration = subtitleLine1.length * 0.08 + totalNameDuration;
-  const totalSubtitle2Duration = subtitleLine2.length * 0.08 + totalSubtitle1Duration;
+  const totalIntroDuration = intro.length * 0.15 + 0.5;
+  const totalNameDuration = name.length * 0.15 + totalIntroDuration;
+  const totalSubtitle1Duration = subtitleLine1.length * 0.1 + totalNameDuration;
+  const totalSubtitle2Duration = subtitleLine2.length * 0.1 + totalSubtitle1Duration;
 
   const [showCursor, setShowCursor] = useState({
     intro: false,
@@ -91,7 +91,7 @@ const HeroSection = () => {
       >
         <motion.div
           className="font-body text-lg md:text-2xl text-white/90 mb-4 flex justify-center flex-wrap"
-          variants={containerVariants(0.5, 0.12)}
+          variants={containerVariants(0.5, 0.15)}
           initial="hidden"
           animate="visible"
         >
@@ -105,7 +105,7 @@ const HeroSection = () => {
         
         <motion.h1
           className="font-headline text-4xl md:text-7xl lg:text-8xl font-bold text-white drop-shadow-lg flex justify-center flex-wrap"
-          variants={containerVariants(totalIntroDuration, 0.12)}
+          variants={containerVariants(totalIntroDuration, 0.15)}
           initial="hidden"
           animate="visible"
         >
@@ -120,7 +120,7 @@ const HeroSection = () => {
         <div className="mt-6 max-w-3xl mx-auto font-body text-base md:text-xl tracking-wide text-white/90">
             <motion.p
               className="flex flex-wrap justify-center"
-              variants={containerVariants(totalNameDuration, 0.08)}
+              variants={containerVariants(totalNameDuration, 0.1)}
               initial="hidden"
               animate="visible"
             >
@@ -133,7 +133,7 @@ const HeroSection = () => {
             </motion.p>
             <motion.p
               className="flex flex-wrap justify-center"
-              variants={containerVariants(totalSubtitle1Duration, 0.08)}
+              variants={containerVariants(totalSubtitle1Duration, 0.1)}
               initial="hidden"
               animate="visible"
             >
