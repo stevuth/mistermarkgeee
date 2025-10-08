@@ -98,17 +98,20 @@ const HeroSection = () => {
   const name = "MisterMarkGee".split("");
   const subtitleLine1 = "a videographer • producer • writer •".split("");
   const subtitleLine2 = "and artist manager".split("");
+  const subText = "Digital witnessing through creative media.".split("");
 
   const totalIntroDuration = intro.length * 0.15 + 0.5;
   const totalNameDuration = name.length * 0.15 + totalIntroDuration;
   const totalSubtitle1Duration = subtitleLine1.length * 0.08 + totalNameDuration;
   const totalSubtitle2Duration = subtitleLine2.length * 0.08 + totalSubtitle1Duration;
+  const totalSubTextDuration = subText.length * 0.08 + totalSubtitle2Duration;
 
   const [showCursor, setShowCursor] = useState({
     intro: false,
     name: false,
     subtitle1: false,
     subtitle2: false,
+    subText: false,
     final: false,
   });
 
@@ -119,10 +122,11 @@ const HeroSection = () => {
     timers.push(setTimeout(() => setShowCursor(s => ({ ...s, intro: false, name: true })), totalIntroDuration * 1000));
     timers.push(setTimeout(() => setShowCursor(s => ({ ...s, name: false, subtitle1: true })), totalNameDuration * 1000));
     timers.push(setTimeout(() => setShowCursor(s => ({ ...s, subtitle1: false, subtitle2: true })), totalSubtitle1Duration * 1000));
-    timers.push(setTimeout(() => setShowCursor(s => ({ ...s, subtitle2: false, final: true })), totalSubtitle2Duration * 1000));
+    timers.push(setTimeout(() => setShowCursor(s => ({ ...s, subtitle2: false, subText: true })), totalSubtitle2Duration * 1000));
+    timers.push(setTimeout(() => setShowCursor(s => ({ ...s, subText: false, final: true })), totalSubTextDuration * 1000));
 
     return () => timers.forEach(clearTimeout);
-  }, [totalIntroDuration, totalNameDuration, totalSubtitle1Duration, totalSubtitle2Duration]);
+  }, [totalIntroDuration, totalNameDuration, totalSubtitle1Duration, totalSubtitle2Duration, totalSubTextDuration]);
 
   const containerVariants = (delay: number, stagger: number) => ({
     hidden: { opacity: 0 },
@@ -207,14 +211,27 @@ const HeroSection = () => {
                   {letter === " " ? "\u00A0" : letter}
                 </motion.span>
               ))}
-              {(showCursor.subtitle2 || showCursor.final) && <BlinkingCursor />}
+              {showCursor.subtitle2 && <BlinkingCursor />}
+            </motion.p>
+             <motion.p
+              className="flex flex-wrap justify-center items-baseline mt-4 text-white/70 italic"
+              variants={containerVariants(totalSubtitle2Duration, 0.08)}
+              initial="hidden"
+              animate="visible"
+            >
+              {subText.map((letter, index) => (
+                <motion.span key={index} variants={letterVariants}>
+                  {letter === " " ? "\u00A0" : letter}
+                </motion.span>
+              ))}
+              {(showCursor.subText || showCursor.final) && <BlinkingCursor />}
             </motion.p>
         </div>
         
         <motion.div
             className="mt-12"
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0, transition: { delay: totalSubtitle2Duration + 0.5, duration: 0.8 } }}
+            animate={{ opacity: 1, y: 0, transition: { delay: totalSubTextDuration + 0.5, duration: 0.8 } }}
         >
             <Button
                 size="lg"
