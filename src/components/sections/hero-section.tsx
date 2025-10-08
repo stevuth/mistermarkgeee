@@ -160,18 +160,6 @@ const HeroSection = () => {
         </motion.div>
       </div>
       
-      <motion.div
-        className="absolute bottom-10 left-1/2 -translate-x-1/2"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1, transition: { delay: totalSubtitle2Duration + 1, duration: 1 } }}
-      >
-        <motion.div
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-        >
-          <ArrowDown className="w-6 h-6 text-white/70" />
-        </motion.div>
-      </motion.div>
     </section>
   );
 };
