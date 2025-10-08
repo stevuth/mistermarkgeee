@@ -23,7 +23,7 @@ type Playlist = {
 const playlists: Playlist[] = [
   {
     id: "pl1",
-    title: "Faith Talks",
+    title: "The life music podcast",
     videos: [
       { id: "v1", title: "The Role of Faith in Modern Life", thumbnailUrl: "https://img.youtube.com/vi/64-4iw-We-U/hqdefault.jpg", videoId: "64-4iw-We-U" },
       { id: "v2", title: "Navigating Challenges with Belief", thumbnailUrl: "https://img.youtube.com/vi/fQNw9fC8HdY/hqdefault.jpg", videoId: "fQNw9fC8HdY" },
