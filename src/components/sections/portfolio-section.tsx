@@ -33,7 +33,7 @@ const playlists: Playlist[] = [
   },
   {
     id: "pl2",
-    title: "Christian Hip-Hop Stories",
+    title: "Ideologies",
     videos: [
       { id: "v5", title: "The Rise of CHH: A Documentary", thumbnailUrl: "https://img.youtube.com/vi/T-hE2zAp5b4/hqdefault.jpg", videoId: "T-hE2zAp5b4" },
       { id: "v6", title: "Behind the Mic: Artist Spotlight", thumbnailUrl: "https://img.youtube.com/vi/JsljCn-dKgs/hqdefault.jpg", videoId: "JsljCn-dKgs" },
