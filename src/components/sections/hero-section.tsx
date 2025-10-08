@@ -76,7 +76,7 @@ const HeroSection = () => {
            initial="initial"
            animate="animate"
         >
-          Content Creator • Artist Manager • Videographer • Podcaster • Writer
+          Videographer • Producer • Writer • Artist Manager
         </motion.p>
       </div>
     </section>
