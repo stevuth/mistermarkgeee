@@ -30,7 +30,7 @@ const AboutSection = () => {
     const words = bioText.split(" ");
 
     return (
-        <section id="about" ref={targetRef} className="py-24 sm:py-32 relative overflow-hidden bg-background">
+        <section id="about" ref={targetRef} className="py-24 sm:py-32 relative overflow-hidden bg-card">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                     <motion.div
