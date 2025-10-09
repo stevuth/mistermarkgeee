@@ -1,3 +1,4 @@
+
 "use client";
 
 import { motion } from "framer-motion";
@@ -5,6 +6,7 @@ import { Video, UserCheck, PenSquare, Music, ArrowRight, Podcast } from "lucide-
 import { Badge } from "@/components/ui/badge";
 import { Button } from "../ui/button";
 import Image from "next/image";
+import Link from "next/link";
 
 const roles = [
   {
@@ -14,6 +16,7 @@ const roles = [
     description: "From concept to final cut, I produce cinematic videos that resonate with audiences and deliver powerful messages.",
     imageUrl: "/videographer.jpg",
     imageHint: "videography cinematic",
+    link: "#works"
   },
   {
     icon: Music,
@@ -22,6 +25,7 @@ const roles = [
     description: "I manage projects from start to finish, ensuring a smooth process and a high-quality final product that exceeds expectations.",
     imageUrl: "/producer.jpg",
     imageHint: "music production",
+    link: "#works"
   },
   {
     icon: PenSquare,
@@ -30,6 +34,7 @@ const roles = [
     tagline: "Weaving words that connect.",
     imageUrl: "/writer.jpg",
     imageHint: "writing book",
+    link: "#articles"
   },
   {
     icon: UserCheck,
@@ -38,6 +43,7 @@ const roles = [
     description: "I partner with artists to develop their brand, strategize their career path, and create opportunities for growth.",
     imageUrl: "/Artist Manager.jpg",
     imageHint: "artist portrait",
+    link: "#contact"
   },
   {
     icon: Podcast,
@@ -46,6 +52,7 @@ const roles = [
     description: "You’ll often find me on podcasts diving into conversations about politics, culture, and Christian living—promoting a Christ-centred perspective and a vision of human flourishing for everyone. As a strong advocate for gospel and Christian hip hop music, I’m passionate about uplifting artists and platforms that use creativity to spread hope and truth through sound.",
     imageUrl: "/podcaster.jpg?v=2",
     imageHint: "podcast microphone",
+    link: "#pl2"
   },
 ];
 
@@ -126,13 +133,15 @@ const RolesSection = () => {
                   {role.description}
                 </p>
                 
-                <Button 
-                    variant="outline" 
-                    size="sm"
-                    className="mt-6 bg-transparent text-white border-white/50 hover:bg-white hover:text-background font-bold shadow-[0_0_15px_rgba(255,255,255,0.2)] hover:shadow-[0_0_25px_rgba(255,255,255,0.5)] transition-all duration-300"
-                >
-                    View My Work <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
+                <Link href={role.link}>
+                  <Button 
+                      variant="outline" 
+                      size="sm"
+                      className="mt-6 bg-transparent text-white border-white/50 hover:bg-white hover:text-background font-bold shadow-[0_0_15px_rgba(255,255,255,0.2)] hover:shadow-[0_0_25px_rgba(255,255,255,0.5)] transition-all duration-300"
+                  >
+                      View My Work <ArrowRight className="ml-2 h-4 w-4" />
+                  </Button>
+                </Link>
               </div>
             </motion.div>
           ))}

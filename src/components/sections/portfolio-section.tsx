@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState } from "react";
@@ -106,7 +107,7 @@ const PortfolioSection = () => {
           viewport={{ once: true, amount: 0.1 }}
         >
           {playlists.map((playlist) => (
-            <motion.div key={playlist.id} variants={itemVariants}>
+            <motion.div key={playlist.id} id={playlist.id} variants={itemVariants}>
               <h3 className="font-headline text-3xl font-bold mb-8 text-primary italic">{playlist.title}</h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
                 {playlist.videos.map((video) => (
