@@ -60,7 +60,7 @@ const HeroSection = () => {
         color: "#87CEEB",
         distance: 150,
         enable: true,
-        opacity: 0.2,
+        opacity: 0.4,
         width: 1,
       },
       move: {
@@ -81,13 +81,13 @@ const HeroSection = () => {
         value: 80,
       },
       opacity: {
-        value: 0.2,
+        value: 0.5,
       },
       shape: {
         type: "circle",
       },
       size: {
-        value: { min: 1, max: 3 },
+        value: { min: 1, max: 5 },
       },
     },
     detectRetina: true,
@@ -96,8 +96,8 @@ const HeroSection = () => {
 
   const intro = "Hello, I'm".split("");
   const name = "MisterMarkGee".split("");
-  const subtitleLine1 = "a videographer • producer • writer •".split("");
-  const subtitleLine2 = "and artist manager".split("");
+  const subtitleLine1 = "a videographer • producer • writer".split("");
+  const subtitleLine2 = "podcaster • and artist manager".split("");
   const subText = "Digital witnessing through creative media.".split("");
 
   const totalIntroDuration = intro.length * 0.15 + 0.5;
