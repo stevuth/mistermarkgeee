@@ -23,7 +23,7 @@ type Playlist = {
 const playlists: Playlist[] = [
   {
     id: "pl2",
-    title: "Ideologies",
+    title: "Ideologees",
     videos: [
       { id: "v5", title: "The Rise of CHH: A Documentary", thumbnailUrl: "https://img.youtube.com/vi/T-hE2zAp5b4/hqdefault.jpg", videoId: "T-hE2zAp5b4" },
       { id: "v6", title: "Behind the Mic: Artist Spotlight", thumbnailUrl: "https://img.youtube.com/vi/JsljCn-dKgs/hqdefault.jpg", videoId: "JsljCn-dKgs" },
@@ -129,7 +129,7 @@ const PortfolioSection = () => {
                     <div className="absolute inset-0 p-4 flex flex-col justify-end">
                       {/* Title removed for cleaner look */}
                     </div>
-                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="absolute inset-0 flex items-center justify-center opacity-70 group-hover:opacity-100 transition-opacity duration-300">
                       <PlayCircle className="w-16 h-16 text-white/70 group-hover:scale-110 transition-all" />
                     </div>
                     <div className="absolute inset-0 rounded-lg border-2 border-transparent group-hover:border-primary group-hover:shadow-primary/50 group-hover:shadow-[0_0_20px] transition-all duration-300" />
