@@ -1,10 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { X } from "lucide-react";
+import { X, Youtube, Instagram, Linkedin } from "lucide-react";
 import Link from "next/link";
 import { Button } from "../ui/button";
-import AnimatedGradientText from "../ui/animated-gradient-text";
 
 type MobileMenuProps = {
   closeMenu: () => void;
@@ -27,6 +26,12 @@ const navItems = [
   { name: "Expertise", href: "#roles" },
   { name: "Works", href: "#works" },
   { name: "Contact", href: "#contact" },
+];
+
+const socialLinks = [
+  { icon: Youtube, href: "https://www.youtube.com/@mistermarkgee" },
+  { icon: Instagram, href: "https://www.instagram.com/mistermarkgee?igsh=OHFoZXhwOXppdDl1&utm_source=qr" },
+  { icon: Linkedin, href: "https://www.linkedin.com/in/mark-macharia-gaturuku-a92840111/" },
 ];
 
 const MobileMenu = ({ closeMenu }: MobileMenuProps) => {
@@ -85,15 +90,20 @@ const MobileMenu = ({ closeMenu }: MobileMenuProps) => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1, transition: { delay: 0.8, duration: 0.5 } }}
       >
-        <Button
-          size="lg"
-          onClick={() => {
-            document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
-            closeMenu();
-          }}
-        >
-          <AnimatedGradientText>Let's Create Magic</AnimatedGradientText>
-        </Button>
+        <div className="flex justify-center space-x-6">
+          {socialLinks.map((social, index) => (
+            <motion.a
+              key={index}
+              href={social.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ y: -5, scale: 1.1 }}
+              className="text-foreground/60 hover:text-foreground"
+            >
+              <social.icon className="w-8 h-8" />
+            </motion.a>
+          ))}
+        </div>
       </motion.div>
     </motion.div>
   );
