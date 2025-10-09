@@ -67,19 +67,19 @@ const AboutSection = () => {
                             transition={{ duration: 0.5, delay: 0.4 }}
                             viewport={{ once: true }}
                         >
-                            <Link href="https://www.instagram.com/mistermarkgee?igsh=OHFoZXhwOXppdDl1&utm_source=qr" target="_blank" rel="noopener noreferrer" className="group inline-flex items-center gap-4 bg-secondary/30 p-3 rounded-full hover:bg-secondary/60 transition-colors">
+                            <Link href="https://www.instagram.com/mistermarkgee?igsh=OHFoZXhwOXppdDl1&utm_source=qr" target="_blank" rel="noopener noreferrer" className="group inline-flex items-center gap-6 bg-secondary/30 p-4 rounded-full hover:bg-secondary/60 transition-colors">
                                 <Image 
                                     src="/instagram profile.png"
                                     alt="MisterMarkGee Instagram"
-                                    width={64}
-                                    height={64}
+                                    width={80}
+                                    height={80}
                                     className="rounded-full border-2 border-primary/50 group-hover:border-primary transition-all"
                                 />
                                 <div className="text-left">
-                                    <p className="font-bold text-foreground">Follow on Instagram</p>
-                                    <p className="text-sm text-foreground/70">@mistermarkgee</p>
+                                    <p className="font-bold text-lg text-foreground">Follow on Instagram</p>
+                                    <p className="text-base text-foreground/70">@mistermarkgee</p>
                                 </div>
-                                <Instagram className="h-6 w-6 text-primary/80 group-hover:translate-x-1 transition-transform" />
+                                <Instagram className="h-8 w-8 text-primary/80 group-hover:translate-x-1 transition-transform" />
                             </Link>
                         </motion.div>
                     </motion.div>
