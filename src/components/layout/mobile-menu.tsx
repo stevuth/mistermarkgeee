@@ -35,6 +35,12 @@ const socialLinks = [
 ];
 
 const MobileMenu = ({ closeMenu }: MobileMenuProps) => {
+
+  const handleScrollTo = (id: string) => {
+    closeMenu();
+    document.querySelector(id)?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
     <motion.div
       variants={menuVariants}
@@ -74,13 +80,13 @@ const MobileMenu = ({ closeMenu }: MobileMenuProps) => {
         >
           {navItems.map((item) => (
             <motion.li key={item.name} variants={itemVariants}>
-              <Link
+              <a
                 href={item.href}
-                className="font-headline text-3xl font-medium text-foreground/80 hover:text-foreground transition-colors"
-                onClick={closeMenu}
+                className="font-headline text-3xl font-medium text-foreground/80 hover:text-foreground transition-colors cursor-pointer"
+                onClick={(e) => { e.preventDefault(); handleScrollTo(item.href);}}
               >
                 {item.name}
-              </Link>
+              </a>
             </motion.li>
           ))}
         </motion.ul>

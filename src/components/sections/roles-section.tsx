@@ -1,4 +1,3 @@
-
 "use client";
 
 import { motion } from "framer-motion";
@@ -77,6 +76,11 @@ const panelVariants = {
 };
 
 const RolesSection = () => {
+
+  const handleScrollTo = (id: string) => {
+    document.querySelector(id)?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
     <section id="roles" className="py-24 sm:py-32 bg-secondary/20 text-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -134,15 +138,14 @@ const RolesSection = () => {
                 </p>
                 
                 {role.title !== 'Artist Manager' && (
-                  <Link href={role.link}>
-                    <Button 
-                        variant="outline" 
-                        size="sm"
-                        className="mt-6 bg-transparent text-white border-white/50 hover:bg-white hover:text-background font-bold shadow-[0_0_15px_rgba(255,255,255,0.2)] hover:shadow-[0_0_25px_rgba(255,255,255,0.5)] transition-all duration-300"
-                    >
-                        View My Work <ArrowRight className="ml-2 h-4 w-4" />
-                    </Button>
-                  </Link>
+                  <Button 
+                      variant="outline" 
+                      size="sm"
+                      onClick={() => handleScrollTo(role.link)}
+                      className="mt-6 bg-transparent text-white border-white/50 hover:bg-white hover:text-background font-bold shadow-[0_0_15px_rgba(255,255,255,0.2)] hover:shadow-[0_0_25px_rgba(255,255,255,0.5)] transition-all duration-300"
+                  >
+                      View My Work <ArrowRight className="ml-2 h-4 w-4" />
+                  </Button>
                 )}
               </div>
             </motion.div>

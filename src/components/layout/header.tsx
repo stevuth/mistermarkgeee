@@ -27,6 +27,10 @@ const Header = () => {
     { name: "Contact", href: "#contact" },
   ];
 
+  const handleScrollTo = (id: string) => {
+    document.querySelector(id)?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
     <>
       <header className={cn(
@@ -35,14 +39,19 @@ const Header = () => {
       )}>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-20">
-            <Link href="#home" className="text-foreground">
+            <Link href="/" onClick={(e) => { e.preventDefault(); handleScrollTo('#home');}} className="text-foreground">
               <Palette className="h-8 w-8" />
             </Link>
             <nav className="hidden md:flex items-center space-x-10">
               {navLinks.map(link => (
-                <Link key={link.name} href={link.href} className="text-base font-medium text-foreground/80 hover:text-foreground transition-colors hover:scale-105">
+                <a 
+                  key={link.name} 
+                  href={link.href} 
+                  onClick={(e) => { e.preventDefault(); handleScrollTo(link.href);}}
+                  className="text-base font-medium text-foreground/80 hover:text-foreground transition-colors hover:scale-105 cursor-pointer"
+                >
                   {link.name}
-                </Link>
+                </a>
               ))}
             </nav>
             <div className="md:hidden">

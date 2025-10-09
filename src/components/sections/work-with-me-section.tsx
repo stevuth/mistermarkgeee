@@ -7,6 +7,9 @@ import { ArrowRight } from "lucide-react";
 import AnimatedGradientText from "../ui/animated-gradient-text";
 
 const WorkWithMeSection = () => {
+  const handleScrollTo = (id: string) => {
+    document.querySelector(id)?.scrollIntoView({ behavior: 'smooth' });
+  };
   return (
     <section id="work-with-me" className="py-24 sm:py-32 bg-background relative overflow-hidden">
       <div className="absolute inset-0 z-0 animated-gradient opacity-10" />
@@ -25,12 +28,10 @@ const WorkWithMeSection = () => {
             Whether you have a video project, need artist management, or want to collaborate on content, I'm here to help bring your vision to life.
           </p>
           <div className="mt-10">
-            <Link href="#contact">
-              <Button size="lg" className="animated-gradient text-white font-bold">
-                Let's Talk
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
-            </Link>
+            <Button size="lg" className="animated-gradient text-white font-bold" onClick={() => handleScrollTo('#contact')}>
+              Let's Talk
+              <ArrowRight className="ml-2 h-5 w-5" />
+            </Button>
           </div>
         </motion.div>
       </div>
