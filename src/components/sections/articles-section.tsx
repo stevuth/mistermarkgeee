@@ -182,6 +182,53 @@ const articles: Article[] = [
       <p class="mt-6 text-sm text-foreground/50">Original article published on <a href="https://holyculture.net/read/wag-1-uk-laura-ehio-gives-us-afro-fused-rb-namesbliss-melvillous-are-killin-it-and-much-more/" target="_blank" rel="noopener noreferrer" class="underline hover:text-primary">Holy Culture</a>.</p>
     `
   },
+  {
+    title: "WAG-1 UK Is Back- Sizzling Summer Events, Awesome Artists, And Great Bangers For Your Playlist!",
+    description: "An update on UK Christian Hip-Hop, featuring Still Shadey, Natalie Okri, Reblah, and Jo Joey.",
+    imageUrl: "/article 5.jpg",
+    imageHint: "summer music",
+    link: "https://holyculture.net/read/wag-1-uk-is-back-sizzling-summer-events-awesome-artists-and-great-bangers-for-your-playlist/",
+    content: `
+      <h3 class="font-bold text-2xl mb-2 text-primary">WAG-1 UK Is Back- Sizzling Summer Events, Awesome Artists, And Great Bangers For Your Playlist!</h3>
+      <p class="text-sm text-foreground/60 mb-6">Published on August 1, 2024</p>
+      <p class="mb-4">Wag1 family, it’s your super creative kid, Mister Mark Gee!</p>
+      <p class="mb-4">I am back with a summer sizzler of updates on what’s happening in Christian urban music on the small island across The Pond.</p>
+      <p class="mb-4">It’s summertime; the sun’s out, so that means exciting events, coupled with great summer bangers and artists you should be looking out for.</p>
+      <p class="mb-4">Still Shadey is a rapper making waves in the UK with an upcoming release with a well-loved US rapper.</p>
+      <p class="mb-4">I will introduce you to Britain’s Got Talent semi-finalist and her decision to radically depart from her success as a secular Afrobeats artist. Recommend 2 South London rappers if gully boom-bap lyricism is your thing.</p>
+      <p class="mb-4">Let’s go!</p>
+
+      <h4 class="font-bold text-xl my-4 text-primary">Still Shadey</h4>
+      <p class="mb-4">Still Shadey, the Mobo Award-winning rapper, needs no introduction. He is an artist who Rapzilla has recognized for making waves and broadening his appeal beyond the Christian Hip-Hop space. The Mobo Awards are as prolific an alternative to the VMA Awards or Grammys in the United States. So, winning such an award among many means, he must be doing something amazing.</p>
+      <p class="mb-4">Born Luke Peters in the inner city of London was caught up in the trappings of gang street culture but is now a Christian– wants to be a living example using his gifting to inspire the youth to choose a positive path. The song “Mirror Mirror” exemplifies this combined with an epic cinematic music video. The rapper takes from Hip Hop Legend Nas and asks the young audience to repeat the words “I know I can be who I wanna be.”</p>
+      <p class="mb-4">It is a good guess that the impulse to make such a song resulted from his new status as a husband and father, who desired to make a difference in his community.</p>
+      <p class="mb-4">Still Shadey is revving things up with a recent social post announcing an upcoming collab track with the legendary Lecrae.</p>
+
+      <h4 class="font-bold text-xl my-4 text-primary">Natalie Okri Says Goodbye To The World</h4>
+      <p class="mb-4">The Lord Jesus proclaimed that we must bid farewell to the world to follow him and count the cost while considering this decision. The above-stated artist who has made waves in secular music has now shifted and decided to serve Christ.</p>
+      <p class="mb-4">Natalie gained prominence in the Afrobeat genre years after becoming a semi-finalist on Britain’s Got Talent at a very young tender age.</p>
+      <p class="mb-4">In recent social posts she admitted to misleading people can be found constantly warning her followers of the kind of music they consume and to avoid its mind-corrupting messaging.</p>
+      <p class="mb-4">The artist has made a public departure from pursuing the world, as evidenced in the shift of her latest song, a wonderful Afrobeats infused with the message of hope.</p>
+
+      <h4 class="font-bold text-xl my-4 text-primary">For Those That Love Gully Lyrics Here’s Reblah and Jo Joey</h4>
+      <p class="mb-4">Drill and Trap might be trending, but boom-bap lyrics will always have their place. Jo Joey, a South Londoner and friend of Still Shadey, is a great rapper from the hood but saved. If you are into the likes of Datin, Will Cata, and C4 Crotona, you know that gully going hard on the beat waxing lyrical while at the same time repping Jesus? Yes, that’s what this artist is all about.</p>
+      <p class="mb-4">These are two fellas like Still Shadey whom the Lord has transformed by the gospel. They now employ their gifting to testify of the grace of Christ while still going hard on the beat, as is expected for any emcee anywhere.</p>
+      <p class="mb-4">Reblah released a recent album he states was given by the Lord through a dream. In the same reel, he makes it explicitly clear how he regards himself as a minister of the gospel and he intends to be a faithful witness for Jesus both on and off the mic. Listen to his latest project, Holy Impact.</p>
+
+      <h4 class="font-bold text-xl my-4 text-primary">Consider The Grace Brunch and BFTK if you’re in the UK</h4>
+      <p class="mb-4">The Grace Brunch is easily one of the best day parties to attend. Held in London, it features food, a time of fellowship, and great performances from incredible artists.</p>
+      <p class="mb-4">The summer event took place this past month; however, you can regard this as a promo for the next time. Follow them on their socials to get regular updates on what’s coming up.</p>
+      <p class="mb-4">Barz for the Kingdom or BFTK for short, led by Incredible rapper Rev J is an annual concert that features the best Christian Urban acts from genres ranging from Rap to RNB, Drill, and Reggae. The Next event will be held on August 17th.</p>
+
+      <h4 class="font-bold text-xl my-4 text-primary">Life Music Sits With Feed’em</h4>
+      <p class="mb-4">Life Music is creating a streaming App catered solely to Christian artists with better remuneration than other platforms. THE APP IS COMING OUT SOON SO WATCH THIS SPACE GUYS. In the meantime, I encourage you to follow my company Life Music on all socials (@thelifemusicapp). We have a Podcast that has featured guests from all over the world including ATL rapper Suave Colione, Konola, Dia Day, Shack Santima, Eliza King and so many more.</p>
+      <p class="mb-4">Recently, we spoke to Rapper and Creative Entrepreneur Feed’em. Born as Tracey Lenga in the Democratic of Congo, the artist narrates his life story from his encounter with witchcraft at a young age to moving to the UK, being saved and delivered, and now establishing his feet as a Grime MC and Kingdom music Champion.</p>
+      <p class="mb-4">Now married and with children, the artist knows intimately the transforming power of the gospel and has a passion to share the hope of its message by employing his grime skills to reach out to young audiences outside the four walls of the church.</p>
+      <p class="mb-4">One of his notable achievements, as well as his latest project release, The Gospel of Grime (check it out), is hosting live events and ciphers that feature other talented emcees from the UK. He also hosts live concerts with Datin and Bizzle as headliners, bringing huge crowds to such events.</p>
+      <p class="mb-4">The artist is also a youth leader with an organization with a Christian ethos, which fuels the fire of reaching the youth, who are tomorrow’s future leaders.</p>
+      <p class="mt-6 text-sm text-foreground/50">Original article published on <a href="https://holyculture.net/read/wag-1-uk-is-back-sizzling-summer-events-awesome-artists-and-great-bangers-for-your-playlist/" target="_blank" rel="noopener noreferrer" class="underline hover:text-primary">Holy Culture</a>.</p>
+    `
+  },
 ];
 
 
