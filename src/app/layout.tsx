@@ -5,17 +5,17 @@ import Header from "@/components/layout/header";
 import ScrollProgressBar from "@/components/layout/scroll-progress-bar";
 
 export const metadata: Metadata = {
-  title: 'MotionVerse - MisterMarkGee',
+  title: 'MisterMarkGee',
   description: 'The creative universe of MisterMarkGee — Content Creator, Artist Manager, Videographer, Podcaster, and Writer.',
   keywords: 'MisterMarkGee, Mark Macharia Gaturuku, content creator, artist manager, videographer, podcaster, writer, Christian hip hop, gospel music, digital witnessing',
   authors: [{ name: 'Mark Macharia Gaturuku' }],
   creator: 'MisterMarkGee',
   publisher: 'MisterMarkGee',
   openGraph: {
-    title: 'MotionVerse - The Creative Universe of MisterMarkGee',
+    title: 'MisterMarkGee - The Creative Universe of MisterMarkGee',
     description: 'Digital witnessing through creative media. Explore the work of MisterMarkGee, a content creator, artist manager, videographer, podcaster, and writer.',
     url: 'https://mistermarkgeee.web.app',
-    siteName: 'MotionVerse',
+    siteName: 'MisterMarkGee',
     images: [
       {
         url: 'https://mistermarkgeee.web.app/og-image.png',
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'MotionVerse - The Creative Universe of MisterMarkGee',
+    title: 'MisterMarkGee - The Creative Universe of MisterMarkGee',
     description: 'Digital witnessing through creative media. Explore the work of MisterMarkGee.',
     creator: '@mistermarkgee',
     images: ['https://mistermarkgeee.web.app/og-image.png'],
