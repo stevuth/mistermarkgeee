@@ -146,6 +146,10 @@ const ContactSection = () => {
             </motion.a>
           ))}
         </motion.div>
+
+        <div className="text-center mt-16 text-sm text-foreground/50">
+          Developed by <a href="https://stevuthtech.com" target="_blank" rel="noopener noreferrer" className="underline hover:text-primary">Stevuth Tech</a>
+        </div>
       </div>
     </section>
   );
