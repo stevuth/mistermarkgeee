@@ -19,9 +19,9 @@ const formSchema = z.object({
 });
 
 const socialLinks = [
-  { icon: Youtube, href: "#" },
-  { icon: Instagram, href: "#" },
-  { icon: Linkedin, href: "#" },
+  { icon: Youtube, href: "https://www.youtube.com/@mistermarkgee" },
+  { icon: Instagram, href: "https://www.instagram.com/mistermarkgee?igsh=OHFoZXhwOXppdDl1&utm_source=qr" },
+  { icon: Linkedin, href: "https://www.linkedin.com/in/mark-macharia-gaturuku-a92840111/" },
 ];
 
 const ContactSection = () => {
