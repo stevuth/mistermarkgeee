@@ -15,7 +15,7 @@ const ArticlesSection = () => {
   const featuredArticle = {
     title: "WAG1, UK: Saint CJ and Jo Joey",
     description: "A conversation with two rising stars in the UK's Christian hip hop scene, discussing their journey, faith, and the culture of gospel music.",
-    imageUrl: "https://holyculture.net/wp-content/uploads/2024/05/IMG_20240409_124119_787-1-1024x1024.jpg",
+    imageUrl: "/article 1.jpg",
     imageHint: "artists portrait",
     link: "https://holyculture.net/read/wag1-uk-saint-cj-and-jo-joey/",
     content: `
