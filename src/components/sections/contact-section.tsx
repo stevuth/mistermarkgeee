@@ -1,3 +1,4 @@
+
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -10,7 +11,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import AnimatedGradientText from "../ui/animated-gradient-text";
-import { Youtube, Instagram, Linkedin } from "lucide-react";
+import { Youtube, Instagram, Linkedin, Mail } from "lucide-react";
 
 const formSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters."),
@@ -126,11 +127,26 @@ const ContactSection = () => {
             </form>
           </Form>
         </motion.div>
+
+        <motion.div
+          className="mt-12 text-center"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1, transition: { delay: 1, duration: 1 } }}
+          viewport={{ once: true }}
+        >
+          <a
+            href="mailto:hello@mistermarkgee.com"
+            className="inline-flex items-center gap-2 text-foreground/80 hover:text-primary transition-colors"
+          >
+            <Mail className="h-5 w-5" />
+            <span>hello@mistermarkgee.com</span>
+          </a>
+        </motion.div>
         
         <motion.div 
-            className="mt-16 flex justify-center space-x-6"
+            className="mt-8 flex justify-center space-x-6"
             initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1, transition: { delay: 1, duration: 1 } }}
+            whileInView={{ opacity: 1, transition: { delay: 1.2, duration: 1 } }}
             viewport={{ once: true }}
         >
           {socialLinks.map((social, index) => (
