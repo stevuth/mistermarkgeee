@@ -35,9 +35,9 @@ const playlists: Playlist[] = [
     id: "pl3",
     title: "The Prosperous Soul",
     videos: [
-        { id: "v9", title: "Grace upon grace", thumbnailUrl: "https://img.youtube.com/vi/3ulTF-Fgc64/hqdefault.jpg", videoId: "3ulTF-Fgc64" },
-        { id: "v10", title: "Still hopeful", thumbnailUrl: "https://img.youtube.com/vi/69Wv3XACVbk/hqdefault.jpg", videoId: "69Wv3XACVbk" },
-        { id: "v11", title: "In his presence", thumbnailUrl: "https://img.youtube.com/vi/CAXGcHETX6M/hqdefault.jpg", videoId: "CAXGcHETX6M" },
+        { id: "v9", title: "Grace Upon Grace", thumbnailUrl: "https://img.youtube.com/vi/3ulTF-Fgc64/hqdefault.jpg", videoId: "3ulTF-Fgc64" },
+        { id: "v10", title: "Still Hopeful", thumbnailUrl: "https://img.youtube.com/vi/69Wv3XACVbk/hqdefault.jpg", videoId: "69Wv3XACVbk" },
+        { id: "v11", title: "In His Presence", thumbnailUrl: "https://img.youtube.com/vi/CAXGcHETX6M/hqdefault.jpg", videoId: "CAXGcHETX6M" },
     ]
   },
   {

@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   publisher: 'MisterMarkGee',
   openGraph: {
     title: 'MisterMarkGee - The Creative Universe of MisterMarkGee',
-    description: 'Digital witnessing through creative media. Explore the work of MisterMarkGee, a content creator, artist manager, videographer, podcaster, and writer.',
+    description: 'Digital witnessing through creative media. Explore the work of MisterMarkGee, a Content Creator, Artist Manager, Videographer, Podcaster, and Writer.',
     url: 'https://mistermarkgeee.web.app',
     siteName: 'MisterMarkGee',
     images: [

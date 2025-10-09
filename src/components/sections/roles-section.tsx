@@ -49,7 +49,7 @@ const roles = [
     icon: Podcast,
     title: "Podcaster",
     tagline: "Spreading hope through sound.",
-    description: "You’ll often find me on podcasts diving into conversations about politics, culture, and Christian living—promoting a Christ-centred perspective and a vision of human flourishing for everyone. As a strong advocate for gospel and Christian hip hop music, I’m passionate about uplifting artists and platforms that use creativity to spread hope and truth through sound.",
+    description: "You’ll often find me on podcasts diving into conversations about politics, culture, and Christian living—promoting a Christ-centered perspective and a vision of human flourishing for everyone. As a strong advocate for Gospel and Christian Hip Hop music, I’m passionate about uplifting artists and platforms that use creativity to spread hope and truth through sound.",
     imageUrl: "/podcaster.jpg?v=2",
     imageHint: "podcast microphone",
     link: "#pl2"

@@ -96,8 +96,8 @@ const HeroSection = () => {
 
   const intro = "Hello, I'm".split("");
   const name = "MisterMarkGee".split("");
-  const subtitleLine1 = "a videographer • producer • writer".split("");
-  const subtitleLine2 = "podcaster • and artist manager".split("");
+  const subtitleLine1 = "A Videographer • Producer • Writer".split("");
+  const subtitleLine2 = "Podcaster • and Artist Manager".split("");
   const subText = "Digital witnessing through creative media.".split("");
 
   const totalIntroDuration = intro.length * 0.15 + 0.5;

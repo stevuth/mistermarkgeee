@@ -8,7 +8,7 @@ import { useRef } from "react";
 import { Badge } from "@/components/ui/badge";
 import { ArrowRight, Instagram } from "lucide-react";
 
-const bioText = "A digital witness to the gospel message, Mark Macharia Gaturuku (aka MisterMarkGee) is a Kenyan-born, British content creator based in the Midlands. A devoted Christian, husband, and father of two sons, Mark works as a videographer, producer, writer, and artist manager. He uses media to uplift gospel and Christian hip hop culture, blending creativity and ministry through digital witnessing, storytelling, and leadership across platforms like The Life Music App, Holy Culture, and other gospel initiatives.";
+const bioText = "A digital witness to the Gospel message, Mark Macharia Gaturuku (aka MisterMarkGee) is a Kenyan-born, British content creator based in the Midlands. A devoted Christian, husband, and father of two sons, Mark works as a videographer, producer, writer, and artist manager. He uses media to uplift Gospel and Christian Hip Hop culture, blending creativity and ministry through digital witnessing, storytelling, and leadership across platforms like The Life Music App, Holy Culture, and other Gospel initiatives.";
 
 const Word = ({ children, progress, range }: { children: React.ReactNode, progress: any, range: [number, number] }) => {
     const opacity = useTransform(progress, range, [0.2, 1]);
