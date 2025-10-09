@@ -10,7 +10,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import AnimatedGradientText from "../ui/animated-gradient-text";
-import { Github, Twitter, Linkedin } from "lucide-react";
+import { Youtube, Instagram, Linkedin } from "lucide-react";
 
 const formSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters."),
@@ -19,9 +19,9 @@ const formSchema = z.object({
 });
 
 const socialLinks = [
-  { icon: Twitter, href: "#" },
+  { icon: Youtube, href: "#" },
+  { icon: Instagram, href: "#" },
   { icon: Linkedin, href: "#" },
-  { icon: Github, href: "#" },
 ];
 
 const ContactSection = () => {
