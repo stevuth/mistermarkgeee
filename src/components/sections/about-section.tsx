@@ -1,9 +1,12 @@
+
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { Badge } from "@/components/ui/badge";
+import { ArrowRight, Instagram } from "lucide-react";
 
 const bioText = "A digital witness to the gospel message, Mark Macharia Gaturuku (aka MisterMarkGee) is a Kenyan-born, British content creator based in the Midlands. A devoted Christian, husband, and father of two sons, Mark works as a videographer, producer, writer, and artist manager. He uses media to uplift gospel and Christian hip hop culture, blending creativity and ministry through digital witnessing, storytelling, and leadership across platforms like The Life Music App, Holy Culture, and other gospel initiatives.";
 
@@ -57,6 +60,28 @@ const AboutSection = () => {
                                 return <Word key={i} progress={scrollYProgress} range={[start, end]}>{word}{' '}</Word>
                             })}
                         </p>
+                        <motion.div 
+                            className="mt-8"
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.5, delay: 0.4 }}
+                            viewport={{ once: true }}
+                        >
+                            <Link href="https://www.instagram.com/mistermarkgee?igsh=OHFoZXhwOXppdDl1&utm_source=qr" target="_blank" rel="noopener noreferrer" className="group inline-flex items-center gap-4 bg-secondary/30 p-3 rounded-full hover:bg-secondary/60 transition-colors">
+                                <Image 
+                                    src="/instagram profile.png"
+                                    alt="MisterMarkGee Instagram"
+                                    width={64}
+                                    height={64}
+                                    className="rounded-full border-2 border-primary/50 group-hover:border-primary transition-all"
+                                />
+                                <div className="text-left">
+                                    <p className="font-bold text-foreground">Follow on Instagram</p>
+                                    <p className="text-sm text-foreground/70">@mistermarkgee</p>
+                                </div>
+                                <Instagram className="h-6 w-6 text-primary/80 group-hover:translate-x-1 transition-transform" />
+                            </Link>
+                        </motion.div>
                     </motion.div>
                     <div className="relative h-[500px] lg:h-[600px] rounded-lg overflow-hidden">
                         <div
