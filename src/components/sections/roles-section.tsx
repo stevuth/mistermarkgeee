@@ -133,15 +133,17 @@ const RolesSection = () => {
                   {role.description}
                 </p>
                 
-                <Link href={role.link}>
-                  <Button 
-                      variant="outline" 
-                      size="sm"
-                      className="mt-6 bg-transparent text-white border-white/50 hover:bg-white hover:text-background font-bold shadow-[0_0_15px_rgba(255,255,255,0.2)] hover:shadow-[0_0_25px_rgba(255,255,255,0.5)] transition-all duration-300"
-                  >
-                      View My Work <ArrowRight className="ml-2 h-4 w-4" />
-                  </Button>
-                </Link>
+                {role.title !== 'Artist Manager' && (
+                  <Link href={role.link}>
+                    <Button 
+                        variant="outline" 
+                        size="sm"
+                        className="mt-6 bg-transparent text-white border-white/50 hover:bg-white hover:text-background font-bold shadow-[0_0_15px_rgba(255,255,255,0.2)] hover:shadow-[0_0_25px_rgba(255,255,255,0.5)] transition-all duration-300"
+                    >
+                        View My Work <ArrowRight className="ml-2 h-4 w-4" />
+                    </Button>
+                  </Link>
+                )}
               </div>
             </motion.div>
           ))}
