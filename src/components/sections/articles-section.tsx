@@ -89,6 +89,42 @@ const articles: Article[] = [
       <p class="mt-6 text-sm text-foreground/50">Original article published on <a href="https://holyculture.net/read/whats-happening-in-chh-across-the-pond-with-wag1-uk-2/" target="_blank" rel="noopener noreferrer" class="underline hover:text-primary">Holy Culture</a>.</p>
     `
   },
+  {
+    title: "WAG 1 UK: The Legend Of Roger Moore, J1W and The Return of Collistar",
+    description: "An installment of the Wag1 UK article series giving you the info on what you need to know about what is going on in Christian Hip Hop within the British Isles.",
+    imageUrl: "/article 3.jpg",
+    imageHint: "uk music",
+    link: "https://holyculture.net/read/wag-1-uk-the-legend-of-roger-moore-j1w-and-the-return-of-collistar/",
+    content: `
+      <h3 class="font-bold text-2xl mb-2 text-primary">WAG 1 UK: The Legend Of Roger Moore, J1W and The Return of Collistar</h3>
+      <p class="text-sm text-foreground/60 mb-6">Published on May 8, 2024</p>
+      <p class="mb-4">We are back with yet another installment of the Wag1 UK article series giving you the info on what you need to know about what is going on in Christian Hip Hop within the British Isles.</p>
+      
+      <h4 class="font-bold text-xl my-4 text-primary">Life Music Sits Down With Roger Moore</h4>
+      <p class="mb-4">As much as we like to honor those in the limelight it is just as important to honor the legends who make things happen behind the scenes. Roger is responsible for bringing Lecrae, Da Truth, Trip Lee, and Lisa Mclendon among other great artists to cities around the UK.</p>
+      <p class="mb-4">This has led to a strong network among Christian rappers from both the US and the UK.</p>
+      <p class="mb-4">The most notable example of this is the prolific “Don’t Waste Your Life” by Lecrae which features UK CHH heavyweight Dwayne Tryumf.</p>
+      <p class="mb-4">Roger, the visionary behind the GL live concerts, deserves credit and is an inspirational figure in Christian music.</p>
+      <p class="mb-4">He is a gentleman worth giving flowers to while he can still smell them.</p>
+      <p class="mb-4">Roger is the CEO of Affinity Xtra Radio, which champions gospel music of black origin. He is also the Director of the Gospel Music Industry Alliance in the UK and together with the organization RSL, Gospel Music now has recognized accreditation and rightly deserves considering the genre’s influence across the whole music landscape globally.</p>
+
+      <h4 class="font-bold text-xl my-4 text-primary">Joshuah Wiehahn aka J1W Wins the Latest “Weight or Wait” Competition.</h4>
+      <p class="mb-4">The UK-based producer has won the latest competition “Weight or weight”. It is a credit to Holy Culture for giving voice to its fanbase for feedback and encouraging artistic excellence both for artists and producers.</p>
+      <p class="mb-4">The 18-year-old is an amazing producer who has worked with the likes of Limoblaze, and Dru Bex Reblah among other great creatives.</p>
+      <p class="mb-4">The meaning behind his artist’s name is based on the truth that Jesus is the only way to the Father, that there is just 1 way.</p>
+      <p class="mb-4">What is amazing about him is the strides he has made in his relatively young age and his ability to work with artists beyond the UK borders. Furthermore, his work shows that he has his pulse on what characterizes a great beat people vibe to and compliments the artists he works alongside.</p>
+      <p class="mb-4">He is one creative person to watch. If at age 18 he has achieved so much then the future looks very bright for him as he looks ahead.</p>
+
+      <h4 class="font-bold text-xl my-4 text-primary">Collistar Is Back</h4>
+      <p class="mb-4">Firstly a reason to love this emcee is the East London “Cockney” Accent. If you have watched any London gangster films like Snatch starring Jason Statham then you will know exactly what I mean.</p>
+      <p class="mb-4">The people who have this accent are known for their rhyming slang as well as back slang where one says the word backward: for example you would say ‘yob’ in place of the word ‘boy’. The significance of this is that the word yob is now part of formal spoken language and politicians have been found to use the term to describe youth involved in criminal and anti-social behavior.</p>
+      <p class="mb-4">After a hiatus, the emcee is back and dropping tunes leaving listeners wanting more from his vault.</p>
+      <p class="mb-4">Collistar is known for his combination of social commentary, and life experiences whilst pointing people to the hope of the gospel. His most streamed song is titled “1952” which is an example of this.</p>
+
+      <p class="mt-6 text-sm text-foreground/50">Life Music is creating a streaming App catered solely to Christian artists with better remuneration than other platforms. THE APP IS COMING OUT SOON SO WATCH THIS SPACE GUYS. In the meantime, I encourage you to follow my company Life Music on all socials (@thelifemusicapp). We have a Podcast that has featured guests from all over the world including ATL rapper Suave Colione. You can find the episodes on our YouTube channel.</p>
+      <p class="mt-6 text-sm text-foreground/50">Original article published on <a href="https://holyculture.net/read/wag-1-uk-the-legend-of-roger-moore-j1w-and-the-return-of-collistar/" target="_blank" rel="noopener noreferrer" class="underline hover:text-primary">Holy Culture</a>.</p>
+    `
+  },
 ];
 
 
@@ -115,7 +151,7 @@ const ArticlesSection = () => {
             </p>
           </motion.div>
 
-          <div className="mt-16 grid gap-12 max-w-5xl mx-auto md:grid-cols-2 lg:gap-16">
+          <div className="mt-16 grid gap-12 max-w-5xl mx-auto md:grid-cols-2 lg:max-w-none lg:grid-cols-3 lg:gap-8">
             {articles.map((article, index) => (
               <motion.div
                 key={article.title}
@@ -177,5 +213,3 @@ const ArticlesSection = () => {
 };
 
 export default ArticlesSection;
-
-    
