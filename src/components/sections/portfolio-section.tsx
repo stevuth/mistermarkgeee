@@ -23,6 +23,13 @@ type Playlist = {
 
 const playlists: Playlist[] = [
   {
+    id: "showcase",
+    title: "Showreel",
+    videos: [
+      { id: "v_showreel", title: "MisterMarkGee Showreel", thumbnailUrl: "https://img.youtube.com/vi/FosiLgBvNWo/hqdefault.jpg", videoId: "FosiLgBvNWo" },
+    ]
+  },
+  {
     id: "pl2",
     title: "Ideologees",
     videos: [
