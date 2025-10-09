@@ -15,7 +15,7 @@ const roles = [
     description: "From concept to final cut, I produce cinematic videos that resonate with audiences and deliver powerful messages.",
     imageUrl: "/videographer.jpg",
     imageHint: "videography cinematic",
-    link: "#works"
+    link: "#showcase"
   },
   {
     icon: Music,
