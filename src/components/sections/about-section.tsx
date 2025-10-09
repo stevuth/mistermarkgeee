@@ -63,7 +63,7 @@ const AboutSection = () => {
                             className="absolute inset-0"
                         >
                             <Image
-                                src="/profile picture.png"
+                                src="/profile picture.png?v=2"
                                 alt="A portrait of MisterMarkGee"
                                 fill
                                 sizes="(max-width: 1024px) 100vw, 50vw"
