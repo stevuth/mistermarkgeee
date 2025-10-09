@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Video, UserCheck, PenSquare, Music, ArrowRight } from "lucide-react";
+import { Video, UserCheck, PenSquare, Music, ArrowRight, Podcast } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "../ui/button";
 import Image from "next/image";
@@ -38,6 +38,14 @@ const roles = [
     description: "I partner with artists to develop their brand, strategize their career path, and create opportunities for growth.",
     imageUrl: "/Artist Manager.jpg",
     imageHint: "artist portrait",
+  },
+  {
+    icon: Podcast,
+    title: "Podcaster",
+    tagline: "Spreading hope through sound.",
+    description: "You’ll often find me on podcasts diving into conversations about politics, culture, and Christian living—promoting a Christ-centred perspective and a vision of human flourishing for everyone. As a strong advocate for gospel and Christian hip hop music, I’m passionate about uplifting artists and platforms that use creativity to spread hope and truth through sound.",
+    imageUrl: "/podcaster.jpg",
+    imageHint: "podcast microphone",
   },
 ];
 
@@ -88,7 +96,7 @@ const RolesSection = () => {
         </div>
 
         <motion.div 
-          className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
+          className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -104,7 +112,7 @@ const RolesSection = () => {
                 src={role.imageUrl}
                 alt={role.title}
                 fill
-                sizes="(max-width: 767px) 100vw, (max-width: 1023px) 50vw, 25vw"
+                sizes="(max-width: 767px) 100vw, (max-width: 1023px) 50vw, 20vw"
                 className="object-cover absolute inset-0 -z-20 transition-transform duration-500 ease-in-out group-hover:scale-105"
                 data-ai-hint={role.imageHint}
               />
