@@ -125,6 +125,63 @@ const articles: Article[] = [
       <p class="mt-6 text-sm text-foreground/50">Original article published on <a href="https://holyculture.net/read/wag-1-uk-the-legend-of-roger-moore-j1w-and-the-return-of-collistar/" target="_blank" rel="noopener noreferrer" class="underline hover:text-primary">Holy Culture</a>.</p>
     `
   },
+  {
+    title: "WAG 1 UK: Laura Ehio, Namesbliss & Melvillous",
+    description: "An update on UK Christian Hip-Hop, highlighting soulful singers, dope emcees, and talented producers.",
+    imageUrl: "/article 4.jpg",
+    imageHint: "uk music artist",
+    link: "https://holyculture.net/read/wag-1-uk-laura-ehio-gives-us-afro-fused-rb-namesbliss-melvillous-are-killin-it-and-much-more/",
+    content: `
+      <h3 class="font-bold text-2xl mb-2 text-primary">WAG 1 UK: Laura Ehio Gives Us Afro-fused R&B, Namesbliss & Melvillous Are Killin’ It and Much More.</h3>
+      <p class="text-sm text-foreground/60 mb-6">Published on May 21, 2024</p>
+      <p class="mb-4">Wag1 my people! It’s the Super Creative Kid Mister Mark Gee again giving you another lowdown on what is going on across the pond. Here intending to spotlight great creatives you should know yet again!</p>
+      <p class="mb-4">Today I highlight wonderful singers with amazing vocalists from different backgrounds who complement each other well, 2 dope emcees killing it and gaining appeal beyond the CHH scene and getting nods from many regardless of race, color, or creed. I’ll also introduce you to a wonderful RnB artist and producer who boasts more than millions of streams.</p>
+      <p class="mb-4">He was also featured in the Life Music spotlight this week, and Leslie Skye, an amazing rapper with an incredible testimony shedding light on the dangers of the music industry.</p>
+      
+      <h4 class="font-bold text-xl my-4 text-primary">Laura Ehio drops an Afro-fused R&B summer Hit “See Me” ft Becca Folkes</h4>
+      <p class="mb-4">Laura is an amazing soulful artist you should know. She is no stranger to streaming platforms. One of her last singles “Pompous’ has gained over a million plays on Spotify. The artist boasts of mixed heritage and is a London-based British-Irish Artist of Nigerian heritage.  Before gaining prominence as an artist, she earned a reputation as a vocal coach and her songs show evidence that she aims for excellence in her craft.</p>
+      <p class="mb-4">“See Me” features Becca, an amazing worship leader known for her wonderful vocals and her passion for worship as evidenced when she leads congregations in song during church services, conferences, and other events.</p>
+      <p class="mb-4">Like Laura, Becca has released a song called “Daily” which has gained over a million streams.</p>
+      <p class="mb-4">Her vocal range is no surprise when you understand her COGIC church background.</p>
+      <p class="mb-4">The Church of God in Christ ( hence the name COGIC) is a prolific Pentecostal denomination with its founding based in the United States and known for its contribution to Gospel music on a global scale.</p>
+      <p class="mb-4">She is also a member of the Manor Collective, a group of incredible worship leaders in the UK worth checking out (if you haven’t) such as Calledout Music, Tertia May, and Junior Garr.</p>
+      <p class="mb-4">What is amazing about these 2 individuals is their varied backgrounds in their development as artists.</p>
+      <p class="mb-4">On the one hand, Becca is a worship leader with her roots planted within the church context whereas Laura has experience in the industry as a vocal arranger as well as a self-taught guitarist.</p>
+      <p class="mb-4">Thus the collaboration demonstrates how good these artists are and proves that there is not just one exclusive way to chart your path to becoming an awesome artist.</p>
+      
+      <h4 class="font-bold text-xl my-4 text-primary">Namesbliss and Melvillous Are Killing it</h4>
+      <p class="mb-4">It is not foreign to us in the UK that Christian rappers are regarded as “cornballs” worldwide.</p>
+      <p class="mb-4">This is why the moment when emcees like Lecrae, Datin, and Andy Mineo are invited on reputable radio shows to drop a freestyle and show their excellence is greeted with enthusiasm.</p>
+      <p class="mb-4">The same thing is happening on this side of the pond with the 2 emcees showing their lyrical ability coupled with punchline and flows that cause even the most devout of the genre’s fans to turn their heads in amazement.</p>
+      <p class="mb-4">Namesbliss is an artist taking the UK rap scene in general by storm. Like in the US, some artists are overt and explicit in communicating the Gospel message in their lyrics. Others take the approach of speaking about life like secular artists but implicitly undergirded with Christian undertones. Namesbliss falls in the 2nd category and can gain appeal to both Christian and non-Christian audiences. His most streamed song has gained more than one million streams.</p>
+      <p class="mb-4">Melvillous is in the same lane as Namesbliss. Previously though, his first few projects fell under the first category of “rap minister” but as time spanned he took a different direction. Like his counterpart, he is fully committed to being an authentic witness for Christ in his creative pursuits.</p>
+      <p class="mb-4">So to the naysayers who still assert that Christian Hip Hop is corny, it is time you look closely and no doubt what you see will make you reconsider your evaluation.</p>
+      <p class="mb-4">These emcees are dope in their own right and kill it on the mic anywhere anytime.</p>
+      
+      <h4 class="font-bold text-xl my-4 text-primary">Life Music Sits With Leslie Skye</h4>
+      <p class="mb-4">This week Life Music had the great pleasure of sitting down with Leslie Skye.</p>
+      <p class="mb-4">Born in London, Leslie then moved to Ghana briefly at a young age which is his family’s native home country.</p>
+      <p class="mb-4">Later he relocated back to London and was attracted by the trappings of life in the Hood or “projects” as they are known in the United States. This led to him being put in prison and after deep self-evaluation, came to faith in Christ.</p>
+      <p class="mb-4">His story led him to become a student at Cambridge University, an institution held in the highest esteem like America’s Princeton. After graduation, he became a mentor to the youth in his local context offering guidance to those who like him are attracted to the “hood life” and trying to encourage them to a more wholesome path.</p>
+      <p class="mb-4">Before he entered the Christian rap scene after becoming a believer, he pursued becoming an artist in the secular music scene with his eyes set on ascending in the music industry. However, all that changed when he witnessed strange spiritual phenomena among his past associates that led him to flee to Christ.</p>
+      <p class="mb-4">He discusses this and more in part 1 of his interview in the Life Music Podcast.</p>
+      
+      <h4 class="font-bold text-xl my-4 text-primary">R&B Producer and Artist 1. Timothy On Our Artist Spotlight</h4>
+      <p class="mb-4">Gospel R&B is on the wave and it’s no different here in the UK.As part of our content plan, we spotlight great acts worthy of our appreciation, whom we would love to feature on the Life Music App and benefit from when the app is released.</p>
+      <p class="mb-4">What makes the artist great is first that he is multi-talented demonstrating competency both as a producer and artist.</p>
+      <p class="mb-4">Secondly, like other genres such as Hip Hop and Rock, it is good to see Christians coming to the RnB space and releasing songs with quality that is as good as their non-Christian counterparts.</p>
+      <p class="mb-4">He has a smooth tone to his voice and his production has a Hip-hop element, it would be no surprise if he decides to enlist a rapper to collaborate with in the future.</p>
+      <p class="mb-4">His use of social media to promote his songs has given him the ability to spread awareness about his music and has led him to gain an audience that is intrigued by what he is working on and what he will be releasing soon.</p>
+      <p class="mb-4">The song below features the amazing R&B songstress Alia Lara. This track is proof of how talented he is as a producer and artist and one worth watching out for more to come. Like the artists mentioned previously the artist is doing well on streaming platforms with the song “Moonlight” generating over 2 million streams.</p>
+      <p class="mb-4">In addition, I recommend Alia Lara’s Kingdom-minded playlist to be in the know of wonderful R&B songs from Christians in that very space.</p>
+      <p class="mb-4">The artists who create these songs are not only good for your playlists but also solely because of the quality of the music. It is also because Christian music can aid us in reassessing our focus. Too many times we can be overwhelmed by life’s pressures as well as bombardment with the pains in our world as seen in our news bulletins. Christian artists can help us set our minds on “thing above’ as Paul encourages the church in his epistles.</p>
+      <p class="mb-4">Despite the crises in our lives and problems in the world, it is wonderful to see saints taking Christ’s commission to be a light in the dark world seriously. As you read this I encourage you, whatever your gifts and talents, to do the same. In addition, don’t just read the news and fill your time on social media alone. Read the word of God to be filled with hope. The Apostle Paul to the Church in Rome writes:</p>
+      <p class="mb-4 italic">“May the God of hope fill you with all joy and peace as you trust in him, so that you may overflow with hope by the power of the Holy Spirit.” Romans 15:13</p>
+      
+      <p class="mt-6 text-sm text-foreground/50">Life Music is creating a streaming app catered solely to Christian artists with better remuneration than other platforms. THE APP IS COMING OUT SOON SO WATCH THIS SPACE GUYS. In the meantime, I encourage you to follow my company Life Music on all socials (@thelifemusicapp). We have a Podcast that has featured guests from all over the world including ATL rapper Suave Colione. You can find the episodes on our YouTube channel.</p>
+      <p class="mt-6 text-sm text-foreground/50">Original article published on <a href="https://holyculture.net/read/wag-1-uk-laura-ehio-gives-us-afro-fused-rb-namesbliss-melvillous-are-killin-it-and-much-more/" target="_blank" rel="noopener noreferrer" class="underline hover:text-primary">Holy Culture</a>.</p>
+    `
+  },
 ];
 
 
