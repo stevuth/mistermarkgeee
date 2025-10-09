@@ -52,7 +52,7 @@ const MobileMenu = ({ closeMenu }: MobileMenuProps) => {
             aria-label="Close menu"
             className="text-foreground hover:text-primary hover:bg-primary/10"
           >
-            <motion.div whileHover={{ rotate: 90 }}>
+            <motion.div whileHover={{ rotate: 90 }} transition={{ duration: 0.2 }}>
               <X className="h-6 w-6" />
             </motion.div>
           </Button>
