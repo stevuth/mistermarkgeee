@@ -18,6 +18,7 @@ const testimonials = [
   { name: "Partner 11", logo: { id: "partner-11", imageUrl: "/partner 11.jpg", description: "Partner 11 Logo" }},
   { name: "Partner 12", logo: { id: "partner-12", imageUrl: "/partner 12.jpg", description: "Partner 12 Logo" }},
   { name: "Partner 13", logo: { id: "partner-13", imageUrl: "/partner 13.jpg", description: "Partner 13 Logo" }},
+  { name: "Partner 14", logo: { id: "partner-14", imageUrl: "/partner 14.jpg", description: "Partner 14 Logo" }},
 ];
 
 const InfiniteScroller = ({
