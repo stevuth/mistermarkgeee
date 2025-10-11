@@ -1,12 +1,17 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import * as z from "zod";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Label } from "@/components/ui/label";
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import AnimatedGradientText from "../ui/animated-gradient-text";
-import { Youtube, Instagram, Linkedin, Mail } from "lucide-react";
+import { Youtube, Instagram, Linkedin, Mail, CheckCircle, AlertTriangle } from "lucide-react";
+import { useToast } from "@/hooks/use-toast";
 
 const socialLinks = [
   { icon: Youtube, href: "https://www.youtube.com/@mistermarkgee" },
@@ -14,7 +19,58 @@ const socialLinks = [
   { icon: Linkedin, href: "https://www.linkedin.com/in/mark-macharia-gaturuku-a92840111/" },
 ];
 
+const formSchema = z.object({
+  name: z.string().min(2, { message: "Name must be at least 2 characters." }),
+  email: z.string().email("Please enter a valid email address."),
+  message: z.string().min(10, { message: "Message must be at least 10 characters." }),
+});
+
 const ContactSection = () => {
+  const { toast } = useToast();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      name: "",
+      email: "",
+      message: "",
+    },
+  });
+
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    setIsSubmitting(true);
+    try {
+      const response = await fetch("https://formsubmit.co/ajax/hello@mistermarkgee.com", {
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(values),
+      });
+
+      if (response.ok) {
+        toast({
+          title: "Message Sent!",
+          description: "Your message has been submitted successfully. I'll get back to you soon.",
+        });
+        form.reset();
+      } else {
+        throw new Error("Something went wrong");
+      }
+    } catch (error) {
+      toast({
+        variant: "destructive",
+        title: "Submission Error",
+        description: "Could not send your message. Please try again later.",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  }
+
+
   const sentence = "Let’s Create Magic Together.".split("");
 
   return (
@@ -52,30 +108,54 @@ const ContactSection = () => {
           transition={{ duration: 0.8, ease: "easeOut" }}
           viewport={{ once: true }}
         >
-          <form action="https://formsubmit.co/hello@mistermarkgee.com" method="POST" className="space-y-6">
-            <div className="space-y-2">
-              <Label htmlFor="name" className="text-foreground/80">Name</Label>
-              <Input id="name" name="name" type="text" placeholder="Your Name" required className="bg-secondary/50" />
-            </div>
-            <div className="space-y-2">
-              <Label htmlFor="email" className="text-foreground/80">Email</Label>
-              <Input id="email" name="email" type="email" placeholder="your.email@example.com" required className="bg-secondary/50" />
-            </div>
-            <div className="space-y-2">
-              <Label htmlFor="message" className="text-foreground/80">Message</Label>
-              <Textarea id="message" name="message" placeholder="Tell me about your project..." required className="bg-secondary/50 min-h-[120px]" />
-            </div>
-             {/* This is a honeypot field to prevent spam */}
-            <input type="text" name="_honey" style={{display: 'none'}} />
-            {/* This disables the reCAPTCHA */}
-            <input type="hidden" name="_captcha" value="false" />
-            <input type="hidden" name="_next" value="https://mistermarkgee.com" />
-            <div className="text-center">
-              <Button type="submit" size="lg" className="w-full md:w-auto animated-gradient text-white font-bold">
-                Send Message
-              </Button>
-            </div>
-          </form>
+          <Form {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+              <FormField
+                control={form.control}
+                name="name"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="text-foreground/80">Name</FormLabel>
+                    <FormControl>
+                      <Input placeholder="Your Name" {...field} className="bg-secondary/50" />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="email"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="text-foreground/80">Email</FormLabel>
+                    <FormControl>
+                      <Input placeholder="your.email@example.com" {...field} className="bg-secondary/50" />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="message"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="text-foreground/80">Message</FormLabel>
+                    <FormControl>
+                      <Textarea placeholder="Tell me about your project..." {...field} className="bg-secondary/50 min-h-[120px]" />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <div className="text-center">
+                <Button type="submit" size="lg" className="w-full md:w-auto animated-gradient text-white font-bold" disabled={isSubmitting}>
+                  {isSubmitting ? "Sending..." : "Send Message"}
+                </Button>
+              </div>
+            </form>
+          </Form>
         </motion.div>
 
         <motion.div
