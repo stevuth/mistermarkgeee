@@ -3,7 +3,7 @@ import AboutSection from "@/components/sections/about-section";
 import RolesSection from "@/components/sections/roles-section";
 import PortfolioSection from "@/components/sections/portfolio-section";
 import TestimonialsSection from "@/components/sections/testimonials-section";
-import NewsletterSection from "@/components/sections/newsletter-section";
+import ZohoNewsletter from "@/components/sections/zoho-newsletter-section";
 import ContactSection from "@/components/sections/contact-section";
 import ArticlesSection from "@/components/sections/articles-section";
 import WorkWithMeSection from "@/components/sections/work-with-me-section";
@@ -18,7 +18,7 @@ export default function Home() {
       <ArticlesSection />
       <TestimonialsSection />
       <WorkWithMeSection />
-      <NewsletterSection />
+      <ZohoNewsletter />
       <ContactSection />
     </>
   );
