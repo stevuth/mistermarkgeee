@@ -70,6 +70,7 @@ const ContactSection = () => {
             <input type="text" name="_honey" style={{display: 'none'}} />
             {/* This disables the reCAPTCHA */}
             <input type="hidden" name="_captcha" value="false" />
+            <input type="hidden" name="_next" value="https://mistermarkgeee.web.app" />
             <div className="text-center">
               <Button type="submit" size="lg" className="w-full md:w-auto animated-gradient text-white font-bold">
                 Send Message
