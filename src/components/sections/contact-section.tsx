@@ -1,23 +1,13 @@
 
 "use client";
 
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import * as z from "zod";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { useToast } from "@/hooks/use-toast";
+import { Label } from "@/components/ui/label";
 import AnimatedGradientText from "../ui/animated-gradient-text";
 import { Youtube, Instagram, Linkedin, Mail } from "lucide-react";
-
-const formSchema = z.object({
-  name: z.string().min(2, "Name must be at least 2 characters."),
-  email: z.string().email("Please enter a valid email address."),
-  message: z.string().min(10, "Message must be at least 10 characters."),
-});
 
 const socialLinks = [
   { icon: Youtube, href: "https://www.youtube.com/@mistermarkgee" },
@@ -26,21 +16,6 @@ const socialLinks = [
 ];
 
 const ContactSection = () => {
-  const { toast } = useToast();
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
-    defaultValues: { name: "", email: "", message: "" },
-  });
-
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
-    toast({
-      title: "Message Sent!",
-      description: "Thanks for reaching out. I'll get back to you soon.",
-    });
-    form.reset();
-  }
-
   const sentence = "Let’s Create Magic Together.".split("");
 
   return (
@@ -78,54 +53,29 @@ const ContactSection = () => {
           transition={{ duration: 0.8, ease: "easeOut" }}
           viewport={{ once: true }}
         >
-          <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-              <FormField
-                control={form.control}
-                name="name"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel className="text-foreground/80">Name</FormLabel>
-                    <FormControl>
-                      <Input placeholder="Your Name" {...field} className="bg-secondary/50" />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="email"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel className="text-foreground/80">Email</FormLabel>
-                    <FormControl>
-                      <Input placeholder="your.email@example.com" {...field} className="bg-secondary/50" />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="message"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel className="text-foreground/80">Message</FormLabel>
-                    <FormControl>
-                      <Textarea placeholder="Tell me about your project..." {...field} className="bg-secondary/50 min-h-[120px]" />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <div className="text-center">
-                <Button type="submit" size="lg" className="w-full md:w-auto animated-gradient text-white font-bold">
-                  Send Message
-                </Button>
-              </div>
-            </form>
-          </Form>
+          <form action="https://formsubmit.co/hello@mistermarkgee.com" method="POST" className="space-y-6">
+            <div className="space-y-2">
+              <Label htmlFor="name" className="text-foreground/80">Name</Label>
+              <Input id="name" name="name" type="text" placeholder="Your Name" required className="bg-secondary/50" />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="email" className="text-foreground/80">Email</Label>
+              <Input id="email" name="email" type="email" placeholder="your.email@example.com" required className="bg-secondary/50" />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="message" className="text-foreground/80">Message</Label>
+              <Textarea id="message" name="message" placeholder="Tell me about your project..." required className="bg-secondary/50 min-h-[120px]" />
+            </div>
+             {/* This is a honeypot field to prevent spam */}
+            <input type="text" name="_honey" style={{display: 'none'}} />
+            {/* This disables the reCAPTCHA */}
+            <input type="hidden" name="_captcha" value="false" />
+            <div className="text-center">
+              <Button type="submit" size="lg" className="w-full md:w-auto animated-gradient text-white font-bold">
+                Send Message
+              </Button>
+            </div>
+          </form>
         </motion.div>
 
         <motion.div
