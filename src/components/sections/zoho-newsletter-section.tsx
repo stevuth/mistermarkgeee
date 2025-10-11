@@ -9,9 +9,9 @@ import Script from "next/script";
 const ZohoNewsletter = () => {
   useEffect(() => {
     const setup = () => {
-      // The 'new_optin_response_in' parameter (the '1' at the end) tells Zoho to show the success message inline.
+      // The 'new_optin_response_in' parameter (the '2' at the end) tells Zoho to show the success message in a popup.
       if (window.setupSF) {
-        window.setupSF('sf3zd95d907a9dc64455d67f198836f9f9f195613cbdc16506aebc481d94cf964603','ZCFORMVIEW',false,'light',false,'1');
+        window.setupSF('sf3zd95d907a9dc64455d67f198836f9f9f195613cbdc16506aebc481d94cf964603','ZCFORMVIEW',false,'light',false,'2');
       }
     };
 
@@ -55,8 +55,8 @@ const ZohoNewsletter = () => {
             strategy="lazyOnload"
             onLoad={() => {
               if (window.setupSF) {
-                // The '1' at the end is crucial for inline success message
-                window.setupSF('sf3zd95d907a9dc64455d67f198836f9f9f195613cbdc16506aebc481d94cf964603','ZCFORMVIEW',false,'light',false,'1');
+                // The '2' at the end is crucial for popup success message
+                window.setupSF('sf3zd95d907a9dc64455d67f198836f9f9f195613cbdc16506aebc481d94cf964603','ZCFORMVIEW',false,'light',false,'2');
               }
               window.runOnFormSubmit_sf3zd95d907a9dc64455d67f198836f9f9f195613cbdc16506aebc481d94cf964603 = function(th: any){
                 /*Before submit, if you want to trigger your event, "include your code here"*/
@@ -114,6 +114,21 @@ const ZohoNewsletter = () => {
                 font-family: 'Inter', sans-serif !important;
                 text-align: center;
             }
+            #sf3zd95d9_rest_success_message{
+                color: hsl(var(--card-foreground)) !important;
+            }
+            #sf3zd95d9_rest_success_message > a{
+                color: hsl(var(--primary)) !important;
+                text-decoration: underline;
+            }
+            #zcOptinSuccessPopup {
+                background-color: hsl(var(--background)) !important;
+                border: 1px solid hsl(var(--border)) !important;
+                box-shadow: 0 10px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1) !important;
+                color: hsl(var(--foreground)) !important;
+                border-radius: var(--radius) !important;
+            }
+
             #sf3zd95d907a9dc64455d67f198836f9f9f195613cbdc16506aebc481d94cf964603 .successicon {
               display: none !important;
             }
@@ -159,7 +174,7 @@ const ZohoNewsletter = () => {
                     <input type="hidden" id="zctd" name="zctd" value="11571d93c42662b91" />
                     <input type="hidden" id="document_domain" value="" />
                     <input type="hidden" id="zc_Url" value="zgnp-zngp.maillist-manage.com" />
-                    <input type="hidden" id="new_optin_response_in" value="1" />
+                    <input type="hidden" id="new_optin_response_in" value="2" />
                     <input type="hidden" id="duplicate_optin_response_in" value="1" />
                     <input type="hidden" name="zc_trackCode" id="zc_trackCode" value="ZCFORMVIEW" />
                     <input type="hidden" id="zc_formIx" name="zc_formIx" value="3zd95d907a9dc64455d67f198836f9f9f195613cbdc16506aebc481d94cf964603" />
@@ -170,6 +185,13 @@ const ZohoNewsletter = () => {
                   </form>
                 </div>
               </div>
+            </div>
+            <div id="zcOptinOverLay" onContextMenu={(e) => e.preventDefault()} style={{display: 'none', textAlign: 'center', backgroundColor: 'rgba(0,0,0,0.7)', zIndex: 100, position: 'fixed', width: '100%', top: 0, left: 0, height: '100vh'}}></div>
+            <div id="zcOptinSuccessPopup" style={{display: 'none', zIndex: 9999, width: '90%', maxWidth: '600px', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', position: 'fixed', padding: '1.5rem'}}>
+              <span style={{position: 'absolute', top: '-1rem', right: '-1rem', zIndex: 99999, cursor: 'pointer'}} id="closeSuccess">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-x-circle"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/></svg>
+              </span>
+              <div id="zcOptinSuccessPanel"></div>
             </div>
             <img src="https://zgnp-zngp.maillist-manage.com/images/spacer.gif" id="refImage" onLoad={(e: any) => e.target.style.display='none'} style={{display:'none'}} />
           </div>
