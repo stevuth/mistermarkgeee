@@ -9,8 +9,9 @@ import Script from "next/script";
 const ZohoNewsletter = () => {
   useEffect(() => {
     const setup = () => {
+      // The 'new_optin_response_in' parameter (the '1' at the end) tells Zoho to show the success message inline.
       if (window.setupSF) {
-        window.setupSF('sf3zd95d907a9dc64455d67f198836f9f9f195613cbdc16506aebc481d94cf964603','ZCFORMVIEW',false,'light',false,'0');
+        window.setupSF('sf3zd95d907a9dc64455d67f198836f9f9f195613cbdc16506aebc481d94cf964603','ZCFORMVIEW',false,'light',false,'1');
       }
     };
 
@@ -54,7 +55,8 @@ const ZohoNewsletter = () => {
             strategy="lazyOnload"
             onLoad={() => {
               if (window.setupSF) {
-                window.setupSF('sf3zd95d907a9dc64455d67f198836f9f9f195613cbdc16506aebc481d94cf964603','ZCFORMVIEW',false,'light',false,'0');
+                // The '1' at the end is crucial for inline success message
+                window.setupSF('sf3zd95d907a9dc64455d67f198836f9f9f195613cbdc16506aebc481d94cf964603','ZCFORMVIEW',false,'light',false,'1');
               }
               window.runOnFormSubmit_sf3zd95d907a9dc64455d67f198836f9f9f195613cbdc16506aebc481d94cf964603 = function(th: any){
                 /*Before submit, if you want to trigger your event, "include your code here"*/
@@ -62,7 +64,7 @@ const ZohoNewsletter = () => {
             }}
           />
           <style jsx global>{`
-            ::-webkit-input-placeholder { color: rgb(106, 73, 162) !important; }
+            ::-webkit-input-placeholder { color: hsl(var(--muted-foreground)) !important; }
             .SIGNUP_BODY { background-color: transparent !important; }
             #sf3zd95d907a9dc64455d67f198836f9f9f195613cbdc16506aebc481d94cf964603 { margin: 0 auto; max-width: 400px; }
             #sf3zd95d907a9dc64455d67f198836f9f9f195613cbdc16506aebc481d94cf964603 #customForm { width: 100% !important; }
@@ -88,13 +90,15 @@ const ZohoNewsletter = () => {
             }
             #sf3zd95d907a9dc64455d67f198836f9f9f195613cbdc16506aebc481d94cf964603 #zcampaignOptinForm #zcWebOptin {
               height: 3rem !important;
-              width: auto !important;
+              width: 100% !important;
+              sm:width: auto !important;
               padding: 0 2rem !important;
               border-radius: var(--radius) !important;
               background: linear-gradient(120deg, hsl(var(--primary)), hsl(var(--accent)), hsl(var(--primary))) !important;
               background-size: 200% 200% !important;
               animation: gradient-animation 10s ease infinite !important;
               font-weight: bold !important;
+              color: hsl(var(--primary-foreground)) !important;
             }
             #sf3zd95d907a9dc64455d67f198836f9f9f195613cbdc16506aebc481d94cf964603 #Zc_SignupSuccess {
                 background-color: hsl(var(--card)) !important;
@@ -102,15 +106,22 @@ const ZohoNewsletter = () => {
                 padding: 1rem !important;
                 width: 100% !important;
                 margin: 0 !important;
+                position: relative !important;
+                border-radius: var(--radius);
             }
             #sf3zd95d907a9dc64455d67f198836f9f9f195613cbdc16506aebc481d94cf964603 #signupSuccessMsg {
-                color: hsl(var(--primary-foreground)) !important;
+                color: hsl(var(--card-foreground)) !important;
+                font-family: 'Inter', sans-serif !important;
+                text-align: center;
+            }
+            #sf3zd95d907a9dc64455d67f198836f9f9f195613cbdc16506aebc481d94cf964603 .successicon {
+              display: none !important;
             }
           `}</style>
 
           <div id="sf3zd95d907a9dc64455d67f198836f9f9f195613cbdc16506aebc481d94cf964603" data-type="signupform" style={{ opacity: 1 }}>
             <div id="customForm">
-              <div id="SIGNUP_BODY" name="SIGNUP_BODY" style={{ width: '100%', position: 'relative', margin: 'auto', backgroundColor: 'transparent', overflow: 'hidden' }}>
+              <div name="SIGNUP_BODY" style={{ width: '100%', position: 'relative', margin: 'auto', backgroundColor: 'transparent', overflow: 'hidden' }}>
                 <div style={{ width: '100%', position: 'relative', fontFamily: '"Arial"', margin: 'auto' }}>
                   <div style={{position:'relative'}}>
                     <div id="Zc_SignupSuccess" style={{display:'none',position:'absolute',marginLeft:'4%',width:'90%',backgroundColor:'white', padding:'3px', border:'3px solid rgb(194, 225, 154)',  marginTop:'10px',marginBottom:'10px',wordBreak:'break-all'}}>
@@ -148,8 +159,8 @@ const ZohoNewsletter = () => {
                     <input type="hidden" id="zctd" name="zctd" value="11571d93c42662b91" />
                     <input type="hidden" id="document_domain" value="" />
                     <input type="hidden" id="zc_Url" value="zgnp-zngp.maillist-manage.com" />
-                    <input type="hidden" id="new_optin_response_in" value="0" />
-                    <input type="hidden" id="duplicate_optin_response_in" value="0" />
+                    <input type="hidden" id="new_optin_response_in" value="1" />
+                    <input type="hidden" id="duplicate_optin_response_in" value="1" />
                     <input type="hidden" name="zc_trackCode" id="zc_trackCode" value="ZCFORMVIEW" />
                     <input type="hidden" id="zc_formIx" name="zc_formIx" value="3zd95d907a9dc64455d67f198836f9f9f195613cbdc16506aebc481d94cf964603" />
                     <input type="hidden" id="viewFrom" value="URL_ACTION" />
@@ -177,3 +188,5 @@ declare global {
 
 
 export default ZohoNewsletter;
+
+    
