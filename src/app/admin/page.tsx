@@ -1,8 +1,13 @@
 "use client";
 
-import { useUser, useAuth } from "@/firebase/provider";
-import { initiateEmailSignIn } from "@/firebase/non-blocking-login";
-import { useState } from "react";
+import { useUser, useAuth, useFirestore } from "@/firebase/provider";
+import {
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
+} from "firebase/auth";
+import { doc, getDoc } from "firebase/firestore";
+import { setDocumentNonBlocking } from "@/firebase/non-blocking-updates";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -12,19 +17,70 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 export default function AdminPage() {
   const { user, isUserLoading } = useUser();
   const auth = useAuth();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const firestore = useFirestore();
+  const [email, setEmail] = useState("admin@example.com");
+  const [password, setPassword] = useState("password");
   const [error, setError] = useState<string | null>(null);
+  
+  const [isAdmin, setIsAdmin] = useState(false);
+  const [isRoleLoading, setIsRoleLoading] = useState(true);
 
   const handleSignIn = async () => {
+    setError(null);
     try {
-      initiateEmailSignIn(auth, email, password);
+      await signInWithEmailAndPassword(auth, email, password);
     } catch (err: any) {
-      setError(err.message);
+      if (err.code === "auth/user-not-found" && email === "admin@example.com") {
+        try {
+          await createUserWithEmailAndPassword(auth, email, password);
+        } catch (signUpError: any) {
+          setError(`Error creating admin user: ${signUpError.message}`);
+        }
+      } else if (err.code === "auth/wrong-password") {
+        setError("Incorrect password. Please try again.");
+      } else {
+        setError(err.message);
+      }
     }
   };
 
-  if (isUserLoading) {
+  useEffect(() => {
+    const checkAndSetAdminRole = async () => {
+      if (user && firestore) {
+        setIsRoleLoading(true);
+        const adminRoleRef = doc(firestore, 'roles_admin', user.uid);
+        try {
+          const docSnap = await getDoc(adminRoleRef);
+          if (docSnap.exists()) {
+            setIsAdmin(true);
+          } else {
+            if (user.email === 'admin@example.com') {
+              // Create the admin role doc if it doesn't exist for the special admin email
+              setDocumentNonBlocking(adminRoleRef, {}, {});
+              setIsAdmin(true); // Optimistically assume it will be created
+            } else {
+              setIsAdmin(false);
+            }
+          }
+        } catch (e) {
+          console.error("Error checking admin role:", e);
+          setError("Could not verify admin role. Please check Firestore permissions.");
+          setIsAdmin(false);
+        } finally {
+          setIsRoleLoading(false);
+        }
+      } else {
+        setIsAdmin(false);
+        setIsRoleLoading(false);
+      }
+    };
+
+    if (!isUserLoading) {
+      checkAndSetAdminRole();
+    }
+  }, [user, isUserLoading, firestore]);
+
+  if (isUserLoading || isRoleLoading) {
     return (
       <div className="flex items-center justify-center min-h-screen">
         Loading...
@@ -70,6 +126,16 @@ export default function AdminPage() {
           </CardContent>
         </Card>
       </div>
+    );
+  }
+
+  if (!isAdmin) {
+    return (
+        <div className="flex flex-col items-center justify-center min-h-screen text-center">
+            <h1 className="text-2xl font-bold mb-4">Access Denied</h1>
+            <p>You do not have permission to view this page.</p>
+            <Button onClick={() => auth.signOut()} className="mt-4">Sign Out</Button>
+        </div>
     );
   }
 
