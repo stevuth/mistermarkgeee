@@ -92,18 +92,19 @@ export function BlogPostForm({ postToEdit, onFormSubmit }: BlogPostFormProps) {
       });
       return;
     }
-    
-    setIsUploading(true);
+
     let imageUrl = postToEdit?.imageUrl || "";
 
     try {
       const postId = isEditing && postToEdit ? postToEdit.id : doc(collection(firestore, "blogPosts")).id;
 
       if (imageFile) {
+        setIsUploading(true);
+        setUploadProgress(0);
         const imageRef = ref(storage, `blog-images/${postId}/${imageFile.name}`);
         const uploadTask = uploadBytesResumable(imageRef, imageFile);
 
-        await new Promise<void>((resolve, reject) => {
+        const uploadPromise = new Promise<string>((resolve, reject) => {
           uploadTask.on(
             'state_changed',
             (snapshot) => {
@@ -115,11 +116,18 @@ export function BlogPostForm({ postToEdit, onFormSubmit }: BlogPostFormProps) {
               reject(error);
             },
             async () => {
-              imageUrl = await getDownloadURL(uploadTask.snapshot.ref);
-              resolve();
+              try {
+                const downloadUrl = await getDownloadURL(uploadTask.snapshot.ref);
+                resolve(downloadUrl);
+              } catch (error) {
+                console.error("Failed to get download URL:", error);
+                reject(error);
+              }
             }
           );
         });
+
+        imageUrl = await uploadPromise;
       }
       
       const postRef = doc(firestore, "blogPosts", postId);
