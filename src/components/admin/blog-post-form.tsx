@@ -15,8 +15,8 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { useAuth, useFirestore } from "@/firebase/provider";
-import { addDocumentNonBlocking } from "@/firebase/non-blocking-updates";
-import { collection } from "firebase/firestore";
+import { setDocumentNonBlocking } from "@/firebase/non-blocking-updates";
+import { collection, doc } from "firebase/firestore";
 import { useToast } from "@/hooks/use-toast";
 
 const formSchema = z.object({
@@ -45,8 +45,8 @@ export function BlogPostForm() {
     },
   });
 
-  const onSubmit = async (values: z.infer<typeof formSchema>) => {
-    if (!auth.currentUser) {
+  const onSubmit = (values: z.infer<typeof formSchema>) => {
+    if (!auth.currentUser || !firestore) {
       toast({
         variant: "destructive",
         title: "Error",
@@ -55,33 +55,22 @@ export function BlogPostForm() {
       return;
     }
 
+    const newPostRef = doc(collection(firestore, "blogPosts"));
+
     const blogPostData = {
       ...values,
       tags: values.tags.split(",").map((tag) => tag.trim()),
       datePublished: new Date().toISOString(),
-      id: "", // This will be overwritten, but satisfies the type.
+      id: newPostRef.id,
     };
     
-    try {
-      const docRef = await addDocumentNonBlocking(
-        collection(firestore, "blogPosts"),
-        blogPostData
-      );
-      if(docRef) {
-        blogPostData.id = docRef.id;
-        toast({
-            title: "Success!",
-            description: "Blog post has been created successfully.",
-        });
-        form.reset();
-      }
-    } catch (error: any) {
-        toast({
-            variant: "destructive",
-            title: "Error creating post",
-            description: error.message,
-        });
-    }
+    setDocumentNonBlocking(newPostRef, blogPostData, {});
+
+    toast({
+        title: "Success!",
+        description: "Blog post has been submitted for creation.",
+    });
+    form.reset();
   };
 
   return (
