@@ -15,8 +15,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { useAuth, useFirestore, useStorage } from "@/firebase";
-import { setDocumentNonBlocking } from "@/firebase/non-blocking-updates";
-import { collection, doc } from "firebase/firestore";
+import { collection, doc, setDoc } from "firebase/firestore";
 import { useToast } from "@/hooks/use-toast";
 import { useEffect, useState } from "react";
 import type { BlogPost } from "./blog-post-list";
@@ -47,7 +46,7 @@ export function BlogPostForm({ postToEdit, onFormSubmit }: BlogPostFormProps) {
   const isEditing = !!postToEdit;
 
   const [imageFile, setImageFile] = useState<File | null>(null);
-  const [isUploading, setIsUploading] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const form = useForm<BlogPostFormValues>({
     resolver: zodResolver(formSchema),
@@ -64,7 +63,6 @@ export function BlogPostForm({ postToEdit, onFormSubmit }: BlogPostFormProps) {
     if (postToEdit) {
       form.reset({
         ...postToEdit,
-        imageUrl: undefined,
         tags: postToEdit.tags.join(", "),
       });
       setImageFile(null);
@@ -90,7 +88,7 @@ export function BlogPostForm({ postToEdit, onFormSubmit }: BlogPostFormProps) {
       return;
     }
 
-    setIsUploading(true);
+    setIsSubmitting(true);
     let imageUrl = postToEdit?.imageUrl || "";
 
     try {
@@ -112,7 +110,7 @@ export function BlogPostForm({ postToEdit, onFormSubmit }: BlogPostFormProps) {
         datePublished: isEditing && postToEdit ? postToEdit.datePublished : new Date().toISOString(),
       };
 
-      setDocumentNonBlocking(postRef, blogPostData, { merge: true });
+      await setDoc(postRef, blogPostData, { merge: true });
 
       toast({
         title: "Success!",
@@ -135,7 +133,7 @@ export function BlogPostForm({ postToEdit, onFormSubmit }: BlogPostFormProps) {
         description: error.message || "There was a problem saving the post. Please try again.",
       });
     } finally {
-      setIsUploading(false);
+      setIsSubmitting(false);
     }
   };
 
@@ -193,7 +191,7 @@ export function BlogPostForm({ postToEdit, onFormSubmit }: BlogPostFormProps) {
                     type="file" 
                     accept="image/*" 
                     onChange={(e) => setImageFile(e.target.files ? e.target.files[0] : null)} 
-                    disabled={isUploading}
+                    disabled={isSubmitting}
                   />
                 </FormControl>
                 {postToEdit?.imageUrl && !imageFile && (
@@ -230,11 +228,11 @@ export function BlogPostForm({ postToEdit, onFormSubmit }: BlogPostFormProps) {
               )}
             />
             <div className="flex gap-4">
-              <Button type="submit" disabled={isUploading}>
-                {isUploading ? "Submitting..." : isEditing ? 'Update Post' : 'Create Post'}
+              <Button type="submit" disabled={isSubmitting}>
+                {isSubmitting ? "Submitting..." : isEditing ? 'Update Post' : 'Create Post'}
               </Button>
               {isEditing && (
-                <Button variant="outline" type="button" onClick={() => onFormSubmit?.()} disabled={isUploading}>
+                <Button variant="outline" type="button" onClick={() => onFormSubmit?.()} disabled={isSubmitting}>
                   Cancel
                 </Button>
               )}
