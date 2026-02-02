@@ -15,6 +15,7 @@ import { BlogPostForm } from "@/components/admin/blog-post-form";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { BlogPostList, type BlogPost } from "@/components/admin/blog-post-list";
+import { ChangePasswordForm } from "@/components/admin/change-password-form";
 
 export default function AdminPage() {
   const { user, isUserLoading } = useUser();
@@ -156,10 +157,15 @@ export default function AdminPage() {
 
   return (
     <div className="container mx-auto py-10">
-      <h1 className="text-3xl font-bold mb-6">Admin Dashboard</h1>
+      <div className="flex justify-between items-center mb-6">
+        <h1 className="text-3xl font-bold">Admin Dashboard</h1>
+        <Button onClick={() => auth.signOut()} variant="outline">Sign Out</Button>
+      </div>
       <BlogPostForm postToEdit={postToEdit} onFormSubmit={() => setPostToEdit(null)} />
       <Separator className="my-12" />
       <BlogPostList onEditClick={setPostToEdit} />
+      <Separator className="my-12" />
+      <ChangePasswordForm />
     </div>
   );
 }
