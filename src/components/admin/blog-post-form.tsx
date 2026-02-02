@@ -21,7 +21,7 @@ import { useToast } from "@/hooks/use-toast";
 import { useEffect, useState } from "react";
 import type { BlogPost } from "./blog-post-list";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
+import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 
 
 const formSchema = z.object({
@@ -98,29 +98,8 @@ export function BlogPostForm({ postToEdit, onFormSubmit }: BlogPostFormProps) {
 
       if (imageFile) {
         const imageRef = ref(storage, `blog-images/${postId}/${imageFile.name}`);
-        const uploadTask = uploadBytesResumable(imageRef, imageFile);
-
-        const uploadPromise = new Promise<string>((resolve, reject) => {
-          uploadTask.on(
-            'state_changed',
-            null, // No progress handler
-            (error) => {
-              console.error("Upload failed:", error);
-              reject(error);
-            },
-            async () => {
-              try {
-                const downloadUrl = await getDownloadURL(uploadTask.snapshot.ref);
-                resolve(downloadUrl);
-              } catch (error) {
-                console.error("Failed to get download URL:", error);
-                reject(error);
-              }
-            }
-          );
-        });
-
-        imageUrl = await uploadPromise;
+        const uploadResult = await uploadBytes(imageRef, imageFile);
+        imageUrl = await getDownloadURL(uploadResult.ref);
       }
       
       const postRef = doc(firestore, "blogPosts", postId);
@@ -148,12 +127,12 @@ export function BlogPostForm({ postToEdit, onFormSubmit }: BlogPostFormProps) {
         onFormSubmit();
       }
 
-    } catch (error) {
+    } catch (error: any) {
       console.error(error);
       toast({
         variant: "destructive",
         title: "Error",
-        description: "There was a problem saving the post. Please try again.",
+        description: error.message || "There was a problem saving the post. Please try again.",
       });
     } finally {
       setIsUploading(false);
