@@ -39,6 +39,12 @@ const nextConfig: NextConfig = {
         hostname: 'holyculture.net',
         port: '',
         pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'media.gettyimages.com',
+        port: '',
+        pathname: '/**',
       }
     ],
   },
