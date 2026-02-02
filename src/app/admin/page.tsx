@@ -13,6 +13,8 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { BlogPostForm } from "@/components/admin/blog-post-form";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Separator } from "@/components/ui/separator";
+import { BlogPostList, type BlogPost } from "@/components/admin/blog-post-list";
 
 export default function AdminPage() {
   const { user, isUserLoading } = useUser();
@@ -25,6 +27,8 @@ export default function AdminPage() {
   const [isAdmin, setIsAdmin] = useState(false);
   const [isRoleLoading, setIsRoleLoading] = useState(true);
 
+  const [postToEdit, setPostToEdit] = useState<BlogPost | null>(null);
+
   const handleSignIn = async () => {
     setError(null);
     try {
@@ -33,7 +37,7 @@ export default function AdminPage() {
       if ((signInError.code === 'auth/user-not-found' || signInError.code === 'auth/invalid-credential') && email === 'admin@example.com') {
         try {
           await createUserWithEmailAndPassword(auth, email, password);
-        } catch (signUpError: any) {
+        } catch (signUpError: any) => {
           if (signUpError.code === 'auth/email-already-in-use') {
             setError('Incorrect password. Please try again.');
           } else {
@@ -83,6 +87,13 @@ export default function AdminPage() {
       checkAndSetAdminRole();
     }
   }, [user, isUserLoading, firestore]);
+  
+  useEffect(() => {
+    if (postToEdit) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }, [postToEdit]);
+
 
   if (isUserLoading || isRoleLoading) {
     return (
@@ -146,7 +157,9 @@ export default function AdminPage() {
   return (
     <div className="container mx-auto py-10">
       <h1 className="text-3xl font-bold mb-6">Admin Dashboard</h1>
-      <BlogPostForm />
+      <BlogPostForm postToEdit={postToEdit} onFormSubmit={() => setPostToEdit(null)} />
+      <Separator className="my-12" />
+      <BlogPostList onEditClick={setPostToEdit} />
     </div>
   );
 }
