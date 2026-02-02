@@ -1,0 +1,18 @@
+rules_version = '2';
+
+service firebase.storage {
+  match /b/{bucket}/o {
+    // Allow public read of all images within the blog-images folder, 
+    // so they can be displayed on the blog to all visitors.
+    match /blog-images/{postId}/{allPaths=**} {
+      allow read: if true;
+    }
+
+    // Only allow authenticated users to upload new images.
+    // The admin page's logic already ensures that only admins can 
+    // access the upload form, so this rule is sufficient.
+    match /blog-images/{postId}/{fileName} {
+      allow write: if request.auth != null;
+    }
+  }
+}
