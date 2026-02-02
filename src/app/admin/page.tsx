@@ -5,6 +5,7 @@ import { useUser, useAuth, useFirestore } from "@/firebase/provider";
 import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
+  signOut,
 } from "firebase/auth";
 import { doc, getDoc } from "firebase/firestore";
 import { setDocumentNonBlocking } from "@/firebase/non-blocking-updates";
@@ -160,7 +161,7 @@ export default function AdminPage() {
         <div className="flex flex-col items-center justify-center min-h-screen text-center">
             <h1 className="text-2xl font-bold mb-4">Access Denied</h1>
             <p>You do not have permission to view this page.</p>
-            <Button onClick={() => auth.signOut()} className="mt-4">Sign Out</Button>
+            <Button onClick={() => signOut(auth)} className="mt-4">Sign Out</Button>
         </div>
     );
   }
@@ -174,7 +175,7 @@ export default function AdminPage() {
     <div className="container mx-auto py-10">
       <div className="flex justify-between items-center mb-6">
         <h1 className="text-3xl font-bold">Admin Dashboard</h1>
-        <Button onClick={() => auth.signOut()} variant="outline">Sign Out</Button>
+        <Button onClick={() => signOut(auth)} variant="outline">Sign Out</Button>
       </div>
 
       <Accordion type="single" collapsible className="w-full" value={accordionValue} onValueChange={setAccordionValue}>
