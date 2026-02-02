@@ -37,7 +37,7 @@ export default function AdminPage() {
       if ((signInError.code === 'auth/user-not-found' || signInError.code === 'auth/invalid-credential') && email === 'admin@example.com') {
         try {
           await createUserWithEmailAndPassword(auth, email, password);
-        } catch (signUpError: any) => {
+        } catch (signUpError: any) {
           if (signUpError.code === 'auth/email-already-in-use') {
             setError('Incorrect password. Please try again.');
           } else {
