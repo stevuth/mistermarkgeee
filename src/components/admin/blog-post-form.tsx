@@ -14,20 +14,21 @@ import {
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
-import { useAuth, useFirestore } from "@/firebase/provider";
+import { useAuth, useFirestore, useStorage } from "@/firebase";
 import { setDocumentNonBlocking } from "@/firebase/non-blocking-updates";
 import { collection, doc } from "firebase/firestore";
 import { useToast } from "@/hooks/use-toast";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import type { BlogPost } from "./blog-post-list";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
+import { Progress } from "@/components/ui/progress";
 
 
 const formSchema = z.object({
   title: z.string().min(1, "Title is required"),
   content: z.string().min(1, "Content is required"),
   author: z.string().min(1, "Author is required"),
-  imageUrl: z.string().url("Image URL must be a valid URL"),
   summary: z.string().min(1, "Summary is required"),
   tags: z.string(),
 });
@@ -42,8 +43,13 @@ interface BlogPostFormProps {
 export function BlogPostForm({ postToEdit, onFormSubmit }: BlogPostFormProps) {
   const auth = useAuth();
   const firestore = useFirestore();
+  const storage = useStorage();
   const { toast } = useToast();
   const isEditing = !!postToEdit;
+
+  const [imageFile, setImageFile] = useState<File | null>(null);
+  const [uploadProgress, setUploadProgress] = useState<number | null>(null);
+  const [isUploading, setIsUploading] = useState(false);
 
   const form = useForm<BlogPostFormValues>({
     resolver: zodResolver(formSchema),
@@ -51,7 +57,6 @@ export function BlogPostForm({ postToEdit, onFormSubmit }: BlogPostFormProps) {
       title: "",
       content: "",
       author: "",
-      imageUrl: "",
       summary: "",
       tags: "",
     },
@@ -61,71 +66,96 @@ export function BlogPostForm({ postToEdit, onFormSubmit }: BlogPostFormProps) {
     if (postToEdit) {
       form.reset({
         ...postToEdit,
+        imageUrl: undefined,
         tags: postToEdit.tags.join(", "),
       });
+      setImageFile(null);
     } else {
         form.reset({
             title: "",
             content: "",
             author: "",
-            imageUrl: "",
             summary: "",
             tags: "",
         });
+        setImageFile(null);
     }
   }, [postToEdit, form]);
 
-  const onSubmit = (values: BlogPostFormValues) => {
-    if (!auth.currentUser || !firestore) {
+  const onSubmit = async (values: BlogPostFormValues) => {
+    if (!auth.currentUser || !firestore || !storage) {
       toast({
         variant: "destructive",
         title: "Error",
-        description: "You must be logged in.",
+        description: "You must be logged in and services must be available.",
       });
       return;
     }
     
-    const tagsArray = values.tags.split(",").map((tag) => tag.trim());
+    setIsUploading(true);
+    let imageUrl = postToEdit?.imageUrl || "";
 
-    if (isEditing && postToEdit) {
-      // Update existing post
-      const postRef = doc(firestore, "blogPosts", postToEdit.id);
-      const updatedData = {
-        ...postToEdit,
-        ...values,
-        tags: tagsArray,
-      };
-      setDocumentNonBlocking(postRef, updatedData, { merge: true });
-      toast({
-        title: "Success!",
-        description: "Blog post has been updated.",
-      });
-    } else {
-      // Create new post
-      const newPostRef = doc(collection(firestore, "blogPosts"));
+    try {
+      const postId = isEditing && postToEdit ? postToEdit.id : doc(collection(firestore, "blogPosts")).id;
+
+      if (imageFile) {
+        const imageRef = ref(storage, `blog-images/${postId}/${imageFile.name}`);
+        const uploadTask = uploadBytesResumable(imageRef, imageFile);
+
+        await new Promise<void>((resolve, reject) => {
+          uploadTask.on(
+            'state_changed',
+            (snapshot) => {
+              const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+              setUploadProgress(progress);
+            },
+            (error) => {
+              console.error("Upload failed:", error);
+              reject(error);
+            },
+            async () => {
+              imageUrl = await getDownloadURL(uploadTask.snapshot.ref);
+              resolve();
+            }
+          );
+        });
+      }
+      
+      const postRef = doc(firestore, "blogPosts", postId);
+      
       const blogPostData = {
         ...values,
-        tags: tagsArray,
-        datePublished: new Date().toISOString(),
-        id: newPostRef.id,
+        id: postId,
+        tags: values.tags.split(",").map((tag) => tag.trim()),
+        imageUrl,
+        datePublished: isEditing && postToEdit ? postToEdit.datePublished : new Date().toISOString(),
       };
-      setDocumentNonBlocking(newPostRef, blogPostData, {});
+
+      setDocumentNonBlocking(postRef, blogPostData, { merge: true });
+
       toast({
         title: "Success!",
-        description: "Blog post has been submitted for creation.",
+        description: `Blog post has been ${isEditing ? 'updated' : 'submitted'}.`,
       });
-    }
 
-    form.reset({
-        title: "",
-        content: "",
-        author: "",
-        imageUrl: "",
-        summary: "",
-        tags: "",
-    });
-    if(onFormSubmit) {
-      onFormSubmit();
+      form.reset({
+        title: "", content: "", author: "", summary: "", tags: "",
+      });
+      setImageFile(null);
+      if(onFormSubmit) {
+        onFormSubmit();
+      }
+
+    } catch (error) {
+      console.error(error);
+      toast({
+        variant: "destructive",
+        title: "Error",
+        description: "There was a problem saving the post. Please try again.",
+      });
+    } finally {
+      setIsUploading(false);
+      setUploadProgress(null);
     }
   };
 
@@ -176,19 +206,30 @@ export function BlogPostForm({ postToEdit, onFormSubmit }: BlogPostFormProps) {
                 </FormItem>
               )}
             />
-            <FormField
-              control={form.control}
-              name="imageUrl"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Image URL</FormLabel>
-                  <FormControl>
-                    <Input placeholder="https://example.com/image.jpg" {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
+             <FormItem>
+                <FormLabel>Featured Image</FormLabel>
+                <FormControl>
+                  <Input 
+                    type="file" 
+                    accept="image/*" 
+                    onChange={(e) => setImageFile(e.target.files ? e.target.files[0] : null)} 
+                    disabled={isUploading}
+                  />
+                </FormControl>
+                {postToEdit?.imageUrl && !imageFile && (
+                  <div className="text-sm text-muted-foreground mt-2">
+                    Current image: <a href={postToEdit.imageUrl} target="_blank" rel="noopener noreferrer" className="underline">View Image</a>. Upload a new one to replace it.
+                  </div>
+                )}
+                <FormMessage />
+              </FormItem>
+
+              {isUploading && uploadProgress !== null && (
+                <div className="space-y-2">
+                  <Label>Upload Progress</Label>
+                  <Progress value={uploadProgress} className="w-full" />
+                </div>
               )}
-            />
             <FormField
               control={form.control}
               name="summary"
@@ -216,9 +257,11 @@ export function BlogPostForm({ postToEdit, onFormSubmit }: BlogPostFormProps) {
               )}
             />
             <div className="flex gap-4">
-              <Button type="submit">{isEditing ? "Update Post" : "Create Post"}</Button>
+              <Button type="submit" disabled={isUploading}>
+                {isUploading ? `Uploading... ${uploadProgress !== null ? uploadProgress.toFixed(0) + '%' : ''}` : isEditing ? 'Update Post' : 'Create Post'}
+              </Button>
               {isEditing && (
-                <Button variant="outline" type="button" onClick={() => onFormSubmit?.()}>
+                <Button variant="outline" type="button" onClick={() => onFormSubmit?.()} disabled={isUploading}>
                   Cancel
                 </Button>
               )}

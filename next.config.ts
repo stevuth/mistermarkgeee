@@ -45,6 +45,12 @@ const nextConfig: NextConfig = {
         hostname: 'media.gettyimages.com',
         port: '',
         pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'firebasestorage.googleapis.com',
+        port: '',
+        pathname: '/**',
       }
     ],
   },
