@@ -92,12 +92,8 @@ export function BlogPostForm({ postToEdit, onFormSubmit }: BlogPostFormProps) {
     try {
       if (imageFile) {
         // --- Cloudinary Upload Logic ---
-        const CLOUDINARY_CLOUD_NAME = "YOUR_CLOUD_NAME"; // <-- IMPORTANT: REPLACE with your Cloudinary cloud name
-        const CLOUDINARY_UPLOAD_PRESET = "YOUR_UPLOAD_PRESET"; // <-- IMPORTANT: REPLACE with your unsigned upload preset
-
-        if (CLOUDINARY_CLOUD_NAME === "YOUR_CLOUD_NAME" || CLOUDINARY_UPLOAD_PRESET === "YOUR_UPLOAD_PRESET") {
-            throw new Error("Please replace placeholder Cloudinary credentials in src/components/admin/blog-post-form.tsx");
-        }
+        const CLOUDINARY_CLOUD_NAME = "dni2duulw";
+        const CLOUDINARY_UPLOAD_PRESET = "stevuth";
 
         const formData = new FormData();
         formData.append("file", imageFile);
