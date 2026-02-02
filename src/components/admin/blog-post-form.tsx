@@ -23,6 +23,7 @@ import type { BlogPost } from "./blog-post-list";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 import { Progress } from "@/components/ui/progress";
+import { Label } from "@/components/ui/label";
 
 
 const formSchema = z.object({
