@@ -22,8 +22,6 @@ import { useEffect, useState } from "react";
 import type { BlogPost } from "./blog-post-list";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
-import { Progress } from "@/components/ui/progress";
-import { Label } from "@/components/ui/label";
 
 
 const formSchema = z.object({
@@ -49,7 +47,6 @@ export function BlogPostForm({ postToEdit, onFormSubmit }: BlogPostFormProps) {
   const isEditing = !!postToEdit;
 
   const [imageFile, setImageFile] = useState<File | null>(null);
-  const [uploadProgress, setUploadProgress] = useState<number | null>(null);
   const [isUploading, setIsUploading] = useState(false);
 
   const form = useForm<BlogPostFormValues>({
@@ -93,24 +90,20 @@ export function BlogPostForm({ postToEdit, onFormSubmit }: BlogPostFormProps) {
       return;
     }
 
+    setIsUploading(true);
     let imageUrl = postToEdit?.imageUrl || "";
 
     try {
       const postId = isEditing && postToEdit ? postToEdit.id : doc(collection(firestore, "blogPosts")).id;
 
       if (imageFile) {
-        setIsUploading(true);
-        setUploadProgress(0);
         const imageRef = ref(storage, `blog-images/${postId}/${imageFile.name}`);
         const uploadTask = uploadBytesResumable(imageRef, imageFile);
 
         const uploadPromise = new Promise<string>((resolve, reject) => {
           uploadTask.on(
             'state_changed',
-            (snapshot) => {
-              const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-              setUploadProgress(progress);
-            },
+            null, // No progress handler
             (error) => {
               console.error("Upload failed:", error);
               reject(error);
@@ -164,7 +157,6 @@ export function BlogPostForm({ postToEdit, onFormSubmit }: BlogPostFormProps) {
       });
     } finally {
       setIsUploading(false);
-      setUploadProgress(null);
     }
   };
 
@@ -232,13 +224,6 @@ export function BlogPostForm({ postToEdit, onFormSubmit }: BlogPostFormProps) {
                 )}
                 <FormMessage />
               </FormItem>
-
-              {isUploading && uploadProgress !== null && (
-                <div className="space-y-2">
-                  <Label>Upload Progress</Label>
-                  <Progress value={uploadProgress} className="w-full" />
-                </div>
-              )}
             <FormField
               control={form.control}
               name="summary"
@@ -267,7 +252,7 @@ export function BlogPostForm({ postToEdit, onFormSubmit }: BlogPostFormProps) {
             />
             <div className="flex gap-4">
               <Button type="submit" disabled={isUploading}>
-                {isUploading ? `Uploading... ${uploadProgress !== null ? uploadProgress.toFixed(0) + '%' : ''}` : isEditing ? 'Update Post' : 'Create Post'}
+                {isUploading ? "Submitting..." : isEditing ? 'Update Post' : 'Create Post'}
               </Button>
               {isEditing && (
                 <Button variant="outline" type="button" onClick={() => onFormSubmit?.()} disabled={isUploading}>
