@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useUser, useAuth, useFirestore } from "@/firebase/provider";
@@ -16,6 +17,12 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { BlogPostList, type BlogPost } from "@/components/admin/blog-post-list";
 import { ChangePasswordForm } from "@/components/admin/change-password-form";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 export default function AdminPage() {
   const { user, isUserLoading } = useUser();
@@ -29,6 +36,8 @@ export default function AdminPage() {
   const [isRoleLoading, setIsRoleLoading] = useState(true);
 
   const [postToEdit, setPostToEdit] = useState<BlogPost | null>(null);
+  const [accordionValue, setAccordionValue] = useState("");
+
 
   const handleSignIn = async () => {
     setError(null);
@@ -91,6 +100,7 @@ export default function AdminPage() {
   
   useEffect(() => {
     if (postToEdit) {
+      setAccordionValue("blog-post-form");
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   }, [postToEdit]);
@@ -155,13 +165,29 @@ export default function AdminPage() {
     );
   }
 
+  const handleFormSubmit = () => {
+    setPostToEdit(null);
+    setAccordionValue("");
+  };
+
   return (
     <div className="container mx-auto py-10">
       <div className="flex justify-between items-center mb-6">
         <h1 className="text-3xl font-bold">Admin Dashboard</h1>
         <Button onClick={() => auth.signOut()} variant="outline">Sign Out</Button>
       </div>
-      <BlogPostForm postToEdit={postToEdit} onFormSubmit={() => setPostToEdit(null)} />
+
+      <Accordion type="single" collapsible className="w-full" value={accordionValue} onValueChange={setAccordionValue}>
+        <AccordionItem value="blog-post-form">
+          <AccordionTrigger className="hover:no-underline text-xl font-semibold">
+            {postToEdit ? `Editing "${postToEdit.title}"` : "Create New Blog Post"}
+          </AccordionTrigger>
+          <AccordionContent>
+            <BlogPostForm postToEdit={postToEdit} onFormSubmit={handleFormSubmit} />
+          </AccordionContent>
+        </AccordionItem>
+      </Accordion>
+
       <Separator className="my-12" />
       <BlogPostList onEditClick={setPostToEdit} />
       <Separator className="my-12" />

@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useForm } from "react-hook-form";
@@ -19,7 +20,7 @@ import { collection, doc, setDoc } from "firebase/firestore";
 import { useToast } from "@/hooks/use-toast";
 import { useEffect, useState } from "react";
 import type { BlogPost } from "./blog-post-list";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 
 
 const formSchema = z.object({
@@ -158,10 +159,7 @@ export function BlogPostForm({ postToEdit, onFormSubmit }: BlogPostFormProps) {
 
   return (
     <Card>
-      <CardHeader>
-        <CardTitle>{isEditing ? `Editing "${postToEdit?.title}"` : "Create New Blog Post"}</CardTitle>
-      </CardHeader>
-      <CardContent>
+      <CardContent className="pt-6">
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
             <FormField
