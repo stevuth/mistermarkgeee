@@ -15,7 +15,6 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
-  AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import { useToast } from "@/hooks/use-toast";
 import { Edit, Trash2 } from "lucide-react";
@@ -82,11 +81,9 @@ export function BlogPostList({ onEditClick }: BlogPostListProps) {
                   <Button variant="ghost" size="icon" onClick={() => onEditClick(post)}>
                     <Edit className="h-4 w-4" />
                   </Button>
-                  <AlertDialogTrigger asChild>
-                    <Button variant="destructive" size="icon" onClick={() => setPostToDelete(post)}>
-                      <Trash2 className="h-4 w-4" />
-                    </Button>
-                  </AlertDialogTrigger>
+                  <Button variant="destructive" size="icon" onClick={() => setPostToDelete(post)}>
+                    <Trash2 className="h-4 w-4" />
+                  </Button>
                 </div>
               </div>
             ))}
