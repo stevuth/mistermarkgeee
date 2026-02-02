@@ -29,17 +29,21 @@ export default function AdminPage() {
     setError(null);
     try {
       await signInWithEmailAndPassword(auth, email, password);
-    } catch (err: any) {
-      if (err.code === "auth/user-not-found" && email === "admin@example.com") {
+    } catch (signInError: any) {
+      if ((signInError.code === 'auth/user-not-found' || signInError.code === 'auth/invalid-credential') && email === 'admin@example.com') {
         try {
           await createUserWithEmailAndPassword(auth, email, password);
         } catch (signUpError: any) {
-          setError(`Error creating admin user: ${signUpError.message}`);
+          if (signUpError.code === 'auth/email-already-in-use') {
+            setError('Incorrect password. Please try again.');
+          } else {
+            setError(`Error creating admin user: ${signUpError.message}`);
+          }
         }
-      } else if (err.code === "auth/wrong-password") {
-        setError("Incorrect password. Please try again.");
+      } else if (signInError.code === 'auth/wrong-password') {
+        setError('Incorrect password. Please try again.');
       } else {
-        setError(err.message);
+        setError(signInError.message);
       }
     }
   };
