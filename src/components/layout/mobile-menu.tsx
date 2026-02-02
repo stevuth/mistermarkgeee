@@ -1,9 +1,12 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { X, Youtube, Instagram, Linkedin } from "lucide-react";
+import { X, Youtube, Instagram, Linkedin, LogOut, Shield } from "lucide-react";
 import Link from "next/link";
 import { Button } from "../ui/button";
+import { useUser, useAuth } from "@/firebase";
+import { signOut } from "firebase/auth";
+import { useToast } from "@/hooks/use-toast";
 
 type MobileMenuProps = {
   closeMenu: () => void;
@@ -35,10 +38,32 @@ const socialLinks = [
 ];
 
 const MobileMenu = ({ closeMenu }: MobileMenuProps) => {
+  const { user } = useUser();
+  const auth = useAuth();
+  const { toast } = useToast();
+
 
   const handleScrollTo = (id: string) => {
     closeMenu();
     document.querySelector(id)?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  const handleSignOut = async () => {
+    try {
+      await signOut(auth);
+      closeMenu();
+      toast({
+        title: "Signed Out",
+        description: "You have been successfully signed out.",
+      });
+    } catch (error) {
+      console.error("Error signing out:", error);
+      toast({
+        variant: "destructive",
+        title: "Sign Out Failed",
+        description: "There was a problem signing out. Please try again.",
+      });
+    }
   };
 
   return (
@@ -89,6 +114,24 @@ const MobileMenu = ({ closeMenu }: MobileMenuProps) => {
               </a>
             </motion.li>
           ))}
+          {user && (
+            <>
+              <motion.li variants={itemVariants}>
+                <Link href="/admin" onClick={closeMenu} className="font-headline text-3xl font-medium text-foreground/80 hover:text-foreground transition-colors cursor-pointer flex items-center gap-2">
+                  <Shield className="h-8 w-8" /> Admin
+                </Link>
+              </motion.li>
+              <motion.li variants={itemVariants}>
+                <button
+                  onClick={handleSignOut}
+                  className="flex items-center gap-2 font-headline text-3xl font-medium text-destructive/80 hover:text-destructive transition-colors cursor-pointer"
+                >
+                  <LogOut className="h-8 w-8" />
+                  Sign Out
+                </button>
+            </motion.li>
+            </>
+          )}
         </motion.ul>
       </nav>
       <motion.div

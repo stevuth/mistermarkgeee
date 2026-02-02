@@ -5,7 +5,6 @@ import { useUser, useAuth, useFirestore } from "@/firebase";
 import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
-  signOut,
 } from "firebase/auth";
 import { doc, getDoc } from "firebase/firestore";
 import { setDocumentNonBlocking } from "@/firebase/non-blocking-updates";
@@ -24,13 +23,11 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { useToast } from "@/hooks/use-toast";
 
 export default function AdminPage() {
   const { user, isUserLoading } = useUser();
   const auth = useAuth();
   const firestore = useFirestore();
-  const { toast } = useToast();
   const [email, setEmail] = useState("admin@example.com");
   const [password, setPassword] = useState("password");
   const [error, setError] = useState<string | null>(null);
@@ -62,19 +59,6 @@ export default function AdminPage() {
       } else {
         setError(signInError.message);
       }
-    }
-  };
-
-  const handleSignOut = async () => {
-    try {
-      await signOut(auth);
-    } catch (error) {
-      console.error("Error signing out:", error);
-      toast({
-        variant: "destructive",
-        title: "Sign Out Failed",
-        description: "There was a problem signing out. Please try again.",
-      });
     }
   };
 
@@ -173,10 +157,9 @@ export default function AdminPage() {
 
   if (!isAdmin) {
     return (
-        <div className="flex flex-col items-center justify-center min-h-screen text-center">
+        <div className="flex flex-col items-center justify-center min-h-screen text-center p-4">
             <h1 className="text-2xl font-bold mb-4">Access Denied</h1>
-            <p>You do not have permission to view this page.</p>
-            <Button onClick={handleSignOut} className="mt-4">Sign Out</Button>
+            <p>You do not have permission to view this page. Please sign out and log in with an admin account.</p>
         </div>
     );
   }
@@ -187,10 +170,9 @@ export default function AdminPage() {
   };
 
   return (
-    <div className="container mx-auto py-10">
+    <div className="container mx-auto py-10 pt-24">
       <div className="flex justify-between items-center mb-6">
         <h1 className="text-3xl font-bold">Admin Dashboard</h1>
-        <Button onClick={handleSignOut} variant="outline">Sign Out</Button>
       </div>
 
       <Accordion type="single" collapsible className="w-full" value={accordionValue} onValueChange={setAccordionValue}>
