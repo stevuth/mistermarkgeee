@@ -3,6 +3,7 @@ import './globals.css';
 import { Toaster } from "@/components/ui/toaster";
 import Header from "@/components/layout/header";
 import ScrollProgressBar from "@/components/layout/scroll-progress-bar";
+import { FirebaseClientProvider } from '@/firebase';
 
 export const metadata: Metadata = {
   title: 'MisterMarkGee',
@@ -62,12 +63,14 @@ export default function RootLayout({
         <link rel="canonical" href="https://mistermarkgeee.web.app" />
       </head>
       <body className="font-body antialiased">
-        <div className="overflow-x-hidden">
-          <ScrollProgressBar />
-          <Header />
-          <main>{children}</main>
-          <Toaster />
-        </div>
+        <FirebaseClientProvider>
+          <div className="overflow-x-hidden">
+            <ScrollProgressBar />
+            <Header />
+            <main>{children}</main>
+            <Toaster />
+          </div>
+        </FirebaseClientProvider>
       </body>
     </html>
   );
