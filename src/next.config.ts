@@ -45,6 +45,12 @@ const nextConfig: NextConfig = {
         hostname: 'media.gettyimages.com',
         port: '',
         pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'res.cloudinary.com',
+        port: '',
+        pathname: '/**',
       }
     ],
   },
