@@ -1,0 +1,114 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    /**
+     * Core Philosophy: This ruleset implements a Role-Based Access Control (RBAC) model.
+     * A dedicated '/roles_admin' collection explicitly defines which users are
+     * administrators. All write access to public content, such as blog posts, is
+     * restricted to these designated admins. Public content is readable by anyone,
+     * including unauthenticated users, to support a public-facing website.
+     *
+     * Data Structure:
+     * - /blogPosts/{blogPostId}: A top-level collection containing all public blog posts.
+     * - /roles_admin/{userId}: A top-level collection used as an access control list. The
+     *   existence of a document with a user's UID as its ID grants them admin privileges.
+     *
+     * Key Security Decisions:
+     * - Admin Role Management: The '/roles_admin' collection is read-only from the client side.
+     *   Adding or removing admins MUST be done through a trusted server environment using
+     *   the Firebase Admin SDK. This prevents any user from escalating their own privileges.
+     * - Public Read Access: The '/blogPosts' collection is publicly readable to allow the
+     *   website to display articles to all visitors.
+     * - Admin-Only Writes: All create, update, and delete operations on '/blogPosts' are
+     *   strictly limited to users who are authenticated and identified as admins.
+     * - No User Enumeration: Listing documents in the '/roles_admin' collection is explicitly
+     *   forbidden to prevent attackers from discovering who the administrators are.
+     *
+     * Denormalization for Authorization: The '/roles_admin' collection is a classic example
+     * of denormalization for authorization. Instead of checking a 'role' field on a user
+     * profile, which would be inaccessible to rules, we use a separate collection that
+     * can be efficiently checked with an `exists()` call. This avoids slow and costly `get()`
+     * calls in rules and provides a clear, centralized place to manage permissions.
+     */
+
+    // --------------------------------------------------------------------------
+    // Helper Functions
+    // --------------------------------------------------------------------------
+
+    /**
+     * Returns true if the user is authenticated.
+     */
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    /**
+     * Checks if the currently authenticated user is an administrator.
+     * An admin is defined by the existence of a document in the /roles_admin
+     * collection where the document ID matches the user's UID.
+     */
+    function isAdmin() {
+      return isSignedIn() && exists(/databases/$(database)/documents/roles_admin/$(request.auth.uid));
+    }
+
+    /**
+     * Checks if the currently authenticated user's UID matches the provided userId.
+     * This is the standard pattern for verifying document ownership.
+     */
+    function isOwner(userId) {
+      return isSignedIn() && request.auth.uid == userId;
+    }
+    
+    /**
+     * A shortcut to access the incoming data in a create or update request.
+     */
+    function incomingData() {
+      return request.resource.data;
+    }
+
+
+    // --------------------------------------------------------------------------
+    // Collection Rules
+    // --------------------------------------------------------------------------
+
+    /**
+     * @description Controls access to blog posts. Allows public read for all users,
+     * but restricts all write operations (create, update, delete) to administrators.
+     * @path /blogPosts/{blogPostId}
+     * @allow (get) Any user, signed in or not, can read a specific blog post.
+     * @allow (create) An authenticated admin can create a new blog post.
+     * @deny (update) A regular signed-in user cannot update a blog post.
+     * @deny (delete) An unauthenticated user cannot delete a blog post.
+     * @principle Implements a "Public Read, Role-Based Write" access pattern.
+     */
+    match /blogPosts/{blogPostId} {
+      allow get: if true;
+      allow list: if true;
+      allow create: if isAdmin() && incomingData().id == blogPostId;
+      allow update: if isAdmin() && resource != null && incomingData().id == resource.data.id;
+      allow delete: if isAdmin() && resource != null;
+    }
+
+    /**
+     * @description Secures the admin role definitions. This collection acts as an
+     * Access Control List (ACL). Its documents should only be managed from a
+     * trusted server environment (e.g., Cloud Functions) using the Admin SDK.
+     * Client-side writes are completely disabled to prevent privilege escalation.
+     * @path /roles_admin/{userId}
+     * @allow (get) An admin can check for the existence of their own role document.
+     * @deny (list) No user can get a list of all administrators.
+     * @deny (create) A user cannot make themselves an admin from the client.
+     * @deny (update) A user cannot modify any role document from the client.
+     * @principle Secures a critical authorization resource by making it read-only
+     * from the client and preventing enumeration.
+     */
+    match /roles_admin/{userId} {
+      allow get: if isOwner(userId);
+      allow list: if false;
+      allow create: if false;
+      allow update: if false;
+      allow delete: if false;
+    }
+  }
+}

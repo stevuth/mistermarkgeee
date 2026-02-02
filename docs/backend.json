@@ -1,0 +1,99 @@
+{
+  "entities": {
+    "BlogPost": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "BlogPost",
+      "type": "object",
+      "description": "Represents a blog post on the website.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the blog post."
+        },
+        "title": {
+          "type": "string",
+          "description": "Title of the blog post."
+        },
+        "content": {
+          "type": "string",
+          "description": "The main content of the blog post, likely in HTML or Markdown format."
+        },
+        "author": {
+          "type": "string",
+          "description": "Name of the author of the blog post."
+        },
+        "datePublished": {
+          "type": "string",
+          "description": "Date and time when the blog post was published.",
+          "format": "date-time"
+        },
+        "tags": {
+          "type": "array",
+          "description": "Tags associated with the blog post.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "imageUrl": {
+          "type": "string",
+          "description": "URL to the main image of the blog post, optimized for different display sizes.",
+          "format": "uri"
+        },
+        "summary": {
+          "type": "string",
+          "description": "A brief summary or excerpt of the blog post."
+        }
+      },
+      "required": [
+        "id",
+        "title",
+        "content",
+        "author",
+        "datePublished"
+      ]
+    }
+  },
+  "auth": {
+    "providers": [
+      "password",
+      "anonymous"
+    ]
+  },
+  "firestore": {
+    "structure": [
+      {
+        "path": "/blogPosts/{blogPostId}",
+        "definition": {
+          "entityName": "BlogPost",
+          "schema": {
+            "$ref": "#/backend/entities/BlogPost"
+          },
+          "description": "Stores blog posts that admin can create. Includes all blog post data.",
+          "params": [
+            {
+              "name": "blogPostId",
+              "description": "Unique identifier for the blog post."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/roles_admin/{userId}",
+        "definition": {
+          "entityName": "role_admin",
+          "schema": {
+            "$ref": "#/backend/entities/BlogPost"
+          },
+          "description": "Documents in this collection indicate admin privileges. Existence of a document with a specific uid grants admin access. There is no schema in this collection since its presense is all that matters.",
+          "params": [
+            {
+              "name": "userId",
+              "description": "The unique identifier of the user."
+            }
+          ]
+        }
+      }
+    ],
+    "reasoning": "The data structure prioritizes simplicity and security for managing blog posts. Since only admins should be able to upload blog posts, a dedicated collection `blogPosts` is used. An alternative would be using a subcollection under a user document, but considering the user case it is recommended to use only one `blogPosts` collection.\n\n**Authorization Independence:**\nThe structure relies on the absence of hierarchical dependencies. No `get()` calls are required in security rules to validate access to blog posts.\n\n**QAPs Support:**\n*   **List Operation Security:** List operations are secured by checking the user's admin role in the `roles_admin` collection, ensuring only admins can read the collection."
+  }
+}
