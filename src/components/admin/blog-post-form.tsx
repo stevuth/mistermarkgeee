@@ -14,13 +14,12 @@ import {
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
-import { useAuth, useFirestore, useStorage } from "@/firebase";
+import { useAuth, useFirestore } from "@/firebase";
 import { collection, doc, setDoc } from "firebase/firestore";
 import { useToast } from "@/hooks/use-toast";
 import { useEffect, useState } from "react";
 import type { BlogPost } from "./blog-post-list";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 
 
 const formSchema = z.object({
@@ -41,7 +40,6 @@ interface BlogPostFormProps {
 export function BlogPostForm({ postToEdit, onFormSubmit }: BlogPostFormProps) {
   const auth = useAuth();
   const firestore = useFirestore();
-  const storage = useStorage();
   const { toast } = useToast();
   const isEditing = !!postToEdit;
 
@@ -79,7 +77,7 @@ export function BlogPostForm({ postToEdit, onFormSubmit }: BlogPostFormProps) {
   }, [postToEdit, form]);
 
   const onSubmit = async (values: BlogPostFormValues) => {
-    if (!auth.currentUser || !firestore || !storage) {
+    if (!auth.currentUser || !firestore) {
       toast({
         variant: "destructive",
         title: "Error",
@@ -92,13 +90,38 @@ export function BlogPostForm({ postToEdit, onFormSubmit }: BlogPostFormProps) {
     let imageUrl = postToEdit?.imageUrl || "";
 
     try {
-      const postId = isEditing && postToEdit ? postToEdit.id : doc(collection(firestore, "blogPosts")).id;
-
       if (imageFile) {
-        const imageRef = ref(storage, `blog-images/${postId}/${imageFile.name}`);
-        const uploadResult = await uploadBytes(imageRef, imageFile);
-        imageUrl = await getDownloadURL(uploadResult.ref);
+        // --- Cloudinary Upload Logic ---
+        const CLOUDINARY_CLOUD_NAME = "YOUR_CLOUD_NAME"; // <-- IMPORTANT: REPLACE with your Cloudinary cloud name
+        const CLOUDINARY_UPLOAD_PRESET = "YOUR_UPLOAD_PRESET"; // <-- IMPORTANT: REPLACE with your unsigned upload preset
+
+        if (CLOUDINARY_CLOUD_NAME === "YOUR_CLOUD_NAME" || CLOUDINARY_UPLOAD_PRESET === "YOUR_UPLOAD_PRESET") {
+            throw new Error("Please replace placeholder Cloudinary credentials in src/components/admin/blog-post-form.tsx");
+        }
+
+        const formData = new FormData();
+        formData.append("file", imageFile);
+        formData.append("upload_preset", CLOUDINARY_UPLOAD_PRESET);
+
+        const response = await fetch(
+          `https://api.cloudinary.com/v1_1/${CLOUDINARY_CLOUD_NAME}/image/upload`,
+          {
+            method: "POST",
+            body: formData,
+          }
+        );
+
+        if (!response.ok) {
+          const errorData = await response.json();
+          throw new Error(`Cloudinary upload failed: ${errorData.error.message}`);
+        }
+
+        const data = await response.json();
+        imageUrl = data.secure_url;
+        // --- End of Cloudinary Logic ---
       }
+      
+      const postId = isEditing && postToEdit ? postToEdit.id : doc(collection(firestore, "blogPosts")).id;
       
       const postRef = doc(firestore, "blogPosts", postId);
       
