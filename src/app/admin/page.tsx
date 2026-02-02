@@ -1,7 +1,7 @@
 
 "use client";
 
-import { useUser, useAuth, useFirestore } from "@/firebase/provider";
+import { useUser, useAuth, useFirestore } from "@/firebase";
 import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
@@ -24,11 +24,13 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { useToast } from "@/hooks/use-toast";
 
 export default function AdminPage() {
   const { user, isUserLoading } = useUser();
   const auth = useAuth();
   const firestore = useFirestore();
+  const { toast } = useToast();
   const [email, setEmail] = useState("admin@example.com");
   const [password, setPassword] = useState("password");
   const [error, setError] = useState<string | null>(null);
@@ -60,6 +62,19 @@ export default function AdminPage() {
       } else {
         setError(signInError.message);
       }
+    }
+  };
+
+  const handleSignOut = async () => {
+    try {
+      await signOut(auth);
+    } catch (error) {
+      console.error("Error signing out:", error);
+      toast({
+        variant: "destructive",
+        title: "Sign Out Failed",
+        description: "There was a problem signing out. Please try again.",
+      });
     }
   };
 
@@ -161,7 +176,7 @@ export default function AdminPage() {
         <div className="flex flex-col items-center justify-center min-h-screen text-center">
             <h1 className="text-2xl font-bold mb-4">Access Denied</h1>
             <p>You do not have permission to view this page.</p>
-            <Button onClick={() => signOut(auth)} className="mt-4">Sign Out</Button>
+            <Button onClick={handleSignOut} className="mt-4">Sign Out</Button>
         </div>
     );
   }
@@ -175,7 +190,7 @@ export default function AdminPage() {
     <div className="container mx-auto py-10">
       <div className="flex justify-between items-center mb-6">
         <h1 className="text-3xl font-bold">Admin Dashboard</h1>
-        <Button onClick={() => signOut(auth)} variant="outline">Sign Out</Button>
+        <Button onClick={handleSignOut} variant="outline">Sign Out</Button>
       </div>
 
       <Accordion type="single" collapsible className="w-full" value={accordionValue} onValueChange={setAccordionValue}>
