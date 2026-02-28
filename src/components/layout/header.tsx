@@ -2,8 +2,9 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { AnimatePresence } from "framer-motion";
-import { Menu, Palette, Shield, LogOut } from "lucide-react";
+import { Menu, Shield, LogOut } from "lucide-react";
 import MobileMenu from "./mobile-menu";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -34,7 +35,12 @@ const Header = () => {
   ];
 
   const handleScrollTo = (id: string) => {
-    document.querySelector(id)?.scrollIntoView({ behavior: 'smooth' });
+    const element = document.querySelector(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    } else if (id === '#home') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   };
   
   const handleSignOut = async () => {
@@ -63,8 +69,15 @@ const Header = () => {
       )}>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-20">
-            <Link href="/" onClick={(e) => { e.preventDefault(); handleScrollTo('#home');}} className="text-foreground">
-              <Palette className="h-8 w-8" />
+            <Link href="/" onClick={(e) => { e.preventDefault(); handleScrollTo('#home');}} className="flex items-center">
+              <Image 
+                src="/MMG LOGO.png?v=2" 
+                alt="MisterMarkGee Logo" 
+                width={50} 
+                height={50} 
+                className="h-12 w-auto object-contain"
+                priority
+              />
             </Link>
             <nav className="hidden md:flex items-center space-x-8">
               {navLinks.map(link => (
@@ -80,7 +93,7 @@ const Header = () => {
               {user && (
                 <>
                   <Link href="/admin" className="text-base font-medium text-foreground/80 hover:text-foreground transition-colors hover:scale-105 cursor-pointer flex items-center gap-2">
-                    <Shield /> Admin
+                    <Shield className="h-5 w-5" /> Admin
                   </Link>
                   <Button
                     variant="outline"
