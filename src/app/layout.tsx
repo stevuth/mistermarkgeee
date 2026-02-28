@@ -12,6 +12,9 @@ export const metadata: Metadata = {
   authors: [{ name: 'Mark Macharia Gaturuku' }],
   creator: 'MisterMarkGee',
   publisher: 'MisterMarkGee',
+  icons: {
+    icon: '/MMG LOGO.png?v=3',
+  },
   openGraph: {
     title: 'MisterMarkGee - The Creative Universe of MisterMarkGee',
     description: 'Digital witnessing through creative media. Explore the work of MisterMarkGee, a Content Creator, Artist Manager, Videographer, Podcaster, and Writer.',
@@ -56,7 +59,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <head>
-        <link rel="icon" href="/MMG LOGO.png?v=2" />
+        <link rel="icon" href="/MMG LOGO.png?v=3" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
