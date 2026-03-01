@@ -7,10 +7,12 @@ import ZohoNewsletter from "@/components/sections/zoho-newsletter-section";
 import ContactSection from "@/components/sections/contact-section";
 import ArticlesSection from "@/components/sections/articles-section";
 import WorkWithMeSection from "@/components/sections/work-with-me-section";
+import ShowreelIntro from "@/components/sections/showreel-intro";
 
 export default function Home() {
   return (
     <>
+      <ShowreelIntro />
       <HeroSection />
       <AboutSection />
       <RolesSection />
