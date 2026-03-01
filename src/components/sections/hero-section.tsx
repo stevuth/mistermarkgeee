@@ -18,7 +18,6 @@ const BlinkingCursor = () => {
   );
 };
 
-
 const HeroSection = () => {
   const [init, setInit] = useState(false);
 
@@ -78,21 +77,20 @@ const HeroSection = () => {
           enable: true,
           area: 800,
         },
-        value: 80,
+        value: 40,
       },
       opacity: {
-        value: 0.5,
+        value: 0.3,
       },
       shape: {
         type: "circle",
       },
       size: {
-        value: { min: 1, max: 5 },
+        value: { min: 1, max: 3 },
       },
     },
     detectRetina: true,
   }), []);
-
 
   const intro = "Hello, I'm".split("");
   const name = "MisterMarkGee".split("");
@@ -146,17 +144,33 @@ const HeroSection = () => {
       id="home"
       className="relative flex items-center justify-center h-screen overflow-hidden bg-background"
     >
+      {/* Background Video */}
+      <div className="absolute inset-0 z-0">
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="w-full h-full object-cover"
+        >
+          <source src="/Showreel.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+        {/* Dark Overlay for Readability */}
+        <div className="absolute inset-0 bg-black/50 z-10" />
+      </div>
+
        {init && (
         <Particles
           id="tsparticles"
           particlesLoaded={particlesLoaded}
           options={particleOptions}
-          className="absolute inset-0 z-0 h-full w-full"
+          className="absolute inset-0 z-20 h-full w-full pointer-events-none"
         />
       )}
       
       <div
-        className="relative z-20 text-center px-4 flex flex-col items-center"
+        className="relative z-30 text-center px-4 flex flex-col items-center"
       >
         <motion.div
           className="font-body text-lg md:text-2xl text-white/90 mb-4 flex justify-center items-baseline"
@@ -242,7 +256,6 @@ const HeroSection = () => {
             </Button>
         </motion.div>
       </div>
-      
     </section>
   );
 };
