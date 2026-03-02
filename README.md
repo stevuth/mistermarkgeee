@@ -1,3 +1,4 @@
+
 # MisterMarkGee — Creative Universe
 
 The official portfolio and blog for Mark Macharia Gaturuku (MisterMarkGee), a content creator, artist manager, videographer, podcaster, and writer based in Birmingham, UK.
@@ -9,14 +10,14 @@ The official portfolio and blog for Mark Macharia Gaturuku (MisterMarkGee), a co
 - **UI Components:** [Shadcn UI](https://ui.shadcn.com/)
 - **Animations:** [Framer Motion](https://www.framer.com/motion/)
 - **Database & Auth:** [Firebase](https://firebase.google.com/) (Firestore, Authentication)
-- **Image Hosting:** [Cloudinary](https://cloudinary.com/)
+- **Video Hosting:** [Cloudinary](https://cloudinary.com/) (Used for high-performance video streaming)
 - **AI Integration:** [Genkit](https://firebase.google.com/docs/genkit) (Google Gemini)
 
 ## ✨ Key Features
 
 - **Dynamic Blog:** Real-time articles powered by Firestore.
 - **Admin Dashboard:** Secure area for managing blog posts and account settings.
-- **Cloudinary Integration:** Seamless image uploads for blog content.
+- **Cloudinary Integration:** Seamless image uploads and high-performance video hosting for showreels.
 - **Video Portfolio:** Curated YouTube playlists showcasing videography and podcast work.
 - **Responsive Design:** Optimized for all devices with a modern dark-themed aesthetic.
 - **Newsletter:** Integrated Zoho Campaigns subscription form.
@@ -27,7 +28,7 @@ The official portfolio and blog for Mark Macharia Gaturuku (MisterMarkGee), a co
 
 - Node.js 18+
 - A Firebase project
-- A Cloudinary account (for image uploads)
+- A Cloudinary account (for image and video hosting)
 
 ### Installation
 
@@ -41,9 +42,7 @@ The official portfolio and blog for Mark Macharia Gaturuku (MisterMarkGee), a co
    npm install
    ```
 
-3. Set up environment variables for Cloudinary in your Admin components or a `.env` file.
-
-4. Run the development server:
+3. Run the development server:
    ```bash
    npm run dev
    ```
