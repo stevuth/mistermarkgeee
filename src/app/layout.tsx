@@ -7,6 +7,7 @@ import ScrollProgressBar from "@/components/layout/scroll-progress-bar";
 import { FirebaseClientProvider } from '@/firebase';
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://mistermarkgeee.web.app'),
   title: 'MisterMarkGee',
   description: 'The creative universe of MisterMarkGee — Content Creator, Artist Manager, Videographer, Podcaster, and Writer.',
   keywords: 'MisterMarkGee, Mark Macharia Gaturuku, content creator, artist manager, videographer, podcaster, writer, Christian hip hop, gospel music, digital witnessing',
@@ -15,13 +16,13 @@ export const metadata: Metadata = {
   publisher: 'MisterMarkGee',
   icons: {
     icon: [
-      { url: '/favicon.ico?v=10', type: 'image/x-icon' },
+      { url: '/favicon.ico?v=15', type: 'image/x-icon' },
     ],
     shortcut: [
-      { url: '/favicon.ico?v=10', type: 'image/x-icon' },
+      { url: '/favicon.ico?v=15', type: 'image/x-icon' },
     ],
     apple: [
-      { url: '/favicon.ico?v=10' },
+      { url: '/favicon.ico?v=15' },
     ],
   },
   openGraph: {
@@ -31,7 +32,7 @@ export const metadata: Metadata = {
     siteName: 'MisterMarkGee',
     images: [
       {
-        url: 'https://mistermarkgeee.web.app/og-image.png',
+        url: '/og-image.png',
         width: 1200,
         height: 630,
         alt: 'MisterMarkGee Creative Portfolio',
@@ -45,7 +46,7 @@ export const metadata: Metadata = {
     title: 'MisterMarkGee - The Creative Universe of MisterMarkGee',
     description: 'Digital witnessing through creative media. Explore the work of MisterMarkGee.',
     creator: '@mistermarkgee',
-    images: ['https://mistermarkgeee.web.app/og-image.png'],
+    images: ['/og-image.png'],
   },
   robots: {
     index: true,
@@ -68,9 +69,8 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <head>
-        <link rel="icon" href="/favicon.ico?v=10" type="image/x-icon" />
-        <link rel="shortcut icon" href="/favicon.ico?v=10" type="image/x-icon" />
-        <link rel="apple-touch-icon" href="/favicon.ico?v=10" />
+        <meta name="theme-color" content="#000000" />
+        <link rel="icon" href="/favicon.ico?v=15" sizes="any" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
