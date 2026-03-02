@@ -1,40 +1,41 @@
-
-# dependencies
-/node_modules
-/.pnp
-.pnp.js
-
-# testing
-/coverage
-
-# next.js
+# Next.js
 /.next/
 /out/
 
-# production
+# Production
 /build
 
-# misc
-.DS_Store
-*.pem
+# Dependencies
+/node_modules
 
-# debug
+# Debug
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# local env files
+# Local env files
 .env*.local
 
-# vercel
+# Vercel
 .vercel
 
-# typescript
+# TypeScript
 *.tsbuildinfo
 next-env.d.ts
 
-# Large media files (prevents GitHub push errors)
+# Firebase
+.firebase/
+firebase-debug.log*
+firestore-debug.log*
+pubsub-debug.log*
+ui-debug.log*
+
+# OS Files
+.DS_Store
+Thumbs.db
+
+# Large Media (Ignore the local showreel to stay under GitHub's 100MB limit)
+public/Showreel.mp4
 public/*.mp4
 public/*.mov
 public/*.avi
-public/Showreel.mp4
