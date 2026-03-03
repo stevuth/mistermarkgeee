@@ -31,9 +31,12 @@ export default function AdminPage() {
   const auth = useAuth();
   const firestore = useFirestore();
   const { toast } = useToast();
+  
+  // Updated credentials per user request
   const [email, setEmail] = useState("mark.gaturuku@gmail.com");
   const [password, setPassword] = useState("mistermarkgee");
   const [error, setError] = useState<string | null>(null);
+  const [isProcessing, setIsProcessing] = useState(false);
   
   const [isAdmin, setIsAdmin] = useState(false);
   const [isRoleLoading, setIsRoleLoading] = useState(true);
@@ -43,29 +46,39 @@ export default function AdminPage() {
 
   const handleSignIn = async () => {
     setError(null);
+    setIsProcessing(true);
+    const targetEmail = email.trim().toLowerCase();
+
     try {
-      await signInWithEmailAndPassword(auth, email, password);
+      // 1. Try to sign in
+      await signInWithEmailAndPassword(auth, targetEmail, password);
     } catch (signInError: any) {
-      // Bootstrap logic: Create the admin user if it's the specific email and doesn't exist
-      if ((signInError.code === 'auth/user-not-found' || signInError.code === 'auth/invalid-credential') && email === 'mark.gaturuku@gmail.com') {
+      // 2. If user doesn't exist (or generic invalid-credential in new Firebase versions)
+      const isBootstrapEmail = targetEmail === 'mark.gaturuku@gmail.com';
+      const shouldTryBootstrap = signInError.code === 'auth/user-not-found' || signInError.code === 'auth/invalid-credential';
+
+      if (isBootstrapEmail && shouldTryBootstrap) {
         try {
-          await createUserWithEmailAndPassword(auth, email, password);
+          // 3. Attempt to create the admin account
+          await createUserWithEmailAndPassword(auth, targetEmail, password);
           toast({
-            title: "Admin Created",
-            description: "A new admin account has been created for you.",
+            title: "Admin Account Created",
+            description: "A new admin account has been successfully set up for you.",
           });
         } catch (signUpError: any) {
           if (signUpError.code === 'auth/email-already-in-use') {
-            setError('Incorrect password. Please try again.');
+            setError('The admin account already exists, but the password entered is incorrect. Please try a different password or use the "Forgot Password" link.');
           } else {
-            setError(`Error creating admin user: ${signUpError.message}`);
+            setError(`Admin Setup Error: ${signUpError.message}`);
           }
         }
       } else if (signInError.code === 'auth/wrong-password') {
         setError('Incorrect password. Please try again.');
       } else {
-        setError(signInError.message);
+        setError(`Sign In Error: ${signInError.message}`);
       }
+    } finally {
+      setIsProcessing(false);
     }
   };
 
@@ -75,7 +88,7 @@ export default function AdminPage() {
       return;
     }
     try {
-      await sendPasswordResetEmail(auth, email);
+      await sendPasswordResetEmail(auth, email.trim());
       toast({
         title: "Reset Email Sent",
         description: `A password reset link has been sent to ${email}`,
@@ -162,6 +175,7 @@ export default function AdminPage() {
                   <Label htmlFor="password">Password</Label>
                   <Button 
                     variant="link" 
+                    type="button"
                     className="p-0 h-auto text-xs" 
                     onClick={handleForgotPassword}
                   >
@@ -176,9 +190,13 @@ export default function AdminPage() {
                   onChange={(e) => setPassword(e.target.value)}
                 />
               </div>
-              {error && <p className="text-red-500 text-sm">{error}</p>}
-              <Button onClick={handleSignIn} className="w-full">
-                Sign In
+              {error && (
+                <div className="p-3 bg-destructive/10 border border-destructive/20 rounded-md">
+                   <p className="text-destructive text-sm font-medium">{error}</p>
+                </div>
+              )}
+              <Button onClick={handleSignIn} className="w-full" disabled={isProcessing}>
+                {isProcessing ? "Processing..." : "Sign In"}
               </Button>
             </div>
           </CardContent>
