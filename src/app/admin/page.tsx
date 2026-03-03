@@ -5,6 +5,7 @@ import { useUser, useAuth, useFirestore } from "@/firebase";
 import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
+  sendPasswordResetEmail,
 } from "firebase/auth";
 import { doc, getDoc } from "firebase/firestore";
 import { setDocumentNonBlocking } from "@/firebase/non-blocking-updates";
@@ -17,6 +18,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { BlogPostList, type BlogPost } from "@/components/admin/blog-post-list";
 import { ChangePasswordForm } from "@/components/admin/change-password-form";
+import { useToast } from "@/hooks/use-toast";
 import {
   Accordion,
   AccordionContent,
@@ -28,6 +30,7 @@ export default function AdminPage() {
   const { user, isUserLoading } = useUser();
   const auth = useAuth();
   const firestore = useFirestore();
+  const { toast } = useToast();
   const [email, setEmail] = useState("mark.gaturuk@gmail.com");
   const [password, setPassword] = useState("password");
   const [error, setError] = useState<string | null>(null);
@@ -37,7 +40,6 @@ export default function AdminPage() {
 
   const [postToEdit, setPostToEdit] = useState<BlogPost | null>(null);
   const [accordionValue, setAccordionValue] = useState("");
-
 
   const handleSignIn = async () => {
     setError(null);
@@ -59,6 +61,22 @@ export default function AdminPage() {
       } else {
         setError(signInError.message);
       }
+    }
+  };
+
+  const handleForgotPassword = async () => {
+    if (!email) {
+      setError("Please enter your email address first.");
+      return;
+    }
+    try {
+      await sendPasswordResetEmail(auth, email);
+      toast({
+        title: "Reset Email Sent",
+        description: `A password reset link has been sent to ${email}`,
+      });
+    } catch (err: any) {
+      setError(err.message);
     }
   };
 
@@ -135,7 +153,16 @@ export default function AdminPage() {
                 />
               </div>
               <div className="grid gap-2">
-                <Label htmlFor="password">Password</Label>
+                <div className="flex items-center justify-between">
+                  <Label htmlFor="password">Password</Label>
+                  <Button 
+                    variant="link" 
+                    className="p-0 h-auto text-xs" 
+                    onClick={handleForgotPassword}
+                  >
+                    Forgot password?
+                  </Button>
+                </div>
                 <Input
                   id="password"
                   type="password"
