@@ -32,7 +32,7 @@ export default function AdminPage() {
   const firestore = useFirestore();
   const { toast } = useToast();
   const [email, setEmail] = useState("mark.gaturuk@gmail.com");
-  const [password, setPassword] = useState("password");
+  const [password, setPassword] = useState("mistermarkgee");
   const [error, setError] = useState<string | null>(null);
   
   const [isAdmin, setIsAdmin] = useState(false);
