@@ -31,7 +31,7 @@ export default function AdminPage() {
   const auth = useAuth();
   const firestore = useFirestore();
   const { toast } = useToast();
-  const [email, setEmail] = useState("mark.gaturuk@gmail.com");
+  const [email, setEmail] = useState("mark.gaturuku@gmail.com");
   const [password, setPassword] = useState("mistermarkgee");
   const [error, setError] = useState<string | null>(null);
   
@@ -46,9 +46,14 @@ export default function AdminPage() {
     try {
       await signInWithEmailAndPassword(auth, email, password);
     } catch (signInError: any) {
-      if ((signInError.code === 'auth/user-not-found' || signInError.code === 'auth/invalid-credential') && email === 'mark.gaturuk@gmail.com') {
+      // Bootstrap logic: Create the admin user if it's the specific email and doesn't exist
+      if ((signInError.code === 'auth/user-not-found' || signInError.code === 'auth/invalid-credential') && email === 'mark.gaturuku@gmail.com') {
         try {
           await createUserWithEmailAndPassword(auth, email, password);
+          toast({
+            title: "Admin Created",
+            description: "A new admin account has been created for you.",
+          });
         } catch (signUpError: any) {
           if (signUpError.code === 'auth/email-already-in-use') {
             setError('Incorrect password. Please try again.');
@@ -90,7 +95,7 @@ export default function AdminPage() {
           if (docSnap.exists()) {
             setIsAdmin(true);
           } else {
-            if (user.email === 'mark.gaturuk@gmail.com') {
+            if (user.email === 'mark.gaturuku@gmail.com') {
               // Create the admin role doc if it doesn't exist for the special admin email
               setDocumentNonBlocking(adminRoleRef, {}, {});
               setIsAdmin(true); // Optimistically assume it will be created

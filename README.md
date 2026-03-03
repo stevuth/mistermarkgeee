@@ -49,7 +49,7 @@ The official portfolio and blog for Mark Macharia Gaturuku (MisterMarkGee), a co
 
 ## 🔐 Admin Access
 
-Admin features are restricted to the authorized email: `mark.gaturuk@gmail.com`. Permissions are managed via Firestore Security Rules and a `roles_admin` collection.
+Admin features are restricted to the authorized email: `mark.gaturuku@gmail.com`. Permissions are managed via Firestore Security Rules and a `roles_admin` collection.
 
 ## 📄 License
 
