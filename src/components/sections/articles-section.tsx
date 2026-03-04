@@ -28,14 +28,18 @@ type Article = {
 
 const formatArticleContent = (content: string) => {
   if (!content) return "";
-  // If the content already has HTML tags like <p> or <br>, assume it's pre-formatted
-  if (content.includes("<p>") || content.includes("<br")) {
+  
+  // If the content already seems to have HTML tags, don't double format
+  if (/<[a-z][\s\S]*>/i.test(content)) {
     return content;
   }
-  // Otherwise, convert double newlines to paragraphs and single newlines to line breaks
+
+  // Convert double newlines (or more) into actual paragraph blocks with bottom margins
+  // Convert single newlines into <br />
   return content
+    .trim()
     .split(/\n\s*\n/)
-    .map(para => `<p>${para.replace(/\n/g, "<br />")}</p>`)
+    .map(para => `<p style="margin-bottom: 1.5rem;">${para.replace(/\n/g, "<br />")}</p>`)
     .join("");
 };
 
@@ -124,7 +128,7 @@ const ArticlesSection = () => {
               </DialogHeader>
               <ScrollArea className="flex-grow pr-6 -mr-6 mt-4">
                   <div
-                      className="prose prose-invert prose-lg max-w-none text-foreground/90 whitespace-pre-line"
+                      className="prose prose-invert prose-lg max-w-none text-foreground/90"
                       dangerouslySetInnerHTML={{ __html: formatArticleContent(selectedArticle.content) }}
                   />
               </ScrollArea>
