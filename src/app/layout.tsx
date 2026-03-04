@@ -6,7 +6,7 @@ import Header from "@/components/layout/header";
 import ScrollProgressBar from "@/components/layout/scroll-progress-bar";
 import { FirebaseClientProvider } from '@/firebase';
 
-const FAVICON_URL = 'https://res.cloudinary.com/dni2duulw/image/upload/v1772496023/favicon.ico_armd5o.png?v=20';
+const FAVICON_URL = 'https://res.cloudinary.com/dni2duulw/image/upload/v1772496023/favicon.ico_armd5o.png?v=30';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://mistermarkgeee.web.app'),

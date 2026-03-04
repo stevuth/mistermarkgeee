@@ -1,12 +1,13 @@
+
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { BookOpen, ArrowRight } from "lucide-react";
 import Image from "next/image";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { useCollection, useFirestore, useMemoFirebase } from "@/firebase";
 import { collection, query, orderBy } from "firebase/firestore";
@@ -23,6 +24,19 @@ type Article = {
   author: string;
   tags: string[];
   summary: string;
+};
+
+const formatArticleContent = (content: string) => {
+  if (!content) return "";
+  // If the content already has HTML tags like <p> or <br>, assume it's pre-formatted
+  if (content.includes("<p>") || content.includes("<br")) {
+    return content;
+  }
+  // Otherwise, convert double newlines to paragraphs and single newlines to line breaks
+  return content
+    .split(/\n\s*\n/)
+    .map(para => `<p>${para.replace(/\n/g, "<br />")}</p>`)
+    .join("");
 };
 
 const ArticlesSection = () => {
@@ -57,7 +71,10 @@ const ArticlesSection = () => {
           </motion.div>
 
           <div className="mt-16 grid gap-12 max-w-5xl mx-auto md:grid-cols-2 lg:max-w-none lg:grid-cols-3 lg:gap-8">
-            {isLoading && <p>Loading articles...</p>}
+            {isLoading && <p className="text-center col-span-full">Loading articles...</p>}
+            {articles && articles.length === 0 && (
+              <p className="text-center col-span-full text-muted-foreground">No articles published yet.</p>
+            )}
             {articles && articles.map((article, index) => (
               <motion.div
                 key={article.id}
@@ -69,7 +86,7 @@ const ArticlesSection = () => {
               >
                 <div className="relative h-64 w-full overflow-hidden">
                   <Image
-                    src={article.imageUrl}
+                    src={article.imageUrl || "https://picsum.photos/seed/blog/800/600"}
                     alt={article.title}
                     fill
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
@@ -103,11 +120,12 @@ const ArticlesSection = () => {
             <>
               <DialogHeader>
                 <DialogTitle className="font-headline text-3xl text-primary">{selectedArticle.title}</DialogTitle>
+                <p className="text-sm text-muted-foreground">By {selectedArticle.author} • {new Date(selectedArticle.datePublished).toLocaleDateString()}</p>
               </DialogHeader>
-              <ScrollArea className="flex-grow pr-6 -mr-6">
+              <ScrollArea className="flex-grow pr-6 -mr-6 mt-4">
                   <div
-                      className="prose prose-invert prose-lg max-w-none text-foreground/90"
-                      dangerouslySetInnerHTML={{ __html: selectedArticle.content }}
+                      className="prose prose-invert prose-lg max-w-none text-foreground/90 whitespace-pre-line"
+                      dangerouslySetInnerHTML={{ __html: formatArticleContent(selectedArticle.content) }}
                   />
               </ScrollArea>
             </>
