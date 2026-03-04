@@ -25,6 +25,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { Eye, EyeOff } from "lucide-react";
 
 export default function AdminPage() {
   const { user, isUserLoading } = useUser();
@@ -35,6 +36,7 @@ export default function AdminPage() {
   // Updated credentials per user request
   const [email, setEmail] = useState("mark.gaturuku@gmail.com");
   const [password, setPassword] = useState("mistermarkgee");
+  const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [isProcessing, setIsProcessing] = useState(false);
   
@@ -182,13 +184,24 @@ export default function AdminPage() {
                     Forgot password?
                   </Button>
                 </div>
-                <Input
-                  id="password"
-                  type="password"
-                  required
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                />
+                <div className="relative">
+                  <Input
+                    id="password"
+                    type={showPassword ? "text" : "password"}
+                    required
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    className="pr-10"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowPassword(!showPassword)}
+                    className="absolute inset-y-0 right-0 flex items-center px-3 text-muted-foreground hover:text-foreground"
+                    aria-label={showPassword ? "Hide password" : "Show password"}
+                  >
+                    {showPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
+                  </button>
+                </div>
               </div>
               {error && (
                 <div className="p-3 bg-destructive/10 border border-destructive/20 rounded-md">
@@ -209,7 +222,9 @@ export default function AdminPage() {
     return (
         <div className="flex flex-col items-center justify-center min-h-screen text-center p-4">
             <h1 className="text-2xl font-bold mb-4">Access Denied</h1>
-            <p>You do not have permission to view this page. Please sign out and log in with an admin account.</p>
+            <p className="mb-2">You do not have permission to view this page. Your User ID is:</p>
+            <code className="bg-secondary p-2 rounded mb-4 block select-all">{user.uid}</code>
+            <p className="text-sm text-muted-foreground">Add this UID to the "roles_admin" collection in Firestore to grant access.</p>
         </div>
     );
   }
