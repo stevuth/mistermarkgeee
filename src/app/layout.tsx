@@ -6,7 +6,7 @@ import Header from "@/components/layout/header";
 import ScrollProgressBar from "@/components/layout/scroll-progress-bar";
 import { FirebaseClientProvider } from '@/firebase';
 
-const FAVICON_URL = 'https://res.cloudinary.com/dni2duulw/image/upload/v1772496023/favicon.ico_armd5o.png';
+const FAVICON_URL = 'https://res.cloudinary.com/dni2duulw/image/upload/v1772496023/favicon.ico_armd5o.png?v=20';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://mistermarkgeee.web.app'),
@@ -18,13 +18,14 @@ export const metadata: Metadata = {
   publisher: 'MisterMarkGee',
   icons: {
     icon: [
-      { url: FAVICON_URL, type: 'image/png' },
+      { url: FAVICON_URL, type: 'image/png', sizes: '32x32' },
+      { url: FAVICON_URL, type: 'image/png', sizes: '16x16' },
     ],
     shortcut: [
       { url: FAVICON_URL, type: 'image/png' },
     ],
     apple: [
-      { url: FAVICON_URL },
+      { url: FAVICON_URL, sizes: '180x180', type: 'image/png' },
     ],
   },
   openGraph: {
@@ -72,9 +73,10 @@ export default function RootLayout({
     <html lang="en" className="dark">
       <head>
         <meta name="theme-color" content="#000000" />
-        <link rel="icon" href={FAVICON_URL} type="image/png" sizes="any" />
+        <link rel="icon" href={FAVICON_URL} type="image/png" sizes="32x32" />
+        <link rel="icon" href={FAVICON_URL} type="image/png" sizes="16x16" />
         <link rel="shortcut icon" href={FAVICON_URL} type="image/png" />
-        <link rel="apple-touch-icon" href={FAVICON_URL} />
+        <link rel="apple-touch-icon" href={FAVICON_URL} sizes="180x180" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
