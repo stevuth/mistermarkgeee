@@ -2,6 +2,7 @@
 import HeroSection from "@/components/sections/hero-section";
 import AboutSection from "@/components/sections/about-section";
 import RolesSection from "@/components/sections/roles-section";
+import FrameworkSection from "@/components/sections/framework-section";
 import PortfolioSection from "@/components/sections/portfolio-section";
 import TestimonialsSection from "@/components/sections/testimonials-section";
 import ZohoNewsletter from "@/components/sections/zoho-newsletter-section";
@@ -17,6 +18,7 @@ export default function Home() {
       <HeroSection />
       <AboutSection />
       <RolesSection />
+      <FrameworkSection />
       <PortfolioSection />
       <ArticlesSection />
       <TestimonialsSection />
