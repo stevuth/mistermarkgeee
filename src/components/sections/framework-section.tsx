@@ -1,4 +1,3 @@
-
 "use client";
 
 import { motion } from "framer-motion";
@@ -78,9 +77,7 @@ const FrameworkSection = () => {
               Content & Commentary · Contending for Christ in Culture
             </p>
             <p className="mt-6 max-w-3xl mx-auto text-lg text-foreground/70 leading-relaxed">
-              Engaging the modern world requires a unique blend of clarity, conviction, and grace. 
-              This framework serves as the compass for every project, podcast, and partnership—ensuring 
-              that creativity serves a higher purpose in the digital age.
+              Everything created here flows from a single conviction: faith speaks to every corner of life. The 5 C's Effect is the framework behind the work — a way of engaging culture not by retreating from it, but by entering it with clarity, conviction, and grace.
             </p>
           </motion.div>
         </div>
