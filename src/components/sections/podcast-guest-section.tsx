@@ -20,7 +20,7 @@ const PodcastGuestSection = () => {
             Guest Appearances & Media Inquiries
           </h2>
           <p className="max-w-2xl mx-auto text-lg text-foreground/70 leading-relaxed mb-10">
-            I am available for guest appearances on podcasts, radio shows, and digital platforms. I specialize in discussing the intersection of faith and culture, the future of Christian Hip Hop, and fostering civil discourse in a polarized world. If you are looking for a professional, Christ-centered perspective for your next episode or show, I would be honored to connect.
+            I am available for anyone who would like me to be a guest at their podcast or show. I specialize in discussing the intersection of faith and culture, the future of Christian Hip Hop, and fostering civil discourse in a polarized world. If you are looking for a professional, Christ-centered perspective for your next episode or show, I would be honored to connect.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Button 
