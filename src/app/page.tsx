@@ -4,6 +4,7 @@ import AboutSection from "@/components/sections/about-section";
 import RolesSection from "@/components/sections/roles-section";
 import FrameworkSection from "@/components/sections/framework-section";
 import PortfolioSection from "@/components/sections/portfolio-section";
+import PodcastGuestSection from "@/components/sections/podcast-guest-section";
 import TestimonialsSection from "@/components/sections/testimonials-section";
 import ZohoNewsletter from "@/components/sections/zoho-newsletter-section";
 import ContactSection from "@/components/sections/contact-section";
@@ -20,6 +21,7 @@ export default function Home() {
       <RolesSection />
       <FrameworkSection />
       <PortfolioSection />
+      <PodcastGuestSection />
       <ArticlesSection />
       <TestimonialsSection />
       <WorkWithMeSection />

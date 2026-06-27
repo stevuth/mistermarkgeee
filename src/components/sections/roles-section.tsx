@@ -13,7 +13,7 @@ const roles = [
     icon: Video,
     title: "Videographer",
     tagline: "Capturing stories through motion.",
-    description: "From concept to final cut, I produce cinematic videos that resonate with audiences and deliver powerful messages.",
+    description: "From concept to final cut, I produce cinematic videos that resonate with audiences and deliver powerful messages with technical precision.",
     imageUrl: "/videographer.jpg",
     imageHint: "videography cinematic",
     link: "#showcase"
@@ -22,7 +22,7 @@ const roles = [
     icon: Music,
     title: "Producer",
     tagline: "Bringing creative visions to life.",
-    description: "I manage projects from start to finish, ensuring a smooth process and a high-quality final product that exceeds expectations.",
+    description: "I manage complex media projects from inception to delivery, ensuring a high-standard final product that aligns with strategic creative goals.",
     imageUrl: "/producer.jpg",
     imageHint: "music production",
     link: "#works"
@@ -30,7 +30,7 @@ const roles = [
   {
     icon: PenSquare,
     title: "Writer",
-    description: "I craft compelling narratives, from short-form content to in-depth articles, that engage and inspire readers.",
+    description: "I craft compelling narratives across various formats—from long-form articles to concise digital copy—that engage, inform, and inspire.",
     tagline: "Weaving words that connect.",
     imageUrl: "/writer.jpg",
     imageHint: "writing book",
@@ -40,7 +40,7 @@ const roles = [
     icon: UserCheck,
     title: "Freelance Artist Management",
     tagline: "Guiding creative journeys.",
-    description: "Helping artists with campaigns on a short term basis yielding results for various artists.",
+    description: "Supporting artists with high-impact short-term campaigns, providing strategic management that yields measurable results for diverse creative talents.",
     imageUrl: "/Artist Manager.jpg",
     imageHint: "artist portrait",
     link: "#contact"
@@ -49,7 +49,7 @@ const roles = [
     icon: Podcast,
     title: "Podcaster",
     tagline: "Spreading hope through sound.",
-    description: "You’ll often find me on podcasts diving into conversations about politics, culture, and Christian living—promoting a Christ-centered perspective and a vision of human flourishing for everyone. As a strong advocate for Gospel and Christian Hip Hop music, I’m passionate about uplifting artists and platforms that use creativity to spread hope and truth through sound.",
+    description: "A seasoned voice in digital media, specializing in civil discourse at the intersection of faith, politics, and culture. I offer a Christ-centered perspective aimed at fostering societal flourishing through thoughtful dialogue and media engagement.",
     imageUrl: "/podcaster.jpg?v=2",
     imageHint: "podcast microphone",
     link: "#pl2"
@@ -86,7 +86,7 @@ const RolesSection = () => {
     <section id="roles" className="py-24 sm:py-32 bg-secondary/20 text-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center">
-            <Badge variant="outline" className="mb-4 border-white/50 text-white">My Expertise</Badge>
+            <Badge variant="outline" className="mb-4 border-white/50 text-white">Expertise</Badge>
             <motion.h2 
                 className="font-headline text-4xl md:text-5xl font-bold"
                 initial={{ opacity: 0, y: 20 }}
@@ -94,7 +94,7 @@ const RolesSection = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5 }}
             >
-                What I Do
+                Professional Scope
             </motion.h2>
             <motion.p 
                 className="mt-4 max-w-2xl mx-auto text-lg text-white/80"
@@ -103,7 +103,7 @@ const RolesSection = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.2 }}
             >
-                A strategic multi-disciplinary approach to creative media, rooted in the 5C framework to deliver impactful storytelling and digital witnessing.
+                Driven by the 5C Framework—Content, Commentary, Contending, Christ, and Culture—I employ a multi-disciplinary approach to media production and storytelling, ensuring every project serves the goal of digital witnessing and creative excellence.
             </motion.p>
         </div>
 
@@ -145,7 +145,7 @@ const RolesSection = () => {
                       onClick={() => handleScrollTo(role.link)}
                       className="mt-6 bg-transparent text-white border-white/50 hover:bg-white hover:text-background font-bold shadow-[0_0_15px_rgba(255,255,255,0.2)] hover:shadow-[0_0_25px_rgba(255,255,255,0.5)] transition-all duration-300"
                   >
-                      View My Work <ArrowRight className="ml-2 h-4 w-4" />
+                      View Portfolio <ArrowRight className="ml-2 h-4 w-4" />
                   </Button>
                 )}
               </div>
