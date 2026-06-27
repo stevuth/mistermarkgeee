@@ -2,36 +2,77 @@
 
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Video, Target, PenTool, Mic2 } from "lucide-react";
 import AnimatedGradientText from "../ui/animated-gradient-text";
+import { Badge } from "../ui/badge";
+
+const services = [
+  {
+    icon: Target,
+    title: "Artist Campaign Sprint",
+    description: "Results-driven marketing and short-term management to launch your project correctly."
+  },
+  {
+    icon: Video,
+    title: "Cinematic Production",
+    description: "High-end videography and storytelling that reflects the 5C standard of excellence."
+  },
+  {
+    icon: Mic2,
+    title: "Strategic Consulting",
+    description: "Expert advice on navigating the marketplace of ideas with a Christ-centered perspective."
+  }
+];
 
 const WorkWithMeSection = () => {
   const handleScrollTo = (id: string) => {
     document.querySelector(id)?.scrollIntoView({ behavior: 'smooth' });
   };
+
   return (
     <section id="work-with-me" className="py-24 sm:py-32 bg-background relative overflow-hidden">
-      <div className="absolute inset-0 z-0 animated-gradient opacity-10" />
+      <div className="absolute inset-0 z-0 animated-gradient opacity-5" />
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
-          className="max-w-3xl mx-auto text-center"
+          className="max-w-4xl mx-auto text-center"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
           viewport={{ once: true }}
         >
+          <Badge variant="outline" className="mb-6 border-primary text-primary">Collaborate</Badge>
           <h2 className="font-headline text-4xl md:text-6xl font-bold text-foreground">
             Ready to <AnimatedGradientText>Create</AnimatedGradientText> Together?
           </h2>
-          <p className="mt-6 text-lg text-foreground/70">
-            Whether you have a video project, need artist management, or want to collaborate on content, I'm here to help bring your vision to life.
+          <p className="mt-6 text-xl text-foreground/70">
+            Every collaboration is a mission. I help visionaries bridge the gap between their Conviction and the Culture.
           </p>
-          <div className="mt-10">
-            <Button size="lg" className="animated-gradient text-white font-bold" onClick={() => handleScrollTo('#contact')}>
-              Let's Talk
+
+          <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
+            {services.map((service, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: i * 0.1 }}
+                viewport={{ once: true }}
+                className="p-6 bg-secondary/20 rounded-2xl border border-white/5 hover:border-primary/30 transition-all group"
+              >
+                <service.icon className="h-8 w-8 text-primary mb-4 group-hover:scale-110 transition-transform" />
+                <h3 className="font-headline text-xl font-bold mb-2">{service.title}</h3>
+                <p className="text-sm text-foreground/60 leading-relaxed">{service.description}</p>
+              </motion.div>
+            ))}
+          </div>
+
+          <div className="mt-16 flex flex-col sm:flex-row justify-center items-center gap-6">
+            <Button size="lg" className="animated-gradient text-white font-bold h-14 px-10 rounded-full" onClick={() => handleScrollTo('#contact')}>
+              Book Your Session
               <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
+            <p className="text-foreground/50 text-sm">
+              Current focus: <span className="text-foreground">Birmingham & Remote Campaigns</span>
+            </p>
           </div>
         </motion.div>
       </div>
