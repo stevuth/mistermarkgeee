@@ -40,7 +40,7 @@ const roles = [
     icon: UserCheck,
     title: "Freelance Artist Management",
     tagline: "Guiding creative journeys.",
-    description: "Supporting artists with high-impact short-term campaigns, providing strategic management that yields measurable results for diverse creative talents.",
+    description: "helping artists with campaigns on a short term basis yielding results for various artists",
     imageUrl: "/Artist Manager.jpg",
     imageHint: "artist portrait",
     link: "#contact"
