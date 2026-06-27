@@ -103,7 +103,7 @@ const RolesSection = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.2 }}
             >
-                I wear many hats, each representing a different side of my creative fusion.
+                A strategic multi-disciplinary approach to creative media, rooted in the 5C framework to deliver impactful storytelling and digital witnessing.
             </motion.p>
         </div>
 
