@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState } from "react";
@@ -13,9 +14,24 @@ import AnimatedGradientText from "../ui/animated-gradient-text";
 import { Youtube, Instagram, Linkedin, Mail, CheckCircle, AlertTriangle } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
+const TiktokIcon = (props: any) => (
+  <svg
+    {...props}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
+  </svg>
+);
+
 const socialLinks = [
   { icon: Youtube, href: "https://www.youtube.com/@mistermarkgee" },
   { icon: Instagram, href: "https://www.instagram.com/mistermarkgee?igsh=OHFoZXhwOXppdDl1&utm_source=qr" },
+  { icon: TiktokIcon, href: "https://www.tiktok.com/@mistermarkgee" },
   { icon: Linkedin, href: "https://www.linkedin.com/in/mark-macharia-gaturuku-a92840111/" },
 ];
 

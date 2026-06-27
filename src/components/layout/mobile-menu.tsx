@@ -1,3 +1,4 @@
+
 "use client";
 
 import { motion } from "framer-motion";
@@ -11,6 +12,20 @@ import { useToast } from "@/hooks/use-toast";
 type MobileMenuProps = {
   closeMenu: () => void;
 };
+
+const TiktokIcon = (props: any) => (
+  <svg
+    {...props}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
+  </svg>
+);
 
 const menuVariants = {
   hidden: { x: "100%", opacity: 0 },
@@ -34,6 +49,7 @@ const navItems = [
 const socialLinks = [
   { icon: Youtube, href: "https://www.youtube.com/@mistermarkgee" },
   { icon: Instagram, href: "https://www.instagram.com/mistermarkgee?igsh=OHFoZXhwOXppdDl1&utm_source=qr" },
+  { icon: TiktokIcon, href: "https://www.tiktok.com/@mistermarkgee" },
   { icon: Linkedin, href: "https://www.linkedin.com/in/mark-macharia-gaturuku-a92840111/" },
 ];
 
