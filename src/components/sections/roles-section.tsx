@@ -1,3 +1,4 @@
+
 "use client";
 
 import { motion } from "framer-motion";
@@ -37,9 +38,9 @@ const roles = [
   },
   {
     icon: UserCheck,
-    title: "Artist Manager",
+    title: "Freelance Artist Management",
     tagline: "Guiding creative journeys.",
-    description: "I partner with artists to develop their brand, strategize their career path, and create opportunities for growth.",
+    description: "Helping artists with campaigns on a short term basis yielding results for various artists.",
     imageUrl: "/Artist Manager.jpg",
     imageHint: "artist portrait",
     link: "#contact"
@@ -137,7 +138,7 @@ const RolesSection = () => {
                   {role.description}
                 </p>
                 
-                {role.title !== 'Artist Manager' && (
+                {role.title !== 'Freelance Artist Management' && (
                   <Button 
                       variant="outline" 
                       size="sm"
