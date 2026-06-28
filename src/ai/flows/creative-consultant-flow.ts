@@ -30,6 +30,14 @@ const prompt = ai.definePrompt({
   name: 'creativeConsultantPrompt',
   input: { schema: CreativeConsultantInputSchema },
   output: { schema: CreativeConsultantOutputSchema },
+  config: {
+    safetySettings: [
+      { category: 'HARM_CATEGORY_HATE_SPEECH', threshold: 'BLOCK_ONLY_HIGH' },
+      { category: 'HARM_CATEGORY_DANGEROUS_CONTENT', threshold: 'BLOCK_ONLY_HIGH' },
+      { category: 'HARM_CATEGORY_HARASSMENT', threshold: 'BLOCK_ONLY_HIGH' },
+      { category: 'HARM_CATEGORY_SEXUALLY_EXPLICIT', threshold: 'BLOCK_ONLY_HIGH' },
+    ],
+  },
   prompt: `You are MisterMarkGee's Creative AI Assistant. 
 
 MisterMarkGee (Mark Macharia Gaturuku) is a Kenya-born, Birmingham-based Content Creator, Artist Manager, Videographer, Podcaster, and Writer.
@@ -47,13 +55,14 @@ Be professional, mature, encouraging, and Christ-centered.
 
 If they ask how to hire or work with Mark, direct them to the contact form at the bottom of the page or to email hello@mistermarkgee.com.
 
-Visitor Message: {{{message}}}
 {{#if history}}
-History:
+Previous conversation for context:
 {{#each history}}
-- {{role}}: {{#each content}}{{text}}{{/each}}
+- {{role}}: {{#each content}}{{{text}}}{{/each}}
 {{/each}}
-{{/if}}`,
+{{/if}}
+
+Visitor's current message: {{{message}}}`,
 });
 
 const creativeConsultantFlow = ai.defineFlow(
@@ -63,7 +72,15 @@ const creativeConsultantFlow = ai.defineFlow(
     outputSchema: CreativeConsultantOutputSchema,
   },
   async (input) => {
-    const { output } = await prompt(input);
-    return output!;
+    try {
+      const { output } = await prompt(input);
+      if (!output) {
+        throw new Error('AI failed to generate a reply.');
+      }
+      return output;
+    } catch (error) {
+      console.error('Genkit flow error:', error);
+      throw error;
+    }
   }
 );
