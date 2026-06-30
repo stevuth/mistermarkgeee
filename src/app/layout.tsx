@@ -11,7 +11,7 @@ const FAVICON_URL = 'https://res.cloudinary.com/dni2duulw/image/upload/v17724960
 export const metadata: Metadata = {
   metadataBase: new URL('https://mistermarkgeee.web.app'),
   title: 'MisterMarkGee | Content Creator, Artist Manager & Videographer',
-  description: 'The creative universe of MisterMarkGee — Content Creator, Artist Manager, Videographer, Podcaster, and Writer.',
+  description: 'The creative universe of MisterMarkGee: Content Creator, Artist Manager, and Videographer. Discover digital witnessing through creative media and the 5C framework.',
   keywords: 'MisterMarkGee, Mark Macharia Gaturuku, content creator, artist manager, videographer, podcaster, writer, Christian hip hop, gospel music, digital witnessing',
   authors: [{ name: 'Mark Macharia Gaturuku' }],
   creator: 'MisterMarkGee',
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: 'MisterMarkGee | Content Creator, Artist Manager & Videographer',
-    description: 'Digital witnessing through creative media. Explore the work of MisterMarkGee, a Content Creator, Artist Manager, Videographer, Podcaster, and Writer.',
+    description: 'Explore the creative universe of MisterMarkGee. Content creation, artist management, and videography focused on digital witnessing and the 5C framework.',
     url: 'https://mistermarkgeee.web.app',
     siteName: 'MisterMarkGee',
     images: [
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'MisterMarkGee | Content Creator, Artist Manager & Videographer',
-    description: 'Digital witnessing through creative media. Explore the work of MisterMarkGee.',
+    description: 'Explore the creative universe of MisterMarkGee. Digital witnessing through creative media, storytelling, and the 5C framework.',
     creator: '@mistermarkgee',
     images: ['/og-image.png'],
   },
