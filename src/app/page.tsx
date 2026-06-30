@@ -10,7 +10,6 @@ import ContactSection from "@/components/sections/contact-section";
 import ArticlesSection from "@/components/sections/articles-section";
 import WorkWithMeSection from "@/components/sections/work-with-me-section";
 import ShowreelIntro from "@/components/sections/showreel-intro";
-import CreativeConsultantChat from "@/components/ai/creative-consultant-chat";
 
 export default function Home() {
   return (
@@ -27,7 +26,6 @@ export default function Home() {
       <WorkWithMeSection />
       <ZohoNewsletter />
       <ContactSection />
-      <CreativeConsultantChat />
     </>
   );
 }
