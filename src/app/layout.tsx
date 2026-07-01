@@ -11,8 +11,8 @@ const FAVICON_URL = 'https://res.cloudinary.com/dni2duulw/image/upload/v17724960
 export const metadata: Metadata = {
   metadataBase: new URL('https://mistermarkgeee.web.app'),
   title: 'MisterMarkGee | Content Creator, Artist Manager & Videographer',
-  description: 'The creative universe of MisterMarkGee: Content Creator, Artist Manager, and Videographer. Discover digital witnessing through creative media and the 5C framework.',
-  keywords: 'MisterMarkGee, Mark Macharia Gaturuku, content creator, artist manager, videographer, podcaster, writer, Christian hip hop, gospel music, digital witnessing',
+  description: 'The creative universe of MisterMarkGee: Expert Content Creator, Artist Manager, and Videographer focusing on digital witnessing through creative media and storytelling.',
+  keywords: 'MisterMarkGee, Mark Macharia Gaturuku, Content Creator, Artist Manager, Videographer, Podcaster, Podcast Host, Writer, Storyteller, Creative Director, digital witnessing, CHH culture',
   authors: [{ name: 'Mark Macharia Gaturuku' }],
   creator: 'MisterMarkGee',
   publisher: 'MisterMarkGee',
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: 'MisterMarkGee | Content Creator, Artist Manager & Videographer',
-    description: 'Explore the creative universe of MisterMarkGee. Content creation, artist management, and videography focused on digital witnessing and the 5C framework.',
+    description: 'Explore projects, stories, and creative collaborations from MisterMarkGee, a professional Content Creator, Artist Manager, and Videographer.',
     url: 'https://mistermarkgeee.web.app',
     siteName: 'MisterMarkGee',
     images: [
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
         url: '/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'MisterMarkGee Creative Portfolio',
+        alt: 'MisterMarkGee - Creative Portfolio',
       },
     ],
     locale: 'en_US',
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'MisterMarkGee | Content Creator, Artist Manager & Videographer',
-    description: 'Explore the creative universe of MisterMarkGee. Digital witnessing through creative media, storytelling, and the 5C framework.',
+    description: 'The professional portfolio of MisterMarkGee: Content Creator, Artist Manager, and Videographer specialized in creative media and storytelling.',
     creator: '@mistermarkgee',
     images: ['/og-image.png'],
   },

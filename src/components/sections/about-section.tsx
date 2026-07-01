@@ -8,7 +8,7 @@ import { useRef } from "react";
 import { Badge } from "@/components/ui/badge";
 import { ArrowRight, Instagram } from "lucide-react";
 
-const bioText = "Mark Macharia Gaturuku, also known as MisterMarkGee, is a Kenyan-born, British content creator based in Birmingham, West Midlands. A devoted Christian, husband, and father, he works as a videographer, producer, writer, and artist manager, using media to uplift Gospel and Christian Hip Hop culture. His multi-disciplinary creativity spans platforms such as The Life Music App, Holy Culture, Affinity Xtra, and other Gospel-led initiatives. He is also the co-host of The Ideologees Podcast, a platform committed to fostering respectful, civil discourse across political and ideological divides for the purpose of human and societal flourishing.";
+const bioText = "Mark Macharia Gaturuku, also known as MisterMarkGee, is a Kenyan-born, British Content Creator based in Birmingham. A devoted Christian, husband, and father, he excels as a Videographer, Podcast Host, Storyteller, and Artist Manager. Using media to uplift Gospel and CHH culture, his multi-disciplinary creativity spans platforms like The Life Music App and Holy Culture. As a Creative Director for Gospel-led initiatives, he co-hosts The Ideologees Podcast, fostering civil discourse for human and societal flourishing through the lens of faith and culture.";
 
 const Word = ({ children, progress, range }: { children: React.ReactNode, progress: any, range: [number, number] }) => {
     const opacity = useTransform(progress, range, [0.2, 1]);
@@ -40,7 +40,7 @@ const AboutSection = () => {
                         transition={{ duration: 0.8, ease: "easeOut" }}
                         viewport={{ once: true, amount: 0.3 }}
                     >
-                        <Badge variant="outline" className="mb-4 border-primary text-primary">About Me</Badge>
+                        <Badge variant="outline" className="mb-4 border-primary text-primary">Storyteller</Badge>
                         <motion.h2 
                             className="font-headline text-4xl md:text-5xl font-bold text-foreground"
                             initial={{ opacity: 0, y: 20 }}
@@ -48,7 +48,7 @@ const AboutSection = () => {
                             transition={{ duration: 0.5 }}
                             viewport={{ once: true }}
                         >
-                            Creative Fusion
+                            Professional Content Creator
                         </motion.h2>
                         <p
                             ref={paragraphRef}
@@ -89,7 +89,7 @@ const AboutSection = () => {
                         >
                             <Image
                                 src="/profile picture.png?v=2"
-                                alt="A portrait of MisterMarkGee"
+                                alt="MisterMarkGee - Artist Manager and Videographer"
                                 fill
                                 sizes="(max-width: 1024px) 100vw, 50vw"
                                 className="object-cover"

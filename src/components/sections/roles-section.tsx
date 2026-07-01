@@ -12,46 +12,46 @@ const roles = [
   {
     icon: Video,
     title: "Videographer",
-    tagline: "Capturing stories through motion.",
-    description: "From concept to final cut, I produce cinematic videos that resonate with audiences and deliver powerful messages with technical precision.",
+    tagline: "Capturing stories through cinematic motion.",
+    description: "Expert videography and production from concept to final cut, delivering high-quality cinematic media that captures truth in motion.",
     imageUrl: "/videographer.jpg",
     imageHint: "videography cinematic",
     link: "#showcase"
   },
   {
     icon: Music,
-    title: "Producer",
-    tagline: "Bringing creative visions to life.",
-    description: "I manage complex media projects from inception to delivery, ensuring a high-standard final product that aligns with strategic creative goals.",
+    title: "Creative Director",
+    tagline: "Bringing professional visions to life.",
+    description: "Leading creative direction for complex media projects, ensuring every endeavor reflects the standard of creative excellence.",
     imageUrl: "/producer.jpg",
-    imageHint: "music production",
+    imageHint: "creative director",
     link: "#works"
   },
   {
     icon: PenSquare,
-    title: "Writer",
-    description: "I craft compelling narratives across various formats—from long-form articles to concise digital copy—that engage, inform, and inspire.",
-    tagline: "Weaving words that connect.",
+    title: "Storyteller",
+    description: "Crafting compelling narratives that engage, inform, and inspire across digital platforms, long-form articles, and social media.",
+    tagline: "Weaving words that connect culture.",
     imageUrl: "/writer.jpg",
     imageHint: "writing book",
     link: "#articles"
   },
   {
     icon: UserCheck,
-    title: "Freelance Artist Management",
-    tagline: "Guiding creative journeys.",
+    title: "Artist Manager",
+    tagline: "Strategic artist management and campaigns.",
     description: "helping artists with campaigns on a short term basis yielding results for various artists",
     imageUrl: "/Artist Manager.jpg",
-    imageHint: "artist portrait",
+    imageHint: "artist manager",
     link: "#contact"
   },
   {
     icon: Podcast,
-    title: "Podcaster",
-    tagline: "Spreading hope through sound.",
-    description: "A seasoned voice in digital media, specializing in civil discourse at the intersection of faith, politics, and culture. I offer a Christ-centered perspective aimed at fostering societal flourishing through thoughtful dialogue and media engagement.",
+    title: "Podcast Host",
+    tagline: "Fostering civil discourse through media.",
+    description: "A seasoned voice and podcast host specializing in the intersection of faith, politics, and culture for human flourishing.",
     imageUrl: "/podcaster.jpg?v=2",
-    imageHint: "podcast microphone",
+    imageHint: "podcast host",
     link: "#pl2"
   },
 ];
@@ -94,7 +94,7 @@ const RolesSection = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5 }}
             >
-                Professional Scope
+                Professional Content Creator
             </motion.h2>
             <motion.p 
                 className="mt-4 max-w-2xl mx-auto text-lg text-white/80"
@@ -103,7 +103,7 @@ const RolesSection = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.2 }}
             >
-                Driven by the 5C Framework—Content, Commentary, Contending, Christ, and Culture—I employ a multi-disciplinary approach to media production and storytelling, ensuring every project serves the goal of digital witnessing and creative excellence.
+                Driven by the 5C Framework, I offer a professional, multi-disciplinary approach to media production, artist management, and storytelling.
             </motion.p>
         </div>
 
@@ -122,7 +122,7 @@ const RolesSection = () => {
             >
               <Image
                 src={role.imageUrl}
-                alt={role.title}
+                alt={`${role.title} - MisterMarkGee`}
                 fill
                 sizes="(max-width: 767px) 100vw, (max-width: 1023px) 50vw, 20vw"
                 className="object-cover absolute inset-0 -z-20 transition-transform duration-500 ease-in-out group-hover:scale-105"
@@ -138,7 +138,7 @@ const RolesSection = () => {
                   {role.description}
                 </p>
                 
-                {role.title !== 'Freelance Artist Management' && (
+                {role.title !== 'Artist Manager' && (
                   <Button 
                       variant="outline" 
                       size="sm"

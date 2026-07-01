@@ -1,3 +1,4 @@
+
 "use client";
 
 import { motion } from "framer-motion";
@@ -94,9 +95,9 @@ const HeroSection = () => {
 
   const intro = "Hello, I'm".split("");
   const name = "MisterMarkGee".split("");
-  const subtitleLine1 = "A Videographer • Producer • Writer".split("");
-  const subtitleLine2 = "Podcaster • and Artist Manager".split("");
-  const subText = "Digital witnessing through creative media.".split("");
+  const subtitleLine1 = "Content Creator • Artist Manager".split("");
+  const subtitleLine2 = "Videographer • and Podcast Host".split("");
+  const subText = "Digital witnessing through creative media and storytelling.".split("");
 
   const totalIntroDuration = intro.length * 0.15 + 0.5;
   const totalNameDuration = name.length * 0.15 + totalIntroDuration;
