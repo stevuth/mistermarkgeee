@@ -1,4 +1,3 @@
-
 "use client";
 
 import Image from "next/image";
@@ -22,7 +21,7 @@ const AboutSection = () => {
                     >
                         <Badge variant="outline" className="mb-4 border-primary text-primary">Storyteller</Badge>
                         <h2 className="font-headline text-4xl md:text-5xl font-bold text-foreground">
-                            Professional Content Creator
+                            Freelance Artist Management
                         </h2>
                         <div className="mt-6 text-lg text-foreground/80 leading-relaxed">
                             <p>{bioText}</p>

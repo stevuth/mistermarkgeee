@@ -23,55 +23,7 @@
     --border: 240 3.7% 15.9%;
     --input: 240 3.7% 15.9%;
     --ring: 207 90% 54%;
-    --chart-1: 220 70% 50%;
-    --chart-2: 160 60% 45%;
-    --chart-3: 30 80% 55%;
-    --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%;
     --radius: 0.5rem;
-    --sidebar-background: 240 10% 3.9%;
-    --sidebar-foreground: 0 0% 98%;
-    --sidebar-primary: 207 90% 54%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 0 0% 98%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 207 90% 54%;
-  }
-
-  .dark {
-    --background: 240 10% 3.9%;
-    --foreground: 0 0% 98%;
-    --card: 240 10% 3.9%;
-    --card-foreground: 0 0% 98%;
-    --popover: 240 10% 3.9%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 207 90% 54%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 240 3.7% 15.9%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 240 3.7% 15.9%;
-    --muted-foreground: 240 5% 64.9%;
-    --accent: 207 90% 54%;
-    --accent-foreground: 0 0% 100%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 240 3.7% 15.9%;
-    --input: 240 3.7% 15.9%;
-    --ring: 207 90% 54%;
-    --chart-1: 220 70% 50%;
-    --chart-2: 160 60% 45%;
-    --chart-3: 30 80% 55%;
-    --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%;
-    --sidebar-background: 240 10% 3.9%;
-    --sidebar-foreground: 0 0% 98%;
-    --sidebar-primary: 207 90% 54%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 0 0% 98%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 207 90% 54%;
   }
 }
 
@@ -89,15 +41,9 @@
     animation: gradient-animation 10s ease infinite;
   }
   @keyframes gradient-animation {
-    0% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-    100% {
-      background-position: 0% 50%;
-    }
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
   }
 }
 
@@ -105,57 +51,31 @@
   .scroller {
     @apply w-full overflow-hidden;
   }
-
   .scroller-inner {
     @apply flex flex-nowrap w-max gap-4;
     animation: scroll var(--_animation-duration, 40s) linear infinite;
   }
-
   .scroller[data-direction="right"] .scroller-inner {
     animation-direction: reverse;
   }
-
   .scroller[data-speed="fast"] .scroller-inner {
     --_animation-duration: 20s;
   }
-
   .scroller[data-speed="slow"] .scroller-inner {
     --_animation-duration: 80s;
   }
-
   @keyframes scroll {
-    to {
-      transform: translate(calc(-50%));
-    }
-  }
-
-  /* Zoho Newsletter Utility Classes */
-  .zoho-form-container {
-    @apply opacity-100 mx-auto max-w-[400px];
-  }
-  .zoho-signup-body {
-    @apply w-full relative mx-auto bg-transparent overflow-hidden;
-  }
-  .zoho-form-inner {
-    @apply w-full relative mx-auto;
-    font-family: 'Arial', sans-serif;
-  }
-  .zoho-signup-success-container {
-    @apply hidden absolute ml-[4%] w-[90%] bg-white p-[3px] border-[3px] border-[#c2e19a] mt-[10px] mb-[10px] break-all;
-  }
-  .zoho-success-text {
-    @apply text-[#498c84] font-sans text-[14px] break-words;
-  }
-  .zoho-form-wrapper {
-    @apply m-0 w-full;
-  }
-  .zoho-error-msg {
-    @apply bg-[#ffebe8] p-[10px] text-[#d20000] text-[11px] border border-[#ffd9d3] opacity-100 absolute w-[80%] mx-[10%] my-[20px] shadow-[0_5px_12px_0_#1b1b1b] hidden;
-  }
-  .zoho-form-fields-container {
-    @apply text-center w-full float-left relative z-20;
-  }
-  .zoho-form-row {
-    @apply text-center mx-auto flex flex-col gap-4 sm:flex-row;
+    to { transform: translate(calc(-50%)); }
   }
 }
+
+/* Zoho Newsletter Global Styles */
+.zoho-form-container { @apply mx-auto max-w-[400px]; }
+.zoho-signup-body { @apply w-full relative mx-auto bg-transparent overflow-hidden; }
+.zoho-form-inner { @apply w-full relative mx-auto; }
+.zoho-signup-success-container { @apply hidden relative w-full bg-card p-4 border border-primary rounded-md mb-4; }
+.zoho-success-text { @apply text-foreground text-sm text-center block; }
+.zoho-form-wrapper { @apply m-0 w-full; }
+.zoho-error-msg { @apply bg-destructive/10 p-2 text-destructive text-xs border border-destructive/20 rounded-md mb-4 hidden; }
+.zoho-form-fields-container { @apply text-center w-full relative z-20; }
+.zoho-form-row { @apply flex flex-col gap-4 sm:flex-row; }

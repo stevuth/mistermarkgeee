@@ -1,4 +1,3 @@
-
 "use client";
 
 import { motion } from "framer-motion";
@@ -40,7 +39,7 @@ const roles = [
     icon: UserCheck,
     title: "Freelance Artist Management",
     tagline: "Strategic artist management and campaigns.",
-    description: "helping artists with campaigns on a short term basis yielding results for various artists",
+    description: "Helping artists with campaigns on a short-term basis yielding results for various artists.",
     imageUrl: "/Artist Manager.jpg",
     imageHint: "artist manager",
     link: "#contact"

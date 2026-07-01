@@ -6,7 +6,7 @@ import ScrollProgressBar from "@/components/layout/scroll-progress-bar";
 import { FirebaseClientProvider } from '@/firebase';
 import Script from 'next/script';
 
-// Updated URL with encoding for the space and a higher versioning number
+// Updated URL with encoding for the space and a higher versioning number to break cache
 const FAVICON_URL = '/MMG%20LOGO.png?v=7';
 
 export const metadata: Metadata = {
