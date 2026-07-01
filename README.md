@@ -48,6 +48,16 @@ The official portfolio and blog for Mark Macharia Gaturuku (MisterMarkGee), a co
    npm run dev
    ```
 
+### ⬆️ Pushing Updates
+
+When you have made changes and want to push them to GitHub:
+
+```bash
+git add .
+git commit -m "Describe your changes here"
+git push origin main
+```
+
 ## 🔐 Admin Access
 
 Admin features are restricted to the authorized email: `mark.gaturuku@gmail.com`. Permissions are managed via Firestore Security Rules and a `roles_admin` collection.
