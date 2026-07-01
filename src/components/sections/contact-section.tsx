@@ -11,7 +11,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import AnimatedGradientText from "../ui/animated-gradient-text";
-import { Youtube, Instagram, Linkedin, Mail, CheckCircle, AlertTriangle } from "lucide-react";
+import { Youtube, Instagram, Linkedin, Mail } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
 const TiktokIcon = (props: any) => (
@@ -57,7 +57,10 @@ const ContactSection = () => {
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsSubmitting(true);
     try {
-      const response = await fetch("https://formsubmit.co/ajax/hello@mistermarkgee.com", {
+      // Obfuscated email endpoint for form submission
+      const user = 'hello';
+      const domain = 'mistermarkgee.com';
+      const response = await fetch(`https://formsubmit.co/ajax/${user}@${domain}`, {
         method: "POST",
         headers: {
           'Content-Type': 'application/json',
@@ -86,6 +89,12 @@ const ContactSection = () => {
     }
   }
 
+  const handleEmailClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    const user = 'hello';
+    const domain = 'mistermarkgee.com';
+    window.location.href = `mailto:${user}@${domain}`;
+  };
 
   const sentence = "Let’s Create Magic Together.".split("");
 
@@ -180,13 +189,13 @@ const ContactSection = () => {
           whileInView={{ opacity: 1, transition: { delay: 1, duration: 1 } }}
           viewport={{ once: true }}
         >
-          <a
-            href="mailto:hello@mistermarkgee.com"
-            className="inline-flex items-center gap-2 text-foreground/80 hover:text-primary transition-colors"
+          <button
+            onClick={handleEmailClick}
+            className="inline-flex items-center gap-2 text-foreground/80 hover:text-primary transition-colors cursor-pointer"
           >
             <Mail className="h-5 w-5" />
-            <span>hello@mistermarkgee.com</span>
-          </a>
+            <span>hello [at] mistermarkgee.com</span>
+          </button>
         </motion.div>
         
         <motion.div 
