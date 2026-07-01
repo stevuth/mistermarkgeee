@@ -81,8 +81,28 @@ const itemVariants = {
 const PortfolioSection = () => {
   const [selectedVideo, setSelectedVideo] = useState<VideoItem | null>(null);
 
+  const videoSchemas = playlists.flatMap(playlist => 
+    playlist.videos.map(video => ({
+      "@context": "https://schema.org",
+      "@type": "VideoObject",
+      "name": video.title,
+      "description": `Video content from ${playlist.title} by MisterMarkGee.`,
+      "thumbnailUrl": video.thumbnailUrl,
+      "uploadDate": "2024-01-01", // Placeholder, ideally fetch real date if available
+      "contentUrl": `https://www.youtube.com/watch?v=${video.videoId}`,
+      "embedUrl": `https://www.youtube.com/embed/${video.videoId}`
+    }))
+  );
+
   return (
     <section id="works" className="py-24 sm:py-32 bg-background text-foreground">
+      {videoSchemas.map((schema, idx) => (
+        <script
+          key={idx}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+        />
+      ))}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center">
           <Badge variant="outline" className="mb-4 border-primary text-primary">My Works</Badge>
@@ -120,7 +140,7 @@ const PortfolioSection = () => {
                 {playlist.videos.map((video) => (
                   <motion.div
                     key={video.id}
-                    className="relative rounded-lg overflow-hidden group cursor-pointer shadow-lg"
+                    className="relative rounded-lg overflow-hidden h-[250px] group cursor-pointer shadow-lg"
                     onClick={() => setSelectedVideo(video)}
                     whileHover={{ scale: 1.05 }}
                     transition={{ type: "spring", stiffness: 300, damping: 20 }}
@@ -128,14 +148,13 @@ const PortfolioSection = () => {
                     <Image
                       src={video.thumbnailUrl}
                       alt={video.title}
-                      width={800}
-                      height={450}
-                      className="w-full h-auto object-cover transition-all duration-300 group-hover:brightness-110"
+                      fill
+                      className="w-full h-full object-cover transition-all duration-300 group-hover:brightness-110"
                       data-ai-hint="video thumbnail"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent transition-opacity duration-300" />
                     <div className="absolute inset-0 p-4 flex flex-col justify-end">
-                      {/* Title removed for cleaner look */}
+                      <p className="text-xs font-bold text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">{video.title}</p>
                     </div>
                     <div className="absolute inset-0 flex items-center justify-center opacity-70 group-hover:opacity-100 transition-opacity duration-300">
                       <PlayCircle className="w-16 h-16 text-white/70 group-hover:scale-110 transition-all" />

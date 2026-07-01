@@ -11,7 +11,7 @@ const FAVICON_URL = 'https://res.cloudinary.com/dni2duulw/image/upload/v17724960
 export const metadata: Metadata = {
   metadataBase: new URL('https://mistermarkgeee.web.app'),
   title: 'MisterMarkGee | Content Creator, Artist Manager & Videographer',
-  description: 'The creative universe of MisterMarkGee: Expert Content Creator, Artist Manager, and Videographer focusing on digital witnessing through creative media and storytelling.',
+  description: 'Explore the creative world of MisterMarkGee, a professional content creator, artist manager, and videographer focusing on digital witnessing and storytelling.',
   keywords: 'MisterMarkGee, Mark Macharia Gaturuku, Content Creator, Artist Manager, Videographer, Podcaster, Podcast Host, Writer, Storyteller, Creative Director, digital witnessing, CHH culture',
   authors: [{ name: 'Mark Macharia Gaturuku' }],
   creator: 'MisterMarkGee',
@@ -69,6 +69,31 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const personSchema = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Mark Macharia Gaturuku",
+    "alternateName": "MisterMarkGee",
+    "url": "https://mistermarkgeee.web.app",
+    "image": "https://mistermarkgeee.web.app/profile%20picture.png",
+    "sameAs": [
+      "https://www.youtube.com/@mistermarkgee",
+      "https://www.instagram.com/mistermarkgee",
+      "https://www.tiktok.com/@mistermarkgee",
+      "https://www.linkedin.com/in/mark-macharia-gaturuku-a92840111/"
+    ],
+    "jobTitle": ["Content Creator", "Artist Manager", "Videographer", "Podcast Host"],
+    "description": "Mark Macharia Gaturuku (MisterMarkGee) is a Kenyan-born, Birmingham-based Content Creator, Artist Manager, Videographer, and Podcaster focused on digital witnessing through creative media."
+  };
+
+  const websiteSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "MisterMarkGee",
+    "url": "https://mistermarkgeee.web.app",
+    "description": "The creative universe and professional portfolio of MisterMarkGee."
+  };
+
   return (
     <html lang="en" className="dark">
       <head>
@@ -81,6 +106,14 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
         <link rel="canonical" href="https://mistermarkgeee.web.app" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+        />
       </head>
       <body className="font-body antialiased">
         <FirebaseClientProvider>

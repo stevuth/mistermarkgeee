@@ -29,13 +29,10 @@ type Article = {
 const formatArticleContent = (content: string) => {
   if (!content) return "";
   
-  // If the content already seems to have HTML tags, don't double format
   if (/<[a-z][\s\S]*>/i.test(content)) {
     return content;
   }
 
-  // Convert double newlines (or more) into actual paragraph blocks with bottom margins
-  // Convert single newlines into <br />
   return content
     .trim()
     .split(/\n\s*\n/)
@@ -54,8 +51,36 @@ const ArticlesSection = () => {
 
   const { data: articles, isLoading } = useCollection<Article>(articlesQuery);
 
+  const articlesSchema = articles ? {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "name": "MisterMarkGee Blog",
+    "description": "Insights, stories, and conversations from the world of Gospel and creative media.",
+    "blogPost": articles.map(article => ({
+      "@type": "BlogPosting",
+      "headline": article.title,
+      "description": article.summary,
+      "image": article.imageUrl,
+      "author": {
+        "@type": "Person",
+        "name": article.author
+      },
+      "datePublished": article.datePublished,
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": `https://mistermarkgeee.web.app/#articles`
+      }
+    }))
+  } : null;
+
   return (
     <>
+      {articlesSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(articlesSchema) }}
+        />
+      )}
       <section id="articles" className="py-24 sm:py-32 bg-secondary/30">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
