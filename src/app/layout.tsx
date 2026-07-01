@@ -7,7 +7,7 @@ import { FirebaseClientProvider } from '@/firebase';
 import Script from 'next/script';
 
 // Updated URL with a higher versioning number to force browser cache refresh
-const FAVICON_URL = '/MMG LOGO.png?v=5';
+const FAVICON_URL = '/MMG LOGO.png?v=6';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://mistermarkgeee.web.app'),
@@ -22,9 +22,7 @@ export const metadata: Metadata = {
       { url: FAVICON_URL, type: 'image/png', sizes: '32x32' },
       { url: FAVICON_URL, type: 'image/png', sizes: '16x16' },
     ],
-    shortcut: [
-      { url: FAVICON_URL, type: 'image/png' },
-    ],
+    shortcut: FAVICON_URL,
     apple: [
       { url: FAVICON_URL, sizes: '180x180', type: 'image/png' },
     ],
@@ -154,10 +152,6 @@ export default function RootLayout({
     <html lang="en" className="dark">
       <head>
         <meta name="theme-color" content="#000000" />
-        <link rel="icon" href={FAVICON_URL} type="image/png" sizes="32x32" />
-        <link rel="icon" href={FAVICON_URL} type="image/png" sizes="16x16" />
-        <link rel="shortcut icon" href={FAVICON_URL} type="image/png" />
-        <link rel="apple-touch-icon" href={FAVICON_URL} sizes="180x180" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
