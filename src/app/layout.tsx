@@ -72,26 +72,54 @@ export default function RootLayout({
   const personSchema = {
     "@context": "https://schema.org",
     "@type": "Person",
+    "@id": "https://mistermarkgeee.web.app/#person",
     "name": "Mark Macharia Gaturuku",
     "alternateName": "MisterMarkGee",
     "url": "https://mistermarkgeee.web.app",
     "image": "https://mistermarkgeee.web.app/profile%20picture.png",
+    "description": "Mark Macharia Gaturuku (MisterMarkGee) is a Kenyan-born, Birmingham-based Content Creator, Artist Manager, Videographer, and Podcaster focused on digital witnessing through creative media.",
+    "jobTitle": [
+      "Content Creator",
+      "Artist Manager",
+      "Videographer",
+      "Podcast Host",
+      "Creative Director",
+      "Storyteller"
+    ],
     "sameAs": [
       "https://www.youtube.com/@mistermarkgee",
       "https://www.instagram.com/mistermarkgee",
       "https://www.tiktok.com/@mistermarkgee",
       "https://www.linkedin.com/in/mark-macharia-gaturuku-a92840111/"
     ],
-    "jobTitle": ["Content Creator", "Artist Manager", "Videographer", "Podcast Host"],
-    "description": "Mark Macharia Gaturuku (MisterMarkGee) is a Kenyan-born, Birmingham-based Content Creator, Artist Manager, Videographer, and Podcaster focused on digital witnessing through creative media."
+    "knowsAbout": [
+      "Content Creation",
+      "Artist Management",
+      "Videography",
+      "Podcasting",
+      "Digital Media",
+      "Storytelling",
+      "Gospel Culture",
+      "CHH Culture"
+    ]
   };
 
   const websiteSchema = {
     "@context": "https://schema.org",
     "@type": "WebSite",
+    "@id": "https://mistermarkgeee.web.app/#website",
     "name": "MisterMarkGee",
     "url": "https://mistermarkgeee.web.app",
-    "description": "The creative universe and professional portfolio of MisterMarkGee."
+    "description": "The creative universe and professional portfolio of MisterMarkGee.",
+    "publisher": {
+      "@id": "https://mistermarkgeee.web.app/#person"
+    },
+    "author": {
+      "@id": "https://mistermarkgeee.web.app/#person"
+    },
+    "copyrightHolder": {
+      "@id": "https://mistermarkgeee.web.app/#person"
+    }
   };
 
   return (
