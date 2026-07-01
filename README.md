@@ -21,6 +21,7 @@ The official portfolio and blog for Mark Macharia Gaturuku (MisterMarkGee), a co
 - **Video Portfolio:** Curated YouTube playlists showcasing videography and podcast work.
 - **Responsive Design:** Optimized for all devices with a modern dark-themed aesthetic.
 - **Newsletter:** Integrated Zoho Campaigns subscription form.
+- **SEO & Security Optimized:** Implemented Schema Markup, DMARC documentation, and AI-readable metadata.
 
 ## 🛠️ Getting Started
 
@@ -50,6 +51,10 @@ The official portfolio and blog for Mark Macharia Gaturuku (MisterMarkGee), a co
 ## 🔐 Admin Access
 
 Admin features are restricted to the authorized email: `mark.gaturuku@gmail.com`. Permissions are managed via Firestore Security Rules and a `roles_admin` collection.
+
+## 📧 Domain Security (DMARC)
+
+To protect your email reputation and deliverability, ensure you have configured your DNS with the DMARC record provided in `docs/DMARC.md`.
 
 ## 📄 License
 
