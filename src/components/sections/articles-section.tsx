@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState } from "react";
@@ -36,7 +35,7 @@ const formatArticleContent = (content: string) => {
   return content
     .trim()
     .split(/\n\s*\n/)
-    .map(para => `<p style="margin-bottom: 1.5rem;">${para.replace(/\n/g, "<br />")}</p>`)
+    .map(para => `<p>${para.replace(/\n/g, "<br />")}</p>`)
     .join("");
 };
 
@@ -153,7 +152,7 @@ const ArticlesSection = () => {
               </DialogHeader>
               <ScrollArea className="flex-grow pr-6 -mr-6 mt-4">
                   <div
-                      className="prose prose-invert prose-lg max-w-none text-foreground/90"
+                      className="prose prose-invert prose-lg max-w-none text-foreground/90 [&_p]:mb-6"
                       dangerouslySetInnerHTML={{ __html: formatArticleContent(selectedArticle.content) }}
                   />
               </ScrollArea>

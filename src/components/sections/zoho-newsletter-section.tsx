@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useEffect } from "react";
@@ -9,7 +8,6 @@ import Script from "next/script";
 const ZohoNewsletter = () => {
   useEffect(() => {
     const setup = () => {
-      // The 'new_optin_response_in' parameter (the '2' at the end) tells Zoho to show the success message in a popup.
       if (window.setupSF) {
         window.setupSF('sf3zd95d907a9dc64455d67f198836f9f9f195613cbdc16506aebc481d94cf964603','ZCFORMVIEW',false,'light',false,'2');
       }
@@ -55,18 +53,14 @@ const ZohoNewsletter = () => {
             strategy="lazyOnload"
             onLoad={() => {
               if (window.setupSF) {
-                // The '2' at the end is crucial for popup success message
                 window.setupSF('sf3zd95d907a9dc64455d67f198836f9f9f195613cbdc16506aebc481d94cf964603','ZCFORMVIEW',false,'light',false,'2');
               }
-              window.runOnFormSubmit_sf3zd95d907a9dc64455d67f198836f9f9f195613cbdc16506aebc481d94cf964603 = function(th: any){
-                /*Before submit, if you want to trigger your event, "include your code here"*/
-              };
+              window.runOnFormSubmit_sf3zd95d907a9dc64455d67f198836f9f9f195613cbdc16506aebc481d94cf964603 = function(th: any){};
             }}
           />
           <style jsx global>{`
             ::-webkit-input-placeholder { color: hsl(var(--muted-foreground)) !important; }
             .SIGNUP_BODY { background-color: transparent !important; }
-            #sf3zd95d907a9dc64455d67f198836f9f9f195613cbdc16506aebc481d94cf964603 { margin: 0 auto; max-width: 400px; }
             #sf3zd95d907a9dc64455d67f198836f9f9f195613cbdc16506aebc481d94cf964603 #customForm { width: 100% !important; }
             #sf3zd95d907a9dc64455d67f198836f9f9f195613cbdc16506aebc481d94cf964603 [name="SIGNUP_BODY"] { width: 100% !important; height: auto !important; background: transparent !important; }
             #sf3zd95d907a9dc64455d67f198836f9f9f195613cbdc16506aebc481d94cf964603 [changeitem="ELEGANTFORM_IMAGE"] { display: none !important; }
@@ -134,31 +128,31 @@ const ZohoNewsletter = () => {
             }
           `}</style>
 
-          <div id="sf3zd95d907a9dc64455d67f198836f9f9f195613cbdc16506aebc481d94cf964603" data-type="signupform" style={{ opacity: 1 }}>
+          <div id="sf3zd95d907a9dc64455d67f198836f9f9f195613cbdc16506aebc481d94cf964603" data-type="signupform" className="zoho-form-container">
             <div id="customForm">
-              <div name="SIGNUP_BODY" style={{ width: '100%', position: 'relative', margin: 'auto', backgroundColor: 'transparent', overflow: 'hidden' }}>
-                <div style={{ width: '100%', position: 'relative', fontFamily: '"Arial"', margin: 'auto' }}>
-                  <div style={{position:'relative'}}>
-                    <div id="Zc_SignupSuccess" style={{display:'none',position:'absolute',marginLeft:'4%',width:'90%',backgroundColor:'white', padding:'3px', border:'3px solid rgb(194, 225, 154)',  marginTop:'10px',marginBottom:'10px',wordBreak:'break-all'}}>
+              <div name="SIGNUP_BODY" className="zoho-signup-body">
+                <div className="zoho-form-inner">
+                  <div className="relative">
+                    <div id="Zc_SignupSuccess" className="zoho-signup-success-container">
                       <table width="100%" cellPadding="0" cellSpacing="0" border="0">
                         <tbody>
                           <tr>
                             <td width="10%">
-                              <img className="successicon" src="https://zgnp-zngp.maillist-manage.com/images/challangeiconenable.jpg" align="absmiddle" />
+                              <img className="successicon" src="https://zgnp-zngp.maillist-manage.com/images/challangeiconenable.jpg" alt="success" />
                             </td>
                             <td>
-                              <span id="signupSuccessMsg" style={{color:'rgb(73, 140, 132)', fontFamily:'sans-serif', fontSize:'14px',wordBreak:'break-word'}}>&nbsp;&nbsp;Thank you for Signing Up</span>
+                              <span id="signupSuccessMsg" className="zoho-success-text">&nbsp;&nbsp;Thank you for Signing Up</span>
                             </td>
                           </tr>
                         </tbody>
                       </table>
                     </div>
                   </div>
-                  <form method="POST" id="zcampaignOptinForm" style={{ margin: '0px', width: '100%'}} action="https://zgnp-zngp.maillist-manage.com/weboptin.zc" target="_zcSignup">
-                    <div style={{backgroundColor: 'rgb(255, 235, 232)', padding: '10px', color: 'rgb(210, 0, 0)', fontSize: '11px', border: '1px solid rgb(255, 217, 211)', opacity: 1, position: 'absolute', width: '80%', margin: '20px 10%', boxShadow: 'rgb(27, 27, 27) 0px 5px 12px 0px', display: 'none'}} id="errorMsgDiv">Please correct the marked field(s) below.</div>
-                    <div style={{ textAlign: 'center', width: '100%', float: 'left', position: 'relative', zIndex: 2}}>
-                      <div style={{ textAlign: 'center', margin: 'auto', display: 'flex', flexDirection: 'column', gap: '1rem' }} className="sm:flex-row">
-                          <input type="text" placeholder="Your email address" changeitem="SIGNUP_FORM_FIELD" name="CONTACT_EMAIL" id="EMBED_FORM_EMAIL_LABEL" />
+                  <form method="POST" id="zcampaignOptinForm" className="zoho-form-wrapper" action="https://zgnp-zngp.maillist-manage.com/weboptin.zc" target="_zcSignup">
+                    <div className="zoho-error-msg" id="errorMsgDiv">Please correct the marked field(s) below.</div>
+                    <div className="zoho-form-fields-container">
+                      <div className="zoho-form-row">
+                          <input type="text" placeholder="Your email address" name="CONTACT_EMAIL" id="EMBED_FORM_EMAIL_LABEL" />
                           <input type="button" name="SIGNUP_SUBMIT_BUTTON" id="zcWebOptin" value="Subscribe" />
                       </div>
                     </div>
@@ -179,21 +173,21 @@ const ZohoNewsletter = () => {
                     <input type="hidden" name="zc_trackCode" id="zc_trackCode" value="ZCFORMVIEW" />
                     <input type="hidden" id="zc_formIx" name="zc_formIx" value="3zd95d907a9dc64455d67f198836f9f9f195613cbdc16506aebc481d94cf964603" />
                     <input type="hidden" id="viewFrom" value="URL_ACTION" />
-                    <span style={{ display: 'none' }} id="dt_CONTACT_EMAIL">1,true,6,Contact Email,2</span>
-                    <span style={{ display: 'none' }} id="dt_FIRSTNAME">1,false,1,First Name,2</span>
-                    <span style={{ display: 'none' }} id="dt_LASTNAME">1,false,1,Last Name,2</span>
+                    <span className="hidden" id="dt_CONTACT_EMAIL">1,true,6,Contact Email,2</span>
+                    <span className="hidden" id="dt_FIRSTNAME">1,false,1,First Name,2</span>
+                    <span className="hidden" id="dt_LASTNAME">1,false,1,Last Name,2</span>
                   </form>
                 </div>
               </div>
             </div>
-            <div id="zcOptinOverLay" onContextMenu={(e) => e.preventDefault()} style={{display: 'none', textAlign: 'center', backgroundColor: 'rgba(0,0,0,0.7)', zIndex: 100, position: 'fixed', width: '100%', top: 0, left: 0, height: '100vh'}}></div>
-            <div id="zcOptinSuccessPopup" style={{display: 'none', zIndex: 9999, width: '90%', maxWidth: '600px', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', position: 'fixed', padding: '1.5rem'}}>
-              <span style={{position: 'absolute', top: '-1rem', right: '-1rem', zIndex: 99999, cursor: 'pointer'}} id="closeSuccess">
+            <div id="zcOptinOverLay" onContextMenu={(e) => e.preventDefault()} className="hidden text-center bg-black/70 z-[100] fixed w-full top-0 left-0 h-screen"></div>
+            <div id="zcOptinSuccessPopup" className="hidden z-[9999] w-[90%] max-w-[600px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 fixed p-6">
+              <span className="absolute -top-4 -right-4 z-[99999] cursor-pointer" id="closeSuccess">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-x-circle"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/></svg>
               </span>
               <div id="zcOptinSuccessPanel"></div>
             </div>
-            <img src="https://zgnp-zngp.maillist-manage.com/images/spacer.gif" id="refImage" onLoad={(e: any) => e.target.style.display='none'} style={{display:'none'}} />
+            <img src="https://zgnp-zngp.maillist-manage.com/images/spacer.gif" id="refImage" onLoad={(e: any) => e.target.style.display='none'} className="hidden" alt="spacer" />
           </div>
         </motion.div>
       </div>
@@ -208,7 +202,4 @@ declare global {
   }
 }
 
-
 export default ZohoNewsletter;
-
-    

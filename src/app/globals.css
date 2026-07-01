@@ -128,4 +128,34 @@
       transform: translate(calc(-50%));
     }
   }
+
+  /* Zoho Newsletter Utility Classes */
+  .zoho-form-container {
+    @apply opacity-100 mx-auto max-w-[400px];
+  }
+  .zoho-signup-body {
+    @apply w-full relative mx-auto bg-transparent overflow-hidden;
+  }
+  .zoho-form-inner {
+    @apply w-full relative mx-auto;
+    font-family: 'Arial', sans-serif;
+  }
+  .zoho-signup-success-container {
+    @apply hidden absolute ml-[4%] w-[90%] bg-white p-[3px] border-[3px] border-[#c2e19a] mt-[10px] mb-[10px] break-all;
+  }
+  .zoho-success-text {
+    @apply text-[#498c84] font-sans text-[14px] break-words;
+  }
+  .zoho-form-wrapper {
+    @apply m-0 w-full;
+  }
+  .zoho-error-msg {
+    @apply bg-[#ffebe8] p-[10px] text-[#d20000] text-[11px] border border-[#ffd9d3] opacity-100 absolute w-[80%] mx-[10%] my-[20px] shadow-[0_5px_12px_0_#1b1b1b] hidden;
+  }
+  .zoho-form-fields-container {
+    @apply text-center w-full float-left relative z-20;
+  }
+  .zoho-form-row {
+    @apply text-center mx-auto flex flex-col gap-4 sm:flex-row;
+  }
 }

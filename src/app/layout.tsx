@@ -1,4 +1,3 @@
-
 import type {Metadata} from 'next';
 import './globals.css';
 import { Toaster } from "@/components/ui/toaster";
@@ -196,7 +195,7 @@ export default function RootLayout({
           <img 
             height="1" 
             width="1" 
-            style={{ display: 'none' }}
+            className="hidden"
             src="https://www.facebook.com/tr?id=&ev=PageView&noscript=1"
             alt="fb-pixel"
           />
