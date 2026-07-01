@@ -10,9 +10,9 @@ const FAVICON_URL = 'https://res.cloudinary.com/dni2duulw/image/upload/v17724960
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://mistermarkgeee.web.app'),
-  title: 'MisterMarkGee | Content Creator, Artist Manager & Videographer',
-  description: 'Discover the creative world of MisterMarkGee, a content creator, artist manager, videographer, podcaster and writer showcasing projects, stories and creative collaborations.',
-  keywords: 'MisterMarkGee, Mark Macharia Gaturuku, Content Creator, Artist Manager, Videographer, Podcaster, Podcast Host, Writer, Storyteller, Creative Director, digital witnessing, CHH culture',
+  title: 'MisterMarkGee | Content Creator, Freelance Artist Management & Videographer',
+  description: 'Discover the creative world of MisterMarkGee, a content creator, freelance artist management, videographer, podcaster and writer showcasing projects, stories and creative collaborations.',
+  keywords: 'MisterMarkGee, Mark Macharia Gaturuku, Content Creator, Freelance Artist Management, Videographer, Podcaster, Podcast Host, Writer, Storyteller, Creative Director, digital witnessing, CHH culture',
   authors: [{ name: 'Mark Macharia Gaturuku' }],
   creator: 'MisterMarkGee',
   publisher: 'MisterMarkGee',
@@ -29,8 +29,8 @@ export const metadata: Metadata = {
     ],
   },
   openGraph: {
-    title: 'MisterMarkGee | Content Creator, Artist Manager & Videographer',
-    description: 'Explore projects, stories, and creative collaborations from MisterMarkGee, a professional Content Creator, Artist Manager, and Videographer.',
+    title: 'MisterMarkGee | Content Creator, Freelance Artist Management & Videographer',
+    description: 'Explore projects, stories, and creative collaborations from MisterMarkGee, a professional Content Creator, Freelance Artist Management, and Videographer.',
     url: 'https://mistermarkgeee.web.app',
     siteName: 'MisterMarkGee',
     images: [
@@ -46,8 +46,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'MisterMarkGee | Content Creator, Artist Manager & Videographer',
-    description: 'The professional portfolio of MisterMarkGee: Content Creator, Artist Manager, and Videographer specialized in creative media and storytelling.',
+    title: 'MisterMarkGee | Content Creator, Freelance Artist Management & Videographer',
+    description: 'The professional portfolio of MisterMarkGee: Content Creator, Freelance Artist Management, and Videographer specialized in creative media and storytelling.',
     creator: '@mistermarkgee',
     images: ['/og-image.png'],
   },
@@ -77,10 +77,10 @@ export default function RootLayout({
     "alternateName": "MisterMarkGee",
     "url": "https://mistermarkgeee.web.app",
     "image": "https://mistermarkgeee.web.app/profile%20picture.png",
-    "description": "Mark Macharia Gaturuku (MisterMarkGee) is a Kenyan-born, Birmingham-based Content Creator, Artist Manager, Videographer, and Podcaster focused on digital witnessing through creative media.",
+    "description": "Mark Macharia Gaturuku (MisterMarkGee) is a Kenyan-born, Birmingham-based Content Creator, Freelance Artist Management, Videographer, and Podcaster focused on digital witnessing through creative media.",
     "jobTitle": [
       "Content Creator",
-      "Artist Manager",
+      "Freelance Artist Management",
       "Videographer",
       "Podcast Host",
       "Creative Director",
@@ -94,7 +94,7 @@ export default function RootLayout({
     ],
     "knowsAbout": [
       "Content Creation",
-      "Artist Management",
+      "Freelance Artist Management",
       "Videography",
       "Podcasting",
       "Digital Media",
@@ -119,7 +119,7 @@ export default function RootLayout({
       "addressCountry": "UK"
     },
     "priceRange": "$$",
-    "description": "Professional Content Creation, Artist Management, and Videography services by MisterMarkGee.",
+    "description": "Professional Content Creation, Freelance Artist Management, and Videography services by MisterMarkGee.",
     "founder": {
       "@id": "https://mistermarkgeee.web.app/#person"
     },

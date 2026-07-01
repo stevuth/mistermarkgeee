@@ -1,7 +1,7 @@
 
 # MisterMarkGee — Creative Universe
 
-The official portfolio and blog for Mark Macharia Gaturuku (MisterMarkGee), a content creator, artist manager, videographer, podcaster, and writer based in Birmingham, UK.
+The official portfolio and blog for Mark Macharia Gaturuku (MisterMarkGee), a content creator, freelance artist management, videographer, podcaster, and writer based in Birmingham, UK.
 
 ## 🚀 Tech Stack
 

@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState } from "react";
@@ -54,7 +55,7 @@ const ArticlesSection = () => {
     "@context": "https://schema.org",
     "@type": "Blog",
     "name": "MisterMarkGee Blog",
-    "description": "Insights, stories, and conversations from the world of Gospel and creative media.",
+    "description": "Insights, stories, and conversations from the world of Gospel and creative media through the lens of a content creator and freelance artist management expert.",
     "blogPost": articles.map(article => ({
       "@type": "BlogPosting",
       "headline": article.title,

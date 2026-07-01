@@ -38,7 +38,7 @@ const roles = [
   },
   {
     icon: UserCheck,
-    title: "Artist Manager",
+    title: "Freelance Artist Management",
     tagline: "Strategic artist management and campaigns.",
     description: "helping artists with campaigns on a short term basis yielding results for various artists",
     imageUrl: "/Artist Manager.jpg",
@@ -103,7 +103,7 @@ const RolesSection = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.2 }}
             >
-                Driven by the 5C Framework, I offer a professional, multi-disciplinary approach to media production, artist management, and storytelling.
+                Driven by the 5C Framework, I offer a professional, multi-disciplinary approach to media production, freelance artist management, and storytelling.
             </motion.p>
         </div>
 
@@ -138,7 +138,7 @@ const RolesSection = () => {
                   {role.description}
                 </p>
                 
-                {role.title !== 'Artist Manager' && (
+                {role.title !== 'Freelance Artist Management' && (
                   <Button 
                       variant="outline" 
                       size="sm"

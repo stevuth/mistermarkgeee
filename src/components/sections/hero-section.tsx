@@ -103,7 +103,7 @@ const HeroSection = () => {
           transition={{ duration: 1, delay: 0.6 }}
           className="mt-6 max-w-3xl mx-auto font-body text-base md:text-xl tracking-wide text-white/90"
         >
-          <p>Content Creator • Artist Manager</p>
+          <p>Content Creator • Freelance Artist Management</p>
           <p>Videographer • Podcast Host</p>
           <p className="mt-4 text-white/70 italic">Digital witnessing through creative media and storytelling.</p>
         </motion.div>
