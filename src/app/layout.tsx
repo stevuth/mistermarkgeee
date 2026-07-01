@@ -6,8 +6,8 @@ import ScrollProgressBar from "@/components/layout/scroll-progress-bar";
 import { FirebaseClientProvider } from '@/firebase';
 import Script from 'next/script';
 
-// Updated URL with a higher versioning number to force browser cache refresh
-const FAVICON_URL = '/MMG LOGO.png?v=6';
+// Updated URL with encoding for the space and a higher versioning number
+const FAVICON_URL = '/MMG%20LOGO.png?v=7';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://mistermarkgeee.web.app'),
