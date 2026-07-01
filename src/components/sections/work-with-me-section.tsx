@@ -1,8 +1,6 @@
-"use client";
 
-import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Video, Target, PenTool, Mic2 } from "lucide-react";
+import { ArrowRight, Video, Target, Mic2 } from "lucide-react";
 import AnimatedGradientText from "../ui/animated-gradient-text";
 import { Badge } from "../ui/badge";
 
@@ -25,21 +23,11 @@ const services = [
 ];
 
 const WorkWithMeSection = () => {
-  const handleScrollTo = (id: string) => {
-    document.querySelector(id)?.scrollIntoView({ behavior: 'smooth' });
-  };
-
   return (
     <section id="work-with-me" className="py-24 sm:py-32 bg-background relative overflow-hidden">
       <div className="absolute inset-0 z-0 animated-gradient opacity-5" />
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <motion.div
-          className="max-w-4xl mx-auto text-center"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          viewport={{ once: true }}
-        >
+        <div className="max-w-4xl mx-auto text-center">
           <Badge variant="outline" className="mb-6 border-primary text-primary">Collaborate</Badge>
           <h2 className="font-headline text-4xl md:text-6xl font-bold text-foreground">
             Ready to <AnimatedGradientText>Create</AnimatedGradientText> Together?
@@ -50,31 +38,29 @@ const WorkWithMeSection = () => {
 
           <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
             {services.map((service, i) => (
-              <motion.div
+              <div
                 key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.1 }}
-                viewport={{ once: true }}
                 className="p-6 bg-secondary/20 rounded-2xl border border-white/5 hover:border-primary/30 transition-all group"
               >
                 <service.icon className="h-8 w-8 text-primary mb-4 group-hover:scale-110 transition-transform" />
                 <h3 className="font-headline text-xl font-bold mb-2">{service.title}</h3>
                 <p className="text-sm text-foreground/60 leading-relaxed">{service.description}</p>
-              </motion.div>
+              </div>
             ))}
           </div>
 
           <div className="mt-16 flex flex-col sm:flex-row justify-center items-center gap-6">
-            <Button size="lg" className="animated-gradient text-white font-bold h-14 px-10 rounded-full" onClick={() => handleScrollTo('#contact')}>
-              Book Your Session
-              <ArrowRight className="ml-2 h-5 w-5" />
+            <Button size="lg" className="animated-gradient text-white font-bold h-14 px-10 rounded-full" asChild>
+              <a href="#contact">
+                Book Your Session
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </a>
             </Button>
             <p className="text-foreground/50 text-sm">
               Current focus: <span className="text-foreground">Birmingham & Remote Campaigns</span>
             </p>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
