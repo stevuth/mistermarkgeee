@@ -6,12 +6,13 @@ import ScrollProgressBar from "@/components/layout/scroll-progress-bar";
 import { FirebaseClientProvider } from '@/firebase';
 import Script from 'next/script';
 
-const FAVICON_URL = '/MMG LOGO.png';
+// Updated URL with versioning to force cache refresh
+const FAVICON_URL = '/MMG LOGO.png?v=3';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://mistermarkgeee.web.app'),
   title: 'MisterMarkGee | Content Creator, Freelance Artist Management & Videographer',
-  description: 'Discover the creative world of MisterMarkGee, a content creator, freelance artist management, videographer, podcaster and writer showcasing projects, stories and creative collaborations.',
+  description: 'Discover the creative world of MisterMarkGee, a professional in Freelance Artist Management, Content Creation, and Videography, showcasing projects, stories and creative collaborations.',
   keywords: 'MisterMarkGee, Mark Macharia Gaturuku, Content Creator, Freelance Artist Management, Videographer, Podcaster, Podcast Host, Writer, Storyteller, Creative Director, digital witnessing, CHH culture',
   authors: [{ name: 'Mark Macharia Gaturuku' }],
   creator: 'MisterMarkGee',
