@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Video, Target, Mic2 } from "lucide-react";
 import AnimatedGradientText from "../ui/animated-gradient-text";
@@ -56,9 +55,6 @@ const WorkWithMeSection = () => {
                 <ArrowRight className="ml-2 h-5 w-5" />
               </a>
             </Button>
-            <p className="text-foreground/50 text-sm">
-              Current focus: <span className="text-foreground">Birmingham & Remote Campaigns</span>
-            </p>
           </div>
         </div>
       </div>
