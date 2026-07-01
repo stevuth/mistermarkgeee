@@ -105,6 +105,33 @@ export default function RootLayout({
     ]
   };
 
+  const localBusinessSchema = {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "@id": "https://mistermarkgeee.web.app/#business",
+    "name": "MisterMarkGee",
+    "image": "https://mistermarkgeee.web.app/profile%20picture.png",
+    "url": "https://mistermarkgeee.web.app",
+    "email": "hello@mistermarkgee.com",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Birmingham",
+      "addressRegion": "West Midlands",
+      "addressCountry": "UK"
+    },
+    "priceRange": "$$",
+    "description": "Professional Content Creation, Artist Management, and Videography services by MisterMarkGee.",
+    "founder": {
+      "@id": "https://mistermarkgeee.web.app/#person"
+    },
+    "sameAs": [
+      "https://www.youtube.com/@mistermarkgee",
+      "https://www.instagram.com/mistermarkgee",
+      "https://www.tiktok.com/@mistermarkgee",
+      "https://www.linkedin.com/in/mark-macharia-gaturuku-a92840111/"
+    ]
+  };
+
   const websiteSchema = {
     "@context": "https://schema.org",
     "@type": "WebSite",
@@ -138,6 +165,10 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
         />
         <script
           type="application/ld+json"
