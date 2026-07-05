@@ -6,8 +6,8 @@ import ScrollProgressBar from "@/components/layout/scroll-progress-bar";
 import { FirebaseClientProvider } from '@/firebase';
 import Script from 'next/script';
 
-// Updated to the new file name provided by the user with a cache-busting version
-const FAVICON_URL = '/favicon.peg?v=10';
+// Updated to the exact file name provided by the user with a higher cache-busting version
+const FAVICON_URL = '/favicon.peg.png?v=12';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://mistermarkgeee.web.app'),
