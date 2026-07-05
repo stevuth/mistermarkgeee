@@ -12,8 +12,8 @@ const FAVICON_URL = '/favicon.peg?v=10';
 export const metadata: Metadata = {
   metadataBase: new URL('https://mistermarkgeee.web.app'),
   title: 'MisterMarkGee | Content Creator, Freelance Artist Management & Videographer',
-  description: 'Discover the creative world of MisterMarkGee, a professional in Freelance Artist Management, Content Creation, and Videography, showcasing projects, stories and creative collaborations.',
-  keywords: 'MisterMarkGee, Mark Macharia Gaturuku, Content Creator, Freelance Artist Management, Videographer, Podcaster, Podcast Host, Writer, Storyteller, Creative Director, digital witnessing, CHH culture',
+  description: 'Discover the creative world of MisterMarkGee, a professional in Freelance Artist Management, Content Creation, and Videography, showcasing projects through platforms like The Life Music App, Holy Culture, and Affinity xtra.',
+  keywords: 'MisterMarkGee, Mark Macharia Gaturuku, Content Creator, Freelance Artist Management, Videographer, Podcaster, Podcast Host, Writer, Storyteller, Creative Director, digital witnessing, CHH culture, Affinity xtra',
   authors: [{ name: 'Mark Macharia Gaturuku' }],
   creator: 'MisterMarkGee',
   publisher: 'MisterMarkGee',
