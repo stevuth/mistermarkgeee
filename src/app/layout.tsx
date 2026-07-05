@@ -6,8 +6,8 @@ import ScrollProgressBar from "@/components/layout/scroll-progress-bar";
 import { FirebaseClientProvider } from '@/firebase';
 import Script from 'next/script';
 
-// Updated URL with encoding for the space and a higher versioning number to break cache
-const FAVICON_URL = '/MMG%20LOGO.png?v=7';
+// Updated to the new file name provided by the user with a cache-busting version
+const FAVICON_URL = '/favicon.peg?v=10';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://mistermarkgeee.web.app'),
@@ -19,12 +19,11 @@ export const metadata: Metadata = {
   publisher: 'MisterMarkGee',
   icons: {
     icon: [
-      { url: FAVICON_URL, type: 'image/png', sizes: '32x32' },
-      { url: FAVICON_URL, type: 'image/png', sizes: '16x16' },
+      { url: FAVICON_URL },
     ],
     shortcut: FAVICON_URL,
     apple: [
-      { url: FAVICON_URL, sizes: '180x180', type: 'image/png' },
+      { url: FAVICON_URL },
     ],
   },
   openGraph: {
