@@ -21,7 +21,7 @@ The official portfolio and blog for Mark Macharia Gaturuku (MisterMarkGee), a co
 - **Video Portfolio:** Curated YouTube playlists showcasing videography and podcast work.
 - **Responsive Design:** Optimized for all devices with a modern dark-themed aesthetic.
 - **Newsletter:** Integrated Zoho Campaigns subscription form.
-- **SEO & Security Optimized:** Implemented Schema Markup, DMARC documentation, and AI-readable metadata.
+- **AI Creative Assistant:** A Genkit-powered consultant to help visitors engage with Mark's work.
 
 ## 🛠️ Getting Started
 
@@ -29,7 +29,7 @@ The official portfolio and blog for Mark Macharia Gaturuku (MisterMarkGee), a co
 
 - Node.js 18+
 - A Firebase project
-- A Cloudinary account (for image and video hosting)
+- A Cloudinary account
 
 ### Installation
 
@@ -48,23 +48,19 @@ The official portfolio and blog for Mark Macharia Gaturuku (MisterMarkGee), a co
    npm run dev
    ```
 
-### ⬆️ Pushing Updates
+### ⬆️ Pushing Updates to GitHub
 
-When you have made changes and want to push them to GitHub:
+When you are ready to save your changes and push them to GitHub, run these commands:
 
 ```bash
 git add .
-git commit -m "Describe your changes here"
+git commit -m "Finalized branding, bio updates, and favicon configuration"
 git push origin main
 ```
 
 ## 🔐 Admin Access
 
-Admin features are restricted to the authorized email: `mark.gaturuku@gmail.com`. Permissions are managed via Firestore Security Rules and a `roles_admin` collection.
-
-## 📧 Domain Security (DMARC)
-
-To protect your email reputation and deliverability, ensure you have configured your DNS with the DMARC record provided in `docs/DMARC.md`.
+Admin features are restricted to the authorized email: `mark.gaturuku@gmail.com`. Permissions are managed via Firestore Security Rules.
 
 ## 📄 License
 
