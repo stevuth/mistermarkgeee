@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import { Badge } from "@/components/ui/badge";
 import { Instagram } from "lucide-react";
 
-const bioText = "Mark Macharia Gaturuku, also known as MisterMarkGee, is a Kenyan-born, British Content Creator based in Birmingham. A devoted Christian, husband, and father, he excels as a Videographer, Podcast Host, Storyteller, and Freelance Artist Management. Using media to uplift Gospel and CHH culture, his multi-disciplinary creativity spans platforms like The Life Music App and Holy Culture. As a Creative Director for Gospel-led initiatives, he co-hosts The Ideologees Podcast, fostering civil discourse for human and societal flourishing through the lens of faith and culture.";
+const bioText = "Mark Macharia Gaturuku, also known as MisterMarkGee, is a Kenyan-born, British Content Creator based in Birmingham. A devoted Christian, husband, and father, he excels as a Videographer, Podcast Host, Storyteller, and Freelance Artist Management. Using media to uplift Gospel and CHH culture, his multi-disciplinary creativity spans through platforms like The Life Music App and Holy Culture. As a Creative Director for Gospel-led initiatives, he co-hosts The Ideologees Podcast, fostering civil discourse for human and societal flourishing through the lens of faith and culture.";
 
 const AboutSection = () => {
     return (
